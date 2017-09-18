@@ -8,6 +8,7 @@ public class CharacterSlimeControl : CharacterBaseControl {
 	public float pushTime;
 	public AttackableEnemy attackableEnemy;
 	public float AttackDamage;
+	public bool stopOnHit;
 
 	private GameObject characterInRange;
 
@@ -34,7 +35,9 @@ public class CharacterSlimeControl : CharacterBaseControl {
 	public void OnHitCharacter(Character character) {
 		Vector2 direction = character.transform.position - transform.position;	
 		direction.Normalize();
-		characterInRange = null;
+		if(stopOnHit) {
+			characterInRange = null;
+		}
 		character.movementModel.PushCharacter(direction * pushStrength, pushTime);
 		character.healthModel.DealDamage(AttackDamage);
 	}

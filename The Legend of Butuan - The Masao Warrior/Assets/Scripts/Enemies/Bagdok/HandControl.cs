@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandControl : MonoBehaviour {
+public class HandControl : CharacterBaseControl {
 
 	void Update() {
 

@@ -33,10 +33,9 @@ public class NPCControl : CharacterBaseControl {
 
 	void Update () {
 		UpdateDirection();
-		if(!canAttack) {
-			return;
+		if(canAttack) {
+			UpdateAttack();
 		}
-		UpdateAttack();
 	}
 
 	void UpdateAttack() {

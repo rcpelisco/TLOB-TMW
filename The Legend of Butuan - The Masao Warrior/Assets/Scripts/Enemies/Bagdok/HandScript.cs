@@ -2,55 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandScript : MonoBehaviour {
+public class HandScript : CharacterBaseControl {
 
 	public float floatTime = 1f;
 	public float timeUntilNextAttack;
 	public GameObject player;
 
+	private Vector2 direction;
+	private HandState handState;
 	private float maxHeight = 3f;
 	private float attackInterval;
 	private bool isTargetLocked;
-	private Vector2 target;
-	private Vector2 previousPos;
-
-	void Start() {
-		attackInterval = timeUntilNextAttack;
-	}
-
-	public void UpdateAttack() {
-		attackInterval = Mathf.MoveTowards(attackInterval, 0, Time.deltaTime);
-		if(attackInterval <= 0) {
-			RaiseHand();
-		}
-	}
+	private Vector3 target;
+	private Vector3 previousPos;
 
 	void Update() {
-		UpdateAttack();
+		UpdateRaise();
 	}
 
-	void LockTarget() {
-		if(!isTargetLocked) {
-			target = player.transform.position;
-			isTargetLocked = true;
-		} else {
-			return;
-		}
+	void UpdateRaise() {
+		// while(transform.position != target + new Vector3(0, maxHeight)) {
+		direction = transform.position - target + new Vector3(0, maxHeight);
+		direction.Normalize();
+		SetDirection(direction);
+		Debug.Log(direction);
+		// }
+	
 	}
 
-	void FindTarget() {
-		target = player.transform.position;
-	}
+	// IEnumerator Float() {
+	// 	yield return new WaitForSeconds(2.5f);
+	// 	Debug.Log("Float");
+	// 	StartCoroutine(FindTarget());
+	// }
 
-	void DroppedPosition() {
-		previousPos = transform.position; 
-	}
+	// IEnumerator FindTarget() {
+	// 	yield return new WaitForSeconds(1.5f);
+	// 	Debug.Log("FindTarget");
+	// 	StartCoroutine(Drop());
+	// }
 
-	void RaiseHand() {
-		transform.position = Vector2.MoveTowards(transform.position, target + new Vector2(0, maxHeight), Time.deltaTime * 10);
-	}
+	// IEnumerator Drop() {
+	// 	yield return new WaitForSeconds(1.8f);
+	// 	Debug.Log("Drop");
+	// 	StartCoroutine(Rest());
+	// }
 
-	void DropHand() {
+	// IEnumerator Rest() {
+	// 	yield return new WaitForSeconds(1.8f);
+	// 	Debug.Log("Rest");
+	// 	StartCoroutine(Raise());
+	// }
+}
 
-	}
+public enum HandState {
+	Raise,
+	Float,
+	FindTarget,
+	Drop,
+	Rest,
 }
