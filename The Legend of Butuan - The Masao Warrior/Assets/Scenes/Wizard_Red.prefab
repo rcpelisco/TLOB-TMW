@@ -36,9 +36,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4318168275238254}
-  - component: {fileID: 114949876223893208}
   - component: {fileID: 50248872941183456}
   - component: {fileID: 114379807898925594}
+  - component: {fileID: 61991985022661300}
+  - component: {fileID: 114223497130212770}
+  - component: {fileID: 114229465332737260}
   m_Layer: 0
   m_Name: Wizard_Red
   m_TagString: Untagged
@@ -95,8 +97,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1752669702052942}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.03, y: -5.36, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.7532263, y: 7.5212336, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4092266686671644}
@@ -138,7 +140,32 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4.5
+  m_Radius: 5
+--- !u!61 &61991985022661300
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752669702052942}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.10383654}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.7008953}
+  m_EdgeRadius: 0
 --- !u!95 &95575553297799442
 Animator:
   serializedVersion: 3
@@ -156,6 +183,41 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114223497130212770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752669702052942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5525ad3fea5acf140b0d8604bea55c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  destroyObjectOnDeath: {fileID: 1752669702052942}
+  movementModel: {fileID: 114229465332737260}
+  hitPushStrength: 100
+  hitPushDuration: 20
+  destroyDelay: 0
+  deathFX: {fileID: 1875487725207318, guid: f8f9dd688bc7a134181229d60bb667e2, type: 2}
+  deathFXDelay: 0
+--- !u!114 &114229465332737260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752669702052942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9b57f66fe0af84cbd05cbbb23cdc33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  speed: 0
+  weaponParent: {fileID: 0}
+  shieldParent: {fileID: 0}
+  previewItemParent: {fileID: 0}
 --- !u!114 &114379807898925594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,19 +243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6ed25016a4d064ab160c28e325e955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114949876223893208
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1752669702052942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c909701ad1f6358499a49b6982d7c5eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
-  speed: 10
 --- !u!212 &212812536794581802
 SpriteRenderer:
   m_ObjectHideFlags: 1
