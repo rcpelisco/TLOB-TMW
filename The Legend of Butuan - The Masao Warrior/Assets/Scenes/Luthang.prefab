@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 50910838834238340}
   - component: {fileID: 61237266599781730}
   - component: {fileID: 114785974956562526}
-  - component: {fileID: 114575962445438292}
-  - component: {fileID: 114520665328469542}
-  - component: {fileID: 114096075163823030}
+  - component: {fileID: 114451298769282882}
+  - component: {fileID: 114174016129224028}
+  - component: {fileID: 114736894532768790}
   m_Layer: 0
   m_Name: Luthang
   m_TagString: Untagged
@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1421685021918776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.3, y: -11.1, z: 0}
+  m_LocalPosition: {x: 2.4832268, y: 7.4512334, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4982691237691034}
@@ -139,7 +139,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114096075163823030
+--- !u!114 &114174016129224028
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -147,14 +147,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1421685021918776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3769dd062f2e064aa45d458539a4fb7, type: 3}
+  m_Script: {fileID: 11500000, guid: c1e66b43c987d44489140b73735ce016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canWalk: 1
-  walkTime: 1
-  waitTime: 3
-  isMoving: 0
-  walkZone: {fileID: 0}
+  animator: {fileID: 95612659247046942}
+  weaponParent: {fileID: 0}
+  shieldParent: {fileID: 0}
 --- !u!114 &114252105802916762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,9 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e836498456e36dd469529fd5e8222147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementModel: {fileID: 114520665328469542}
-  movementView: {fileID: 114575962445438292}
---- !u!114 &114520665328469542
+  movementModel: {fileID: 0}
+  movementView: {fileID: 0}
+--- !u!114 &114451298769282882
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -176,24 +174,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1421685021918776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c909701ad1f6358499a49b6982d7c5eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fc16ea134a27594fbddb98aa5d7b864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canWalk: 1
+  walkTime: 1
+  waitTime: 1
+  isMoving: 0
+  canAttack: 1
+  walkZone: {fileID: 0}
+--- !u!114 &114736894532768790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1421685021918776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9b57f66fe0af84cbd05cbbb23cdc33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1615147053473468, guid: b23fa153d95fa9b4c96dc65482031f20,
     type: 2}
-  speed: 3
---- !u!114 &114575962445438292
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1421685021918776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb74fcb695484d449b94495bbf322a22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 95612659247046942}
+  speed: 5
+  weaponParent: {fileID: 0}
+  shieldParent: {fileID: 0}
+  previewItemParent: {fileID: 0}
 --- !u!114 &114785974956562526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,12 +212,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  destroyObjectOnDeath: {fileID: 0}
-  movementModel: {fileID: 0}
-  hitPushStrength: 0
-  hitPushDuration: 0
-  destroyDelay: 0
-  deathFX: {fileID: 0}
+  destroyObjectOnDeath: {fileID: 1421685021918776}
+  movementModel: {fileID: 114736894532768790}
+  hitPushStrength: 12
+  hitPushDuration: 0.25
+  destroyDelay: 0.1
+  deathFX: {fileID: 1875487725207318, guid: f8f9dd688bc7a134181229d60bb667e2, type: 2}
   deathFXDelay: 0
 --- !u!212 &212505713951105200
 SpriteRenderer:
