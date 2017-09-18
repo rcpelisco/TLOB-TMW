@@ -8,6 +8,7 @@ public class HandScript : MonoBehaviour {
 	public float timeUntilNextAttack;
 	public GameObject player;
 
+	private HandState handState;
 	private float maxHeight = 3f;
 	private float attackInterval;
 	private bool isTargetLocked;
@@ -15,42 +16,44 @@ public class HandScript : MonoBehaviour {
 	private Vector2 previousPos;
 
 	void Start() {
-		attackInterval = timeUntilNextAttack;
+		StartCoroutine(Raise());
 	}
 
-	public void UpdateAttack() {
-		attackInterval = Mathf.MoveTowards(attackInterval, 0, Time.deltaTime);
-		if(attackInterval <= 0) {
-			RaiseHand();
-		}
+	IEnumerator Raise() {
+		yield return new WaitForSeconds(2f);
+		Debug.Log("Raise");
+		StartCoroutine(Float());
 	}
 
-	void Update() {
-		UpdateAttack();
+	IEnumerator Float() {
+		yield return new WaitForSeconds(2.5f);
+		Debug.Log("Float");
+		StartCoroutine(FindTarget());
 	}
 
-	void LockTarget() {
-		if(!isTargetLocked) {
-			target = player.transform.position;
-			isTargetLocked = true;
-		} else {
-			return;
-		}
+	IEnumerator FindTarget() {
+		yield return new WaitForSeconds(1.5f);
+		Debug.Log("FindTarget");
+		StartCoroutine(Drop());
 	}
 
-	void FindTarget() {
-		target = player.transform.position;
+	IEnumerator Drop() {
+		yield return new WaitForSeconds(1.8f);
+		Debug.Log("Drop");
+		StartCoroutine(Rest());
 	}
 
-	void DroppedPosition() {
-		previousPos = transform.position; 
+	IEnumerator Rest() {
+		yield return new WaitForSeconds(1.8f);
+		Debug.Log("Rest");
+		StartCoroutine(Raise());
 	}
+}
 
-	void RaiseHand() {
-		transform.position = Vector2.MoveTowards(transform.position, target + new Vector2(0, maxHeight), Time.deltaTime * 10);
-	}
-
-	void DropHand() {
-
-	}
+public enum HandState {
+	Raise,
+	Float,
+	FindTarget,
+	Drop,
+	Rest,
 }
