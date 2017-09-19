@@ -39,8 +39,6 @@ public class AnimationDialogue : MonoBehaviour {
 	}
 
 	void Play() {
-		if(playable != null) {
-			playable.Play();
-		}
+		playable.Play();
 	}
 }
