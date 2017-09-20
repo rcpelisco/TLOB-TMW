@@ -9,6 +9,7 @@ public class CharacterMovementView : MonoBehaviour {
 	public Transform shieldParent;
 
 	private CharacterMovementModel movementModel;
+	private CharacterHealthModel healthModel;
 
 	void Awake() {
 		if(animator == null) {
@@ -16,6 +17,7 @@ public class CharacterMovementView : MonoBehaviour {
 			enabled = false;
 		}
 		movementModel = GetComponent<CharacterMovementModel>();
+		healthModel = GetComponent<CharacterHealthModel>();
 	}
 
 	void Start() {
@@ -23,14 +25,18 @@ public class CharacterMovementView : MonoBehaviour {
 	}
 
 	void Update() {
+		if(healthModel != null) {
+			if(healthModel.GetHealth() <= 0) {
+				return;
+			}
+		}
 		UpdateDirection();
 		UpdatePickUpAnimation();
 		UpdateHit();
-		UpdateShieldMovement();
 	}
 
-	void UpdateShieldMovement() {
-
+	public void OnDeath() {
+		animator.SetTrigger("isDead");
 	}
 
 	void UpdateHit() {

@@ -8,6 +8,10 @@ public class UIHealthBar : MonoBehaviour {
 	public Text healthText;
 	public RectTransform healthBar;
 
+	void Awake() {
+		healthModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterHealthModel>();
+	}
+
 	void Update() {
 		UpdateText();
 		UpdateHealthBar();

@@ -21,9 +21,11 @@ public class CharacterMovementModel : CharacterBaseControl {
 	private GameObject pickupItem;
 	private Vector2 pushDirection;
 	private float pushTime;
+	private CharacterHealthModel healthModel;
 
 	void Awake() {
 		rigidBody = GetComponent<Rigidbody2D>();
+		healthModel = GetComponent<CharacterHealthModel>();
 	}
 
 	void Update() {

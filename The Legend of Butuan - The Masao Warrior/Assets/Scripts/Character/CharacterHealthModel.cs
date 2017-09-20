@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterHealthModel : MonoBehaviour {
 
@@ -8,8 +9,12 @@ public class CharacterHealthModel : MonoBehaviour {
 
 	private float maximumHealth;
 	private float health;
+	private CharacterMovementView movementView;
+	private GameStateManager stateManager;
 
 	void Start () {
+		movementView = GetComponent<CharacterMovementView>();
+		stateManager = GetComponent<GameStateManager>();
 		maximumHealth = startingHealth;
 		health = maximumHealth;
 	}
@@ -42,8 +47,17 @@ public class CharacterHealthModel : MonoBehaviour {
 		health -= damage;
 		Debug.Log(health);
 		if(health <= 0) {
-			// Debug.Log("YOU DIED!");
 			health = 0;
+			movementView.OnDeath();
+			StartCoroutine(WaitNextScene());
 		}
+	}
+	
+	IEnumerator WaitNextScene() {
+		FadeManager.instance.Fade(true, 1.5f);
+		yield return new WaitForSeconds(3f);
+		FadeManager.instance.Fade(false, 1.5f);
+		stateManager.GameOver();
+
 	}
 }

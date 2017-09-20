@@ -29,7 +29,10 @@ public class DialogueManager : MonoBehaviour {
 		if(goldCount != null) {
 			goldCount.SetActive(false);
 		}
-		DialogueBox.SetAvatar(dialogue.speaker.GetComponentInChildren<Image>().sprite);
+		Sprite sprite = dialogue.speaker.GetComponentInChildren<Image>().sprite;
+		if(sprite != null) {
+			DialogueBox.SetAvatar(sprite);
+		}
 		DisplayNextSentence();
 	}
 
