@@ -36,7 +36,6 @@ public class DropItemOnDestroy : MonoBehaviour {
 
 	void OnLootDrop() {
 		float randomVal = Random.Range(0f, 1f);
-		Debug.Log("randomVal: " + randomVal);
 		if(randomVal > probability) {
 			return;
 		}
@@ -47,7 +46,6 @@ public class DropItemOnDestroy : MonoBehaviour {
 			Debug.Log(data + " not found in database");
 			return;
 		}
-
 		Instantiate(data.prefab, transform.position, Quaternion.identity);
 	}
 }

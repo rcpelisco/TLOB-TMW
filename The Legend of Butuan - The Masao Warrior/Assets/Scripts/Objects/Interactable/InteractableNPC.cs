@@ -5,7 +5,11 @@ using UnityEngine;
 public class InteractableNPC : InteractableBase {
 
 	public Dialogue dialogue;
+	public Transform notificationParent;
+	public GameObject notificationBubble;
+
 	private CharacterMovementModel movementModel;
+	private GameObject notification;
 	private Item item;
 
 	void Awake() {
@@ -14,6 +18,12 @@ public class InteractableNPC : InteractableBase {
 		}
 		item = GetComponent<Item>();
 		movementModel = GetComponent<CharacterMovementModel>();
+		if(notificationParent != null) {
+			notification = Instantiate(notificationBubble);
+			notification.transform.parent = notificationParent;
+			notification.transform.localPosition = Vector2.zero;
+			notification.transform.localRotation = Quaternion.identity;
+		}
 	}
 
 	public override void OnInteract(Character character) {
@@ -27,6 +37,10 @@ public class InteractableNPC : InteractableBase {
 	}
 
 	void InitiateDialogue(Character character) {
+		if(dialogue.sentences.Length <= 0) {
+			return;
+		}
+		Destroy(notification);
 		if(FindObjectOfType<DialogueManager>().IsSentenceDone()) {
 			FindObjectOfType<DialogueManager>().DisplayNextSentence();
 			if(FindObjectOfType<DialogueManager>().IsDone()) {
