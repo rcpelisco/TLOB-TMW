@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FadeManager : MonoBehaviour {
 
@@ -31,7 +32,15 @@ public class FadeManager : MonoBehaviour {
 		}
 	}
 
-	void OnLevelWasLoaded() {
+	void OnEnable() {
+		SceneManager.sceneLoaded += OnLevelFinishLoading;
+	}
+
+	void OnDisable() {
+		SceneManager.sceneLoaded -= OnLevelFinishLoading;
+	}
+
+	void OnLevelFinishLoading(Scene scene, LoadSceneMode mode) {
 		if(fadeOnStart) {
 			Fade(false, fadeTime);
 		}

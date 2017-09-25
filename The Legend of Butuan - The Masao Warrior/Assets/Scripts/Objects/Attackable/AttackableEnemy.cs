@@ -37,7 +37,6 @@ public class AttackableEnemy : AttackableBase {
 	public override void OnHit(Collider2D hitCollider, ItemType item) {
 		float damage = 20;
 		health -= damage;
-		Debug.Log("damage: " + health);
 		
 		UIDamageNumbers.Instance.ShowDamageNumber(damage, transform.position);
 

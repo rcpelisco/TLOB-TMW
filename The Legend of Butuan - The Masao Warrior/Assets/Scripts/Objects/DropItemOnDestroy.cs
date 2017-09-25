@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DropItemOnDestroy : MonoBehaviour {
 	
@@ -11,7 +12,15 @@ public class DropItemOnDestroy : MonoBehaviour {
 	public float probability;
 	private static bool isQuitting;
 
-	void OnLevelWasLoaded() {
+	void OnEnable() {
+		SceneManager.sceneLoaded += OnLevelFinishLoading;
+	}
+
+	void OnDisable() {
+		SceneManager.sceneLoaded -= OnLevelFinishLoading;
+	}
+
+	void OnLevelFinishLoading(Scene scene, LoadSceneMode mode) {
 		isQuitting = true;
 	}
 
@@ -27,7 +36,6 @@ public class DropItemOnDestroy : MonoBehaviour {
 
 	void OnLootDrop() {
 		float randomVal = Random.Range(0f, 1f);
-		Debug.Log("randomVal: " + randomVal);
 		if(randomVal > probability) {
 			return;
 		}
@@ -38,7 +46,6 @@ public class DropItemOnDestroy : MonoBehaviour {
 			Debug.Log(data + " not found in database");
 			return;
 		}
-
 		Instantiate(data.prefab, transform.position, Quaternion.identity);
 	}
 }

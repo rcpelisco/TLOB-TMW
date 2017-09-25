@@ -19,8 +19,10 @@ public class RangeWizardControl : CharacterBaseControl {
 
 	IEnumerator FollowBall(GameObject ball, GameObject characterInRange) {
 		yield return new WaitForSeconds(2f);
-		ball.GetComponent<BallControl>().SetCharacterInRange(characterInRange);
-		StartCoroutine(DestroyBall(ball, coolDown));
+		if(ball != null) {
+			ball.GetComponent<BallControl>().SetCharacterInRange(characterInRange);
+			StartCoroutine(DestroyBall(ball, coolDown));
+		}
 	}
 
 	IEnumerator DestroyBall(GameObject ball, float coolDown) {
