@@ -45,7 +45,6 @@ public class CharacterHealthModel : MonoBehaviour {
 		}
 		UIDamageNumbers.Instance.ShowDamageNumber( damage, transform.position);
 		health -= damage;
-		Debug.Log(health);
 		if(health <= 0) {
 			health = 0;
 			movementView.OnDeath();
@@ -57,7 +56,7 @@ public class CharacterHealthModel : MonoBehaviour {
 		FadeManager.instance.Fade(true, 1.5f);
 		yield return new WaitForSeconds(3f);
 		FadeManager.instance.Fade(false, 1.5f);
-		stateManager.GameOver();
+		// stateManager.GameOver();
 
 	}
 }

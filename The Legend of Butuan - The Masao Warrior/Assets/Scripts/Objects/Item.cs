@@ -13,7 +13,6 @@ public class Item : MonoBehaviour {
 		if(!isDone) {
 			isDone = true;
 			character.inventoryModel.AddItem(item, amount);
-			Debug.Log(amount + " " + item + " added!");
 		}
 	}
 

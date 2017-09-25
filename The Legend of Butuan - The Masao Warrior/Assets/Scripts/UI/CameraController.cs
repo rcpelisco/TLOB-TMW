@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour {
 
@@ -16,7 +17,15 @@ public class CameraController : MonoBehaviour {
 	private float halfWidth;
 	private static bool isCameraExist;
 
-	void OnLevelWasLoaded() {
+	void OnEnable() {
+		SceneManager.sceneLoaded += OnLevelFinishLoading;
+	}
+
+	void OnDisable() {
+		SceneManager.sceneLoaded -= OnLevelFinishLoading;
+	}
+
+	void OnLevelFinishLoading(Scene scene, LoadSceneMode mode) {
 		if(target != null) {
 			StartCoroutine(MoveCamera());
 		}

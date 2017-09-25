@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DropItemOnDestroy : MonoBehaviour {
 	
@@ -11,7 +12,15 @@ public class DropItemOnDestroy : MonoBehaviour {
 	public float probability;
 	private static bool isQuitting;
 
-	void OnLevelWasLoaded() {
+	void OnEnable() {
+		SceneManager.sceneLoaded += OnLevelFinishLoading;
+	}
+
+	void OnDisable() {
+		SceneManager.sceneLoaded -= OnLevelFinishLoading;
+	}
+
+	void OnLevelFinishLoading(Scene scene, LoadSceneMode mode) {
 		isQuitting = true;
 	}
 

@@ -60,6 +60,9 @@ public class CharacterMovementModel : CharacterBaseControl {
 	}
 
 	new public void SetDirection(Vector2 direction) {
+		if(healthModel != null && healthModel.GetHealth() <= 0) { 
+			return;
+		}
 		if(direction != Vector2.zero &&
 			GetItemPickedUp() != ItemType.None) {
 			pickedUpItem = ItemType.None;
