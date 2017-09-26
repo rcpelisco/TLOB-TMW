@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Quest {
+public class Quest : MonoBehaviour {
 
-	public int id;
-	public string description;
-	public int nextQuest;
+	public QuestData quest;
+	
+	private bool isDone;
 
-	public string questObjective;
-	public string questObjectiveRequirement;
-	public string questObjectiveCount;
+	public void Add(Character character) {
+		if(!isDone) {
+			isDone = true;
+			character.questModel.AddQuest(quest);
+		}
+	}
 
-	public int expReward;
-	public ItemType itemReward;
-	public int amount;
-
+	public bool IsDone() {
+		return isDone;
+	}
 }

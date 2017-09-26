@@ -8,5 +8,6 @@ public class Character : MonoBehaviour {
 	public CharacterMovementView movementView;
 	public CharacterInventoryModel inventoryModel;
 	public CharacterHealthModel healthModel;
+	public CharacterQuestModel questModel;
 	
 }
