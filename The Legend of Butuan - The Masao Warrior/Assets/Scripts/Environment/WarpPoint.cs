@@ -37,7 +37,7 @@ public class WarpPoint : MonoBehaviour {
 	}
 
 	IEnumerator LoadSceneCoroutine(string scene) {
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(1f);
 		SceneManager.LoadScene(nextScene);
 	}
 }
