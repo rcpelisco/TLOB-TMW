@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class PauseManager : MonoBehaviour {
 
-	private bool isInventoryScreenActive = false;
+	private bool isScreenActive = false;
 	private GameObject inventoryScreen;
+	private GameObject questScreen;
 
 	void Awake() {
+		questScreen = GameObject.FindGameObjectWithTag("QuestScreen");
 		inventoryScreen = GameObject.FindGameObjectWithTag("InventoryScreen");
 		HideInventoryScreen();
+		HideQuestScreen();
 	}
 
 	public void InventoryButton() {
-		if(isInventoryScreenActive) {
+		if(isScreenActive) {
 			HideInventoryScreen();
-			isInventoryScreenActive = false;
+			isScreenActive = false;
 		} else {
 			ShowInventoryScreen();
-			isInventoryScreenActive = true;
+			isScreenActive = true;
+		}
+	}
+
+	public void QuestButton() {
+		if(isScreenActive) {
+			HideQuestScreen();
+			isScreenActive = false;
+		} else {
+			ShowQuestScreen();
+			isScreenActive = true;
 		}
 	}
 
@@ -33,6 +46,20 @@ public class PauseManager : MonoBehaviour {
 		DoUnpause();
 		if(inventoryScreen != null) {
 			inventoryScreen.SetActive(false);
+		}
+	}
+
+	void ShowQuestScreen() {
+		DoPause();
+		if(questScreen != null) {
+			questScreen.SetActive(true);
+		}
+	}
+
+	void HideQuestScreen() {
+		DoUnpause();
+		if(questScreen != null) {
+			questScreen.SetActive(false);
 		}
 	}
 
