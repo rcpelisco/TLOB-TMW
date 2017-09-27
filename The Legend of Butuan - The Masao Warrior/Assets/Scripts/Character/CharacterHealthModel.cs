@@ -53,9 +53,8 @@ public class CharacterHealthModel : MonoBehaviour {
 	}
 	
 	IEnumerator WaitNextScene() {
-		FadeManager.instance.Fade(true, 1.5f);
 		yield return new WaitForSeconds(3f);
-		FadeManager.instance.Fade(false, 1.5f);
+		FadeManager.instance.Fade(true, 1.5f);
 		// stateManager.GameOver();
 
 	}

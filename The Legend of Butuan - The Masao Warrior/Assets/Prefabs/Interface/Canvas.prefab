@@ -1060,7 +1060,6 @@ GameObject:
   - component: {fileID: 114433270331181926}
   - component: {fileID: 114057225606334020}
   - component: {fileID: 114823587314026254}
-  - component: {fileID: 114213577310566384}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1362,6 +1361,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224302085030039496}
+  - component: {fileID: 114841340532150618}
   m_Layer: 5
   m_Name: QuestScreen
   m_TagString: QuestScreen
@@ -2642,17 +2642,6 @@ MonoBehaviour:
   m_Text: 'Quest
 
 '
---- !u!114 &114213577310566384
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1502541591423622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114216402028854544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4304,7 +4293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a5a70c330565f4fbaf56d0e0b0ccab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryModel: {fileID: 0}
   itemType: 300
   numberFormat: 0000
 --- !u!114 &114734734593445026
@@ -4551,6 +4539,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114841340532150618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702335180227414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a7cac4031d4d51479592517d4e1cdcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatar: {fileID: 114608909625338770}
+  text: {fileID: 114952536816275318}
 --- !u!114 &114842546978761080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6131,7 +6132,7 @@ RectTransform:
   - {fileID: 224523183654012952}
   - {fileID: 224466665260112892}
   m_Father: {fileID: 224186460237140280}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6320,8 +6321,8 @@ RectTransform:
   - {fileID: 224709593518899796}
   - {fileID: 224675580357323864}
   - {fileID: 224271236638836334}
-  - {fileID: 224302085030039496}
   - {fileID: 224102606337393418}
+  - {fileID: 224302085030039496}
   - {fileID: 224823217120219798}
   - {fileID: 224206092981905328}
   - {fileID: 224427094315501644}
@@ -6626,7 +6627,7 @@ RectTransform:
   - {fileID: 224626041374710410}
   - {fileID: 224869767709564790}
   m_Father: {fileID: 224186460237140280}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

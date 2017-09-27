@@ -11,11 +11,13 @@ public class InteractableNPC : InteractableBase {
 	private CharacterMovementModel movementModel;
 	private GameObject notification;
 	private Item item;
+	private Quest quest;
 
 	void Awake() {
 		if(dialogue.speaker == null) {
 			dialogue.speaker = gameObject;
 		}
+		quest = GetComponent<Quest>();
 		item = GetComponent<Item>();
 		movementModel = GetComponent<CharacterMovementModel>();
 		if(notificationParent != null) {
@@ -23,7 +25,7 @@ public class InteractableNPC : InteractableBase {
 			notification.transform.parent = notificationParent;
 			notification.transform.localPosition = Vector2.zero;
 			notification.transform.localRotation = Quaternion.identity;
-		}
+		}	
 	}
 
 	public override void OnInteract(Character character) {
@@ -49,6 +51,9 @@ public class InteractableNPC : InteractableBase {
 				DialogueBox.Hide();
 				if(item != null) {
 					item.Add(character);
+				}
+				if(quest != null) {
+					quest.Add(character);
 				}
 			}
 			return;

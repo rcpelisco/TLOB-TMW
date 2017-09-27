@@ -5,13 +5,13 @@ using UnityEngine;
 public class NPCAnimation : MonoBehaviour {
 
 	Animator anim;
-	public float initFacingDirectionX;
-	public float initFacingDirectionY;
+	public float initFacingDirX;
+	public float initFacingDirY;
 	void Awake () {
 		anim = GetComponentInChildren<Animator>();
 		if(anim != null) {
-			anim.SetFloat("y", initFacingDirectionY);
-			anim.SetFloat("x", initFacingDirectionX);
+			anim.SetFloat("x", initFacingDirX);
+			anim.SetFloat("y", initFacingDirY);
 		}
 	}
 

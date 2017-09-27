@@ -7,16 +7,14 @@ public class CharacterQuestModel : MonoBehaviour {
 	private QuestData currentQuest;
 
 	public void AddQuest(QuestData quest) {
-		if(currentQuest != null) {
-			Debug.Log("Finish Current Quest first!");
-		} else {
-			currentQuest = quest;
-		}
+		currentQuest = quest;
 	}
 
 	public void EndQuest() {
-		if(currentQuest != null) {
-			currentQuest = null;
-		}
+		currentQuest = null;
+	}
+
+	public QuestData GetQuestData() {
+		return currentQuest;
 	}
 }

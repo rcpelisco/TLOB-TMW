@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class UIItemCounter : MonoBehaviour {
 
-	public CharacterInventoryModel inventoryModel;
 	public ItemType itemType;
 	public string numberFormat;
 
+	private CharacterInventoryModel inventoryModel;
 	private Text text;
 
 	void Awake() {
