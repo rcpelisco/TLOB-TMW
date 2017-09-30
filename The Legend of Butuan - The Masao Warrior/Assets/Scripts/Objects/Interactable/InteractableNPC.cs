@@ -21,7 +21,6 @@ public class InteractableNPC : InteractableBase {
 		item = GetComponent<Item>();
 		movementModel = GetComponent<CharacterMovementModel>();
 		if(quest == null) {
-			Debug.Log("Walay Quest");
 			return;
 		}
 		if(notificationParent != null) {

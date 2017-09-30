@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterControl : CharacterBaseControl {
+
+	void Start() {
+	}
+
 	void Update() {
 		UpdateDirection();
 		UpdateAction();

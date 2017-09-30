@@ -63,7 +63,7 @@ public class CharacterMovementModel : CharacterBaseControl {
 		}
 	}
 
-	new public void SetDirection(Vector2 direction) {
+	public void SetDirection(Vector2 direction) {
 		if(healthModel != null && healthModel.GetHealth() <= 0) { 
 			return;
 		}
