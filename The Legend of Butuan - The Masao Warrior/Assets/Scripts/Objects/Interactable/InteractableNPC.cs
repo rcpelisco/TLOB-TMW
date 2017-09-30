@@ -9,7 +9,6 @@ public class InteractableNPC : InteractableBase {
 	public GameObject notificationBubble;
 
 	private CharacterMovementModel movementModel;
-	private CharacterQuestModel questModel;
 	private GameObject notification;
 	private Item item;
 	private Quest quest;
@@ -21,8 +20,8 @@ public class InteractableNPC : InteractableBase {
 		quest = GetComponent<Quest>();
 		item = GetComponent<Item>();
 		movementModel = GetComponent<CharacterMovementModel>();
-		questModel = GetComponent<CharacterQuestModel>();
-		if(questModel == null) {
+		if(quest == null) {
+			Debug.Log("Walay Quest");
 			return;
 		}
 		if(notificationParent != null) {
