@@ -28,6 +28,10 @@ public class CharacterMovementModel : CharacterBaseControl {
 		healthModel = GetComponent<CharacterHealthModel>();
 	}
 
+	void Start() {
+		SetDirection(new Vector2(0, -1));
+	}
+
 	void Update() {
 		UpdatePushTime();
 	}
