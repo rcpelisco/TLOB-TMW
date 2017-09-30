@@ -13,13 +13,12 @@ public class Quest : MonoBehaviour {
 	void Awake() {
 		avatar = GetComponentInChildren<Image>();
 		quest.giver = avatar.sprite;
-		Debug.Log(quest.giver, quest.giver);
 	}
 
 	public void Add(Character character) {
 		if(!isDone) {
 			isDone = true;
-			character.questModel.AddQuest(quest);
+			character.questModel.CheckProgress(quest);
 		}
 	}
 

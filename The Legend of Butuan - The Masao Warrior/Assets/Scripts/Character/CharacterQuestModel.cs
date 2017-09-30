@@ -3,18 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterQuestModel : MonoBehaviour {
+	
+	private QuestData mainQuest;
+	private List<QuestData> sideQuest;
 
-	private QuestData currentQuest;
-
-	public void AddQuest(QuestData quest) {
-		currentQuest = quest;
+	void AddQuest(QuestData quest) {
+		if(quest.type == QuestData.QuestType.MainQuest) {
+			mainQuest = quest;
+		} else if(quest.type == QuestData.QuestType.SideQuest) {
+			sideQuest.Add(quest);
+		}
 	}
 
-	public void EndQuest() {
-		currentQuest = null;
+	void EndQuest(QuestData quest) {
+		if(quest.type == QuestData.QuestType.MainQuest) {
+			quest = null;
+		} else if(quest.type == QuestData.QuestType.SideQuest) {
+			sideQuest.Remove(quest);
+		}
 	}
 
-	public QuestData GetQuestData() {
-		return currentQuest;
+	public void CheckProgress(QuestData quest) {
+		if(quest.type == QuestData.QuestType.MainQuest) {
+			if(mainQuest == null) {
+				AddQuest(quest);
+				return;
+			}
+			if(mainQuest.objective == quest.requirement) {
+				AddQuest(quest);
+			}
+		}else if(quest.type == QuestData.QuestType.SideQuest) {
+			AddQuest(quest);
+		}
+	}
+
+	public QuestData GetMainQuest() {
+		return mainQuest;
 	}
 }

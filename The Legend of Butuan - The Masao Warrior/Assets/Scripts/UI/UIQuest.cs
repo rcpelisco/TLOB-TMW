@@ -23,15 +23,14 @@ public class UIQuest : MonoBehaviour {
 	}
 
 	public void SetQuest() {
-		questData = questModel.GetQuestData();
+		questData = questModel.GetMainQuest();
 		if(questData != null) {
 			text.text = questData.description;
 			avatar.color = new Color(1, 1, 1, 1);
-			avatar.sprite = questData.giver;
+			avatar.sprite = questData.giver; 
 		} else {
 			text.text = "No active quest";
 			avatar.color = new Color(0, 0, 0, 0);
 		}
 	}
-
 }
