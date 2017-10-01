@@ -11,7 +11,8 @@ public class QuestData {
 	}
 
 	public enum QuestStatus {
-		Inactive,
+		Unavailable,
+		Available,
 		Active,
 		Done
 	}

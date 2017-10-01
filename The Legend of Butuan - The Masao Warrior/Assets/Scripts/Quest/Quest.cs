@@ -9,15 +9,26 @@ public class Quest : MonoBehaviour {
 	
 	private bool isDone;
 	private Image avatar;
+	private CharacterQuestModel questModel;
 
 	void Awake() {
+		questModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterQuestModel>();
 		avatar = GetComponentInChildren<Image>();
 		quest.giver = avatar.sprite;
+	}
+
+	void Update() {
+		if(questModel.GetMainQuest() != null) {
+			if(questModel.GetMainQuest().nextQuest == quest.ID) {
+				quest.status = QuestData.QuestStatus.Available;
+			}
+		}
 	}
 
 	public void Add(Character character) {
 		if(!isDone) {
 			isDone = true;
+			quest.status = QuestData.QuestStatus.Active;
 			character.questModel.CheckProgress(quest);
 		}
 	}

@@ -17,6 +17,9 @@ public class LoadSceneAnimation : MonoBehaviour {
 	}
 
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
+		if(director == null) {
+			return;
+		}
 		if(quest.ID == 1) {
 			director.Play();
 		}

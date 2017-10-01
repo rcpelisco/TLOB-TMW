@@ -8,6 +8,8 @@ public class AnimationDialogue : MonoBehaviour {
 
 	public PlayableDirector playable;
 	public Dialogue[] dialogue;
+	public GameObject[] toDestroyOnStop;
+	public bool stopOnDone;
 
 	private int index = 0;
 	private GameObject animationCanvas;
@@ -18,32 +20,43 @@ public class AnimationDialogue : MonoBehaviour {
 	}
 
 	public void NextSentence() {
+		Debug.Log("Hello");
 		if(index == dialogue.Length) {
 			return;
 		}
-		if(animationCanvas.GetComponent<DialogueManager>().IsSentenceDone()) {
-			animationCanvas.GetComponent<DialogueManager>().DisplayNextSentence();
-			if(animationCanvas.GetComponent<DialogueManager>().IsDone()) {
+		if(animationCanvas.GetComponent<AnimationDialogueManager>().IsSentenceDone()) {
+			animationCanvas.GetComponent<AnimationDialogueManager>().DisplayNextSentence();
+			if(animationCanvas.GetComponent<AnimationDialogueManager>().IsDone()) {
 				index++;
 				if(index == dialogue.Length) {
 					DialogueBox.Hide();
-					Play();
+					if(stopOnDone) {
+						Stop();
+					} else {
+						Play();
+					}
 					return;
 				}
-				animationCanvas.GetComponent<DialogueManager>().StartDialogue(dialogue[index]);
+				animationCanvas.GetComponent<AnimationDialogueManager>().StartDialogue(dialogue[index]);
 			}
 			return;
 		}
-		if(!animationCanvas.GetComponent<DialogueManager>().IsStarted()) {
-			animationCanvas.GetComponent<DialogueManager>().StartDialogue(dialogue[index]);
+		if(!animationCanvas.GetComponent<AnimationDialogueManager>().IsStarted()) {
+			animationCanvas.GetComponent<AnimationDialogueManager>().StartDialogue(dialogue[index]);
 		} else {
-			animationCanvas.GetComponent<DialogueManager>().EndSentence();
+			animationCanvas.GetComponent<AnimationDialogueManager>().EndSentence();
 		}
 	}
 
 	void Play() {
 		if(playable != null) {
 			playable.Play();
+		}
+	}
+
+	void Stop() {
+		for(int i = 0; i < toDestroyOnStop.Length; i++) {
+			Destroy(toDestroyOnStop[i]);
 		}
 	}
 }

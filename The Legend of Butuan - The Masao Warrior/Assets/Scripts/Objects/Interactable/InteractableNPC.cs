@@ -8,6 +8,7 @@ public class InteractableNPC : InteractableBase {
 	public Transform notificationParent;
 	public GameObject notificationBubble;
 
+	private bool isQuestActive;
 	private CharacterMovementModel movementModel;
 	private GameObject notification;
 	private Item item;
@@ -28,7 +29,16 @@ public class InteractableNPC : InteractableBase {
 			notification.transform.parent = notificationParent;
 			notification.transform.localPosition = Vector2.zero;
 			notification.transform.localRotation = Quaternion.identity;
-		}	
+		}
+	}
+
+	void Update() {
+		if(quest != null) {
+			if(quest.quest.status == QuestData.QuestStatus.Available) {
+				isQuestActive = true;
+			}
+			notificationParent.gameObject.SetActive(isQuestActive);
+		}
 	}
 
 	public override void OnInteract(Character character) {

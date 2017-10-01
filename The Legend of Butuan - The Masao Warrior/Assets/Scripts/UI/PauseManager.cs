@@ -4,34 +4,49 @@ using UnityEngine;
 
 public class PauseManager : MonoBehaviour {
 
-	private bool isScreenActive = false;
+	private bool isInventoryActive = false;
+	private bool isQuestActive = false;
+	private bool isTriviaActive = false;
 	private GameObject inventoryScreen;
 	private GameObject questScreen;
+	private GameObject triviaScreen;
 
 	void Awake() {
+		triviaScreen = GameObject.FindGameObjectWithTag("TriviaScreen");
 		questScreen = GameObject.FindGameObjectWithTag("QuestScreen");
 		inventoryScreen = GameObject.FindGameObjectWithTag("InventoryScreen");
+		HideTriviaScreen();
 		HideInventoryScreen();
 		HideQuestScreen();
 	}
 
 	public void InventoryButton() {
-		if(isScreenActive) {
+		if(isInventoryActive) {
 			HideInventoryScreen();
-			isScreenActive = false;
+			isInventoryActive = false;
 		} else {
 			ShowInventoryScreen();
-			isScreenActive = true;
+			isInventoryActive = true;
 		}
 	}
 
 	public void QuestButton() {
-		if(isScreenActive) {
+		if(isQuestActive) {
 			HideQuestScreen();
-			isScreenActive = false;
+			isQuestActive = false;
 		} else {
 			ShowQuestScreen();
-			isScreenActive = true;
+			isQuestActive = true;
+		}
+	}
+
+	public void TriviaToggle() {
+		if(isTriviaActive) {
+			HideTriviaScreen();
+			isTriviaActive = false;
+		} else {
+			ShowTriviaScreen();
+			isTriviaActive = true;
 		}
 	}
 
@@ -60,6 +75,20 @@ public class PauseManager : MonoBehaviour {
 		DoUnpause();
 		if(questScreen != null) {
 			questScreen.SetActive(false);
+		}
+	}
+
+	void ShowTriviaScreen() {
+		DoPause();
+		if(triviaScreen != null) {
+			triviaScreen.SetActive(true);
+		}
+	}
+
+	void HideTriviaScreen() {
+		DoUnpause();
+		if(triviaScreen != null) {
+			triviaScreen.SetActive(false);
 		}
 	}
 
