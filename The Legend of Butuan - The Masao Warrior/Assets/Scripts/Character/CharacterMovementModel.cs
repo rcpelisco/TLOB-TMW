@@ -29,7 +29,7 @@ public class CharacterMovementModel : CharacterBaseControl {
 	}
 
 	void Start() {
-		SetDirection(new Vector2(0, -1));
+		// SetDirection(new Vector2(0, -1));
 	}
 
 	void Update() {
@@ -63,7 +63,7 @@ public class CharacterMovementModel : CharacterBaseControl {
 		}
 	}
 
-	public void SetDirection(Vector2 direction) {
+	new public void SetDirection(Vector2 direction) {
 		if(healthModel != null && healthModel.GetHealth() <= 0) { 
 			return;
 		}
@@ -153,10 +153,10 @@ public class CharacterMovementModel : CharacterBaseControl {
 		if(isAttacking) {
 			return false;
 		}
-		if(equippedWeapon != ItemType.Sword) {
+		if(IsBeingPushed()) {
 			return false;
 		}
-		if(IsBeingPushed()) {
+		if(equippedWeapon == ItemType.None) {
 			return false;
 		}
 		return true;
@@ -169,7 +169,6 @@ public class CharacterMovementModel : CharacterBaseControl {
 	}
 
 	public void DoAttack() {
-		
 	}
 
 	public Vector3 GetDirection() {

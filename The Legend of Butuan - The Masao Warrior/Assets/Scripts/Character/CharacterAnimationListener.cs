@@ -7,10 +7,12 @@ public class CharacterAnimationListener : MonoBehaviour {
 	public CharacterMovementModel movementModel;
 	public CharacterMovementView movementView;
 
-	public void OnAttackStarted() {
+	public void OnAttackStarted(int sortingOrder) {
 		if(movementModel != null) {
 			movementModel.OnAttackStarted();
 		}
+		SetWeaponSortingOrder(sortingOrder);
+		ShowWeapon();
 	}
 
 	public void OnAttackFinished() {

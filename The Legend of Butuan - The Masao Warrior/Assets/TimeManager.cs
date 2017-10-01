@@ -6,7 +6,7 @@ public class TimeManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Time.timeScale = 2.5f;
+		Time.timeScale = 2f;
 	}
 	
 	// Update is called once per frame
