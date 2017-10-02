@@ -25,7 +25,6 @@ public class UITrivia : MonoBehaviour {
 
 	string GetCurrentScenName() {
 		Scene scene = SceneManager.GetActiveScene();
-		Debug.Log(scene.name);
 		return scene.name;
 	}
 

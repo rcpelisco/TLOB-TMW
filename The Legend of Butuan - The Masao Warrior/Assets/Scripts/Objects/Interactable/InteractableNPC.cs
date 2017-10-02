@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class InteractableNPC : InteractableBase {
 
 	public Dialogue dialogue;
 	public Transform notificationParent;
 	public GameObject notificationBubble;
+	public PlayableDirector animAfterDialogue;
 
 	private bool isQuestActive;
 	private CharacterMovementModel movementModel;
@@ -62,6 +64,9 @@ public class InteractableNPC : InteractableBase {
 				character.movementModel.SetFrozen(false);
 				movementModel.SetFrozen(false);
 				DialogueBox.Hide();
+				if(animAfterDialogue != null) {
+					animAfterDialogue.Play();
+				}
 				if(item != null) {
 					item.Add(character);
 				}
@@ -83,4 +88,6 @@ public class InteractableNPC : InteractableBase {
 	void FindCharacterFacing(Character character) {
 		movementModel.SetDirection(character.movementModel.GetFacingDirection() * -1);
 	}
+
+
 }

@@ -24,7 +24,6 @@ public class CharacterHealthModel : MonoBehaviour {
 		{
 			DealDamage(10);
 		}
-
 	}
 
 	public float GetHealth() {
@@ -56,6 +55,5 @@ public class CharacterHealthModel : MonoBehaviour {
 		yield return new WaitForSeconds(3f);
 		FadeManager.instance.Fade(true, 1.5f);
 		// stateManager.GameOver();
-
 	}
 }
