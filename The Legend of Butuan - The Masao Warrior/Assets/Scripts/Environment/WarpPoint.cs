@@ -9,8 +9,8 @@ public class WarpPoint : MonoBehaviour {
 	public string previousScene;
 	public int previousIndex;
 	public int nextIndex;
-	public float fadeTime = 1.5f;
 
+	private float fadeTime = .25f;
 	private string lastScene;
 	private int lastIndex;
 
@@ -37,7 +37,7 @@ public class WarpPoint : MonoBehaviour {
 	}
 
 	IEnumerator LoadSceneCoroutine(string scene) {
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(.5f);
 		SceneManager.LoadScene(nextScene);
 	}
 }
