@@ -1,6 +1,8 @@
 ﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PauseManager : MonoBehaviour {
 
@@ -18,6 +20,13 @@ public class PauseManager : MonoBehaviour {
 		HideTriviaScreen();
 		HideInventoryScreen();
 		HideQuestScreen();
+	}
+
+
+	public void Mute() 
+	{
+		AudioListener.pause = !AudioListener.pause;
+
 	}
 
 	public void InventoryButton() {
