@@ -2666,6 +2666,8 @@ MonoBehaviour:
   - speaker: {fileID: 200857514}
     sentences:
     - "It\u2019s not as if I\u2019m going to break it"
+  toDestroyOnStop: []
+  stopOnDone: 0
 --- !u!4 &859122528
 Transform:
   m_ObjectHideFlags: 0
@@ -3305,9 +3307,9 @@ GameObject:
   - component: {fileID: 1046522968}
   - component: {fileID: 1046522966}
   - component: {fileID: 1046522965}
+  - component: {fileID: 1046522962}
   - component: {fileID: 1046522964}
   - component: {fileID: 1046522963}
-  - component: {fileID: 1046522962}
   m_Layer: 5
   m_Name: AnimationCanvas
   m_TagString: AnimationCanvas
@@ -3330,32 +3332,30 @@ MonoBehaviour:
 --- !u!114 &1046522963
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114698179241586966, guid: af59f9bcc5b11914ea924a9f14646476,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1046522961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f697dc43e427eaf47832384f115174e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 53224f27ea32723479111731e6f917ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeImage: {fileID: 1315032185}
-  fadeOnStart: 1
-  isDestroyOnLoad: 1
-  fadeTime: 1.5
+  letterInterval: 0.05
 --- !u!114 &1046522964
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114381821441632760, guid: af59f9bcc5b11914ea924a9f14646476,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1046522961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83f8df145c38c7f41ad0c973ed83858b, type: 3}
+  m_Script: {fileID: 11500000, guid: 703000368f51a344e98d0ce66735c23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterInterval: 0.075
+  fadeImage: {fileID: 0}
+  fadeOnStart: 0
+  isDestroyOnLoad: 0
+  fadeTime: 1.5
 --- !u!114 &1046522965
 MonoBehaviour:
   m_ObjectHideFlags: 0
