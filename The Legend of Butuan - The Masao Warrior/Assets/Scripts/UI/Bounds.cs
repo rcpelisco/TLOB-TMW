@@ -12,7 +12,6 @@ public class Bounds : MonoBehaviour {
 		cam = FindObjectOfType<CameraController>();
 		if(bounds != null && cam != null) {
 			cam.SetBoundBox(bounds);
-
 		}
 	}
 }
