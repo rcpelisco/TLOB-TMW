@@ -9,17 +9,24 @@ public class PauseManager : MonoBehaviour {
 	private bool isInventoryActive = false;
 	private bool isQuestActive = false;
 	private bool isTriviaActive = false;
+	private bool isPauseActive = false;
+	
 	private GameObject inventoryScreen;
 	private GameObject questScreen;
 	private GameObject triviaScreen;
+	private GameObject pauseScreen;
+	
 
 	void Awake() {
 		triviaScreen = GameObject.FindGameObjectWithTag("TriviaScreen");
 		questScreen = GameObject.FindGameObjectWithTag("QuestScreen");
 		inventoryScreen = GameObject.FindGameObjectWithTag("InventoryScreen");
+		pauseScreen = GameObject.FindGameObjectWithTag("PauseMenu");
 		HideTriviaScreen();
 		HideInventoryScreen();
 		HideQuestScreen();
+		HidePauseScreen();
+		
 	}
 
 
@@ -56,6 +63,16 @@ public class PauseManager : MonoBehaviour {
 		} else {
 			ShowTriviaScreen();
 			isTriviaActive = true;
+		}
+	}
+
+		public void PauseButton() {
+		if(isPauseActive) {
+			HidePauseScreen();
+			isPauseActive = false;
+		} else {
+			ShowPauseScreen();
+			isPauseActive = true;
 		}
 	}
 
@@ -98,6 +115,20 @@ public class PauseManager : MonoBehaviour {
 		DoUnpause();
 		if(triviaScreen != null) {
 			triviaScreen.SetActive(false);
+		}
+	}
+
+	void ShowPauseScreen() {
+		DoPause();
+		if(pauseScreen != null) {
+			pauseScreen.SetActive(true);
+		}
+	}
+
+	void HidePauseScreen() {
+		DoUnpause();
+		if(pauseScreen != null) {
+			pauseScreen.SetActive(false);
 		}
 	}
 
