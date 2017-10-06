@@ -20,10 +20,7 @@ public class CharacterHealthModel : MonoBehaviour {
 	}
 
 	void Update () {
-		if( Input.GetKeyDown( KeyCode.T) )
-		{
-			DealDamage(10);
-		}
+		
 	}
 
 	public float GetHealth() {

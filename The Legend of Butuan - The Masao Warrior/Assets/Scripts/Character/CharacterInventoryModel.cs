@@ -28,7 +28,6 @@ public class CharacterInventoryModel : MonoBehaviour {
 	}
 
 	public void AddItem(ItemType itemType, int amount) {
-
 		if(items.ContainsKey(itemType)) {
 			items[itemType] += amount;
 		} else {
@@ -50,6 +49,10 @@ public class CharacterInventoryModel : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	IEnumerator AddSingleCoin(int amount) {
+		yield return new WaitForSeconds(0.05f);
 	}
 
 	public bool HasItem(ItemType itemType) {

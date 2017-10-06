@@ -4,9 +4,10 @@ using UnityEngine.UI;
 
 public class UIHealthBar : MonoBehaviour {
 
-	public CharacterHealthModel healthModel;
 	public Text healthText;
 	public RectTransform healthBar;
+
+	private CharacterHealthModel healthModel;
 
 	void Awake() {
 		healthModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterHealthModel>();

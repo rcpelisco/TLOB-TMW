@@ -12,11 +12,14 @@ public class AttackableEnemy : AttackableBase {
 	public float destroyDelay;
 	public GameObject deathFX;
 	public float deathFXDelay;
+	public int expToGive;
 
 	private float health;
 	private float startingHealth;
+	private CharacterLevelModel playerLevelModel;
 
 	void Awake() {
+		playerLevelModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterLevelModel>();
 		health = maxHealth;
 	}	
 
@@ -27,6 +30,9 @@ public class AttackableEnemy : AttackableBase {
 
 	public void CheckHealth() {
 		if(health <= 0) {
+			if(playerLevelModel != null) {
+				playerLevelModel.AddExp(expToGive);
+			}
 			Destroy(destroyObjectOnDeath, destroyDelay);
 			if(deathFX != null) {
 				StartCoroutine(CreateDeathFXDelay(deathFXDelay));
