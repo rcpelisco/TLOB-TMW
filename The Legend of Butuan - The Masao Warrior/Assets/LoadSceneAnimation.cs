@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneAnimation : MonoBehaviour {
 
+	public int requiredQuestID;
+
 	private CharacterQuestModel questModel;
 	private QuestData quest;
 	private PlayableDirector director;
@@ -20,7 +22,7 @@ public class LoadSceneAnimation : MonoBehaviour {
 		if(director == null) {
 			return;
 		}
-		if(quest.ID == 1) {
+		if(quest.ID == requiredQuestID) {
 			director.Play();
 		}
 	}
