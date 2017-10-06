@@ -5,6 +5,6 @@ using UnityEngine;
 public class FadeToClear : MonoBehaviour {
 
 	void OnEnable() {
-		FadeManager.instance.Fade(false, 1.5f);
+		AnimationFadeManager.instance.Fade(false, 1.5f);
 	}
 }

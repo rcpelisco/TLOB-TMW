@@ -20,7 +20,6 @@ public class AnimationDialogue : MonoBehaviour {
 	}
 
 	public void NextSentence() {
-		Debug.Log("Hello");
 		if(index == dialogue.Length) {
 			return;
 		}
@@ -29,7 +28,7 @@ public class AnimationDialogue : MonoBehaviour {
 			if(animationCanvas.GetComponent<AnimationDialogueManager>().IsDone()) {
 				index++;
 				if(index == dialogue.Length) {
-					DialogueBox.Hide();
+					AnimationDialogueBox.Hide();
 					if(stopOnDone) {
 						Stop();
 					} else {

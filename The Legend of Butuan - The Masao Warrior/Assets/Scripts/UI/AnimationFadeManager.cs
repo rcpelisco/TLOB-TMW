@@ -21,15 +21,6 @@ public class AnimationFadeManager : MonoBehaviour {
 
 	void Awake () {
 		instance = this;
-		if(isDestroyOnLoad) {
-			return;
-		}
-		if(!isCanvasExists) {
-			isCanvasExists = true;
-			DontDestroyOnLoad(gameObject);
-		} else {
-			Destroy(gameObject);
-		}
 	}
 
 	void OnEnable() {

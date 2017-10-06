@@ -45,9 +45,11 @@ public class CharacterMovementModel : CharacterBaseControl {
 	}
 
 	void UpdateMovement() {
-		if(FadeManager.instance.IsFading()) {
-			rigidBody.velocity = Vector2.zero;
-			return;
+		if(FadeManager.instance != null) {
+			if(FadeManager.instance.IsFading()) {
+				rigidBody.velocity = Vector2.zero;
+				return;
+			}
 		}
 		if(isFrozen || isAttacking) {
 			rigidBody.velocity = Vector2.zero;
