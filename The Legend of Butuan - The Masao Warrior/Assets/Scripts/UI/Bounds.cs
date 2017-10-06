@@ -10,7 +10,7 @@ public class Bounds : MonoBehaviour {
 	void Awake() {
 		bounds = GetComponent<BoxCollider2D>();
 		cam = FindObjectOfType<CameraController>();
-		if(bounds != null) {
+		if(bounds != null && cam != null) {
 			cam.SetBoundBox(bounds);
 
 		}

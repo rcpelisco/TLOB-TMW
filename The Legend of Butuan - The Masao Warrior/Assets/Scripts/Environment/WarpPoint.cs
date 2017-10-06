@@ -21,7 +21,9 @@ public class WarpPoint : MonoBehaviour {
 
 	void Start() {
 		if(lastScene == nextScene && lastIndex == nextIndex) {
-			FindObjectOfType<Player>().transform.position = transform.position;
+			if(FindObjectOfType<Player>() != null) {
+				FindObjectOfType<Player>().transform.position = transform.position;
+			}
 		}
 	}
 
