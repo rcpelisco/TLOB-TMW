@@ -1794,7 +1794,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224130878719360900}
-  - component: {fileID: 114045800725011970}
+  - component: {fileID: 114939857198659220}
   m_Layer: 5
   m_Name: XP
   m_TagString: GoldCount
@@ -2750,20 +2750,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114045800725011970
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1705370958764658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78862593dd505854ebe24178adefcef0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  XPText: {fileID: 114894413817228006}
-  LevelText: {fileID: 114906778971800894}
-  XPBar: {fileID: 224226145862715622}
 --- !u!114 &114054441631647238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6833,6 +6819,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5027684f4ad28d489f6b69ea94f571a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114939857198659220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705370958764658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e3cfe479f8d0d4690d71ba019d1b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XPText: {fileID: 114894413817228006}
+  LevelText: {fileID: 114906778971800894}
+  XPBar: {fileID: 224226145862715622}
 --- !u!114 &114946724894305272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8502,7 +8502,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 9.999987, y: -60.00009}
+  m_AnchoredPosition: {x: 10, y: -60.00009}
   m_SizeDelta: {x: 350, y: 75}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224133795582881332
