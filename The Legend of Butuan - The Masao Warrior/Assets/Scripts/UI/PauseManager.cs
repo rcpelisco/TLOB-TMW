@@ -10,7 +10,6 @@ public class PauseManager : MonoBehaviour {
 	private bool isQuestActive = false;
 	private bool isTriviaActive = false;
 	private bool isPauseActive = false;
-	
 	private GameObject inventoryScreen;
 	private GameObject questScreen;
 	private GameObject triviaScreen;
@@ -138,5 +137,14 @@ public class PauseManager : MonoBehaviour {
 
 	void DoUnpause() {
 		Time.timeScale = 1;
+	}
+
+	public void MainMenuScreen() {
+		DoUnpause();
+		Application.LoadLevel("MainMenu");
+	}
+
+	public void QuitGame() {
+		Application.Quit();
 	}
 }
