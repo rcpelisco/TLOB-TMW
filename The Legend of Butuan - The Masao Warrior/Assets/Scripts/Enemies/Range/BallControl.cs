@@ -10,6 +10,7 @@ public class BallControl : CharacterBaseControl {
 	public float AttackDamage;
 
 	private GameObject characterInRange;
+	private Transform characterLastPosition;
 
 	void Update() {
 		UpdateDirection();
@@ -17,8 +18,9 @@ public class BallControl : CharacterBaseControl {
 
 	void UpdateDirection() {
 		Vector2 direction = Vector2.zero;
-		if(characterInRange != null) {
-			direction = characterInRange.transform.position - transform.position;
+		if(characterLastPosition != null) {
+			Debug.Log(characterLastPosition.position);
+			direction = characterLastPosition.position - transform.position;
 			direction.Normalize();
 		}
 		if(attackableEnemy != null && attackableEnemy.GetHealth() <= 0) {
@@ -28,7 +30,9 @@ public class BallControl : CharacterBaseControl {
 	} 
 
 	public void SetCharacterInRange(GameObject characterInRange) {
-		this.characterInRange = characterInRange;
+		this.characterLastPosition = characterInRange.transform;
+		// this.characterInRange = characterInRange;
+		Debug.Log(characterLastPosition.position);
 	}
 
 	public void OnHitCharacter(Character character) {

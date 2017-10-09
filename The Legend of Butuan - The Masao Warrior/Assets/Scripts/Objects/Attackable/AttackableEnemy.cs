@@ -46,13 +46,12 @@ public class AttackableEnemy : AttackableBase {
 		
 		UIDamageNumbers.Instance.ShowDamageNumber(damage, transform.position);
 
-		if(movementModel == null) {
-			return;
-		}
 
-		Vector2 pushDirection = transform.position - hitCollider.gameObject.transform.position;
-		pushDirection = pushDirection.normalized * hitPushStrength;
-		movementModel.PushCharacter(pushDirection, hitPushDuration);
+		if(movementModel != null) {
+			Vector2 pushDirection = transform.position - hitCollider.gameObject.transform.position;
+			pushDirection = pushDirection.normalized * hitPushStrength;
+			movementModel.PushCharacter(pushDirection, hitPushDuration);
+		}
 		CheckHealth();
 	}
 

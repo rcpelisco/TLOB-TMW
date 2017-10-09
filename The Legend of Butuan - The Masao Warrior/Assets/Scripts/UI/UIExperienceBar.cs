@@ -14,6 +14,9 @@ public class UIExperienceBar : MonoBehaviour {
 
 	void Awake () {
 		levelModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterLevelModel>();
+		if(levelModel == null) {
+			Debug.LogError("Level model not set up", levelModel);
+		}
 	}
 	
 	void Update () {
