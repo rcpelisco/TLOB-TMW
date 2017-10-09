@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour {
 
-	public GameObject target; 
 	public float cameraSpeed = 5f;
 	public bool isDestroyOnLoad;
 
+	private GameObject target; 
 	private BoxCollider2D boundBox;
 	private Vector3 minBounds;
 	private Vector3 maxBounds;
@@ -53,6 +53,7 @@ public class CameraController : MonoBehaviour {
 	}
 
 	void Awake() {
+		target = GameObject.FindGameObjectWithTag("Player");
 		if(isDestroyOnLoad) {
 			return;
 		}
