@@ -7,6 +7,10 @@ public class CharacterQuestModel : MonoBehaviour {
 	private QuestData mainQuest;
 	private List<QuestData> sideQuest;
 
+	void Awake() {
+		sideQuest = new List<QuestData>();
+	}
+
 	void AddQuest(QuestData quest) {
 		if(quest.type == QuestData.QuestType.MainQuest) {
 			mainQuest = quest;
