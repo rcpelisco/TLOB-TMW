@@ -6,12 +6,11 @@ public class HandScript : CharacterBaseControl {
 
 	public float floatTime = 1f;
 	public float timeUntilNextAttack;
-	public GameObject player;
 	public Transform BagdokRestLeft;
 	public Transform BagdokRestRight;
 
+	private GameObject player;
 	private Vector2 direction;
-	private HandState handState;
 	private float maxHeight = 3f;
 	private float attackInterval;
 	private bool isTargetLocked;
@@ -19,15 +18,21 @@ public class HandScript : CharacterBaseControl {
 	private Vector3 target;
 	private Vector3 previousPos;
 
-	void Update() {
-		if(!isFloating) {
-			isFloating = true;
-			StartCoroutine(Float());
-		}
+	void Awake() {
+		player = GameObject.FindGameObjectWithTag("Player");
+	}
+
+	void Start() {
+		StartCoroutine(Wait());
+	}
+
+	IEnumerator Wait() {
+		yield return new WaitForSeconds(3f);
+		StartCoroutine(Float());
 	}
 
 	IEnumerator Float() {
-		yield return new WaitForSeconds(2.5f);
+		yield return new WaitForSeconds(floatTime);
 		transform.position = transform.position + (new Vector3(0, maxHeight, 0));
 		StartCoroutine(FindTarget());
 	}
@@ -47,16 +52,12 @@ public class HandScript : CharacterBaseControl {
 	}
 
 	IEnumerator Rest() {
-		yield return new WaitForSeconds(1.8f);
-		transform.position = BagdokRestLeft.position;
+		yield return new WaitForSeconds(timeUntilNextAttack);
+		if(GameObject.FindGameObjectWithTag("BagdokLeft") == gameObject) {
+			transform.position = BagdokRestLeft.position;
+		} else if(GameObject.FindGameObjectWithTag("BagdokRight") == gameObject) {
+			transform.position = BagdokRestRight.position;
+		}
 		StartCoroutine(Float());
 	}
-}
-
-public enum HandState {
-	Raise,
-	Float,
-	FindTarget,
-	Drop,
-	Rest,
 }

@@ -13,7 +13,6 @@ public class AttackableEnemy : AttackableBase {
 	public GameObject deathFX;
 	public float deathFXDelay;
 	public int expToGive;
-	public float naara;
 
 	private float health;
 	private float startingHealth;
@@ -44,10 +43,7 @@ public class AttackableEnemy : AttackableBase {
 	public override void OnHit(Collider2D hitCollider, ItemType item) {
 		float damage = 20;
 		health -= damage;
-		
 		UIDamageNumbers.Instance.ShowDamageNumber(damage, transform.position);
-
-
 		if(movementModel != null) {
 			Vector2 pushDirection = transform.position - hitCollider.gameObject.transform.position;
 			pushDirection = pushDirection.normalized * hitPushStrength;
