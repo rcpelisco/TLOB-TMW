@@ -10,22 +10,38 @@ public class PauseManager : MonoBehaviour {
 	private bool isQuestActive = false;
 	private bool isTriviaActive = false;
 	private bool isPauseActive = false;
+	private bool isBookActive = false;
 	private GameObject inventoryScreen;
 	private GameObject questScreen;
 	private GameObject triviaScreen;
 	private GameObject pauseScreen;
+	private GameObject bookScreen;
+	private GameObject bookButton;
+	private CharacterInventoryModel inventoryModel;
 	
-
 	void Awake() {
+		inventoryModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInventoryModel>();
 		triviaScreen = GameObject.FindGameObjectWithTag("TriviaScreen");
 		questScreen = GameObject.FindGameObjectWithTag("QuestScreen");
 		inventoryScreen = GameObject.FindGameObjectWithTag("InventoryScreen");
 		pauseScreen = GameObject.FindGameObjectWithTag("PauseMenu");
+		bookScreen = GameObject.FindGameObjectWithTag("BookScreen");
+		bookButton = GameObject.FindGameObjectWithTag("BookButton");
 		HideTriviaScreen();
 		HideInventoryScreen();
 		HideQuestScreen();
 		HidePauseScreen();
-		
+		HideBookScreen();
+	}
+
+	void Start() {
+		bookButton.SetActive(false);
+	}
+
+	void Update() {
+		if(inventoryModel.HasItem(ItemType.Book)) {
+			bookButton.SetActive(true);
+		}
 	}
 
 
@@ -33,6 +49,16 @@ public class PauseManager : MonoBehaviour {
 	{
 		AudioListener.pause = !AudioListener.pause;
 
+	}
+
+	public void BookButton() {
+		if(isBookActive) {
+			HideBookScreen();
+			isBookActive = false;
+		} else {
+			ShowBookScreen();
+			isBookActive = true;
+		}
 	}
 
 	public void InventoryButton() {
@@ -65,13 +91,27 @@ public class PauseManager : MonoBehaviour {
 		}
 	}
 
-		public void PauseButton() {
+	public void PauseButton() {
 		if(isPauseActive) {
 			HidePauseScreen();
 			isPauseActive = false;
 		} else {
 			ShowPauseScreen();
 			isPauseActive = true;
+		}
+	}
+
+	void ShowBookScreen() {
+		DoPause();
+		if(bookScreen != null) {
+			bookScreen.SetActive(true);
+		}
+	}
+
+	void HideBookScreen() {
+		DoUnpause();
+		if(bookScreen != null) {
+			bookScreen.SetActive(false);
 		}
 	}
 
