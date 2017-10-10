@@ -35,7 +35,9 @@ public class PauseManager : MonoBehaviour {
 	}
 
 	void Start() {
-		bookButton.SetActive(false);
+		if(bookButton != null) {
+			bookButton.SetActive(false);
+		}
 	}
 
 	void Update() {
