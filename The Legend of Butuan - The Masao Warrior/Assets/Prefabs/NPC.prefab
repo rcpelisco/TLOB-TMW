@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114436966958474594}
   - component: {fileID: 114050498237119732}
   - component: {fileID: 114538553635446934}
+  - component: {fileID: 114582736503748100}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -90,7 +91,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1030374945753182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.83, y: -0.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4775124974664980}
@@ -136,7 +137,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -179,7 +180,7 @@ Animator:
   m_GameObject: {fileID: 1390991103127016}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 116690558fe887844bbe88f77a35886d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -198,8 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc16ea134a27594fbddb98aa5d7b864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canWalk: 0
-  walkTime: 1
+  canWalk: 1
+  walkTime: 5
   waitTime: 3
   isMoving: 0
   canAttack: 0
@@ -217,10 +218,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     speaker: {fileID: 0}
-    sentences: []
+    sentences:
+    - Take this!
   notificationParent: {fileID: 4460095073180890}
   notificationBubble: {fileID: 1989512021931688, guid: 02f8a19c96eacae43ae9a8198f764147,
     type: 2}
+  animAfterDialogue: {fileID: 0}
 --- !u!114 &114336103584748316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,6 +267,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initFacingDirX: 0
   initFacingDirY: -1
+--- !u!114 &114582736503748100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1030374945753182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8612a19274c31f448192a8bcd99ee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 100
+  amount: 1
 --- !u!114 &114870543978303256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -339,7 +355,7 @@ SpriteRenderer:
   m_SortingLayerID: -721525819
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300002, guid: 31203f024d4d65d48ab381134d7c4ae3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -347,7 +363,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
 --- !u!222 &222509890671575244
 CanvasRenderer:
