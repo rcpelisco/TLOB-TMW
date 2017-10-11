@@ -12,6 +12,6 @@ public class TouchToStart : MonoBehaviour {
 	IEnumerator NextScene() {
 		FadeManager.instance.Fade(true, 1f);
 		yield return new WaitForSeconds(1.5f);
-		SceneManager.LoadScene("IntroNarration");
+		SceneManager.LoadScene("MainMenu");
 	}
 }

@@ -16,7 +16,11 @@ public class WarpPoint : MonoBehaviour {
 
 	void Awake() {
 		lastScene = PlayerPrefs.GetString("lastScene");
+		if(lastScene == "JoelHouse") {
+			lastScene = "JoelHouseGame";
+		}
 		lastIndex = PlayerPrefs.GetInt("lastIndex");
+		Debug.Log(lastScene);
 	}
 
 	void Start() {

@@ -11,8 +11,10 @@ public class CharacterHealthModel : MonoBehaviour {
 	private float health;
 	private CharacterMovementView movementView;
 	private GameStateManager stateManager;
+	private CharacterLevelModel levelModel;
 
 	void Start () {
+		levelModel = GetComponent<CharacterLevelModel>();
 		movementView = GetComponent<CharacterMovementView>();
 		stateManager = GetComponent<GameStateManager>();
 		maximumHealth = startingHealth;
@@ -33,6 +35,14 @@ public class CharacterHealthModel : MonoBehaviour {
 	
 	public float GetHealthPercentage() {
 		return health / maximumHealth;
+	}
+
+	public void SetMaxHealth(float newMaxHealth) {
+		maximumHealth = newMaxHealth;
+	}
+
+	public void SetHealth(float newHealth) {
+		health = newHealth;
 	}
 
 	public void DealDamage(float damage) {

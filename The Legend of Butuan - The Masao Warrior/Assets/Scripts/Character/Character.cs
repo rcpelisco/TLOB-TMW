@@ -9,5 +9,6 @@ public class Character : MonoBehaviour {
 	public CharacterInventoryModel inventoryModel;
 	public CharacterHealthModel healthModel;
 	public CharacterQuestModel questModel;
+	public CharacterLevelModel levelModel;
 
 }
