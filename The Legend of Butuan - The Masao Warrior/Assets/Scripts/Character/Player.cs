@@ -25,6 +25,8 @@ public class Player : MonoBehaviour {
 	public int Level;
 	public int XP;
 	public string currentScene;
+	public float x;
+	public float y;
 
 	public void Save() {
 		HP = playerStats.healthModel.GetHealth();
@@ -32,6 +34,9 @@ public class Player : MonoBehaviour {
 		Level = playerStats.levelModel.GetCurrentLevel();
 		XP = playerStats.levelModel.GetCurrentExp();
 		currentScene = SceneManager.GetActiveScene().name;
+		x = transform.position.x;
+		y = transform.position.y;
+		SaveLoadManager.SavePlayer(this);
 	}
 
 	public void Load() {
@@ -40,6 +45,6 @@ public class Player : MonoBehaviour {
 		playerStats.healthModel.SetHealth(playerData.HP);
 		playerStats.levelModel.SetCurrentExp(playerData.XP);
 		playerStats.levelModel.SetCurrentLevel(playerData.Level);
+		SceneManager.LoadScene(playerData.currentScene);
 	}
-
 }

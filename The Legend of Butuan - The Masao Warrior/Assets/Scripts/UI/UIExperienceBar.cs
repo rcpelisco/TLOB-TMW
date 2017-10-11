@@ -11,7 +11,6 @@ public class UIExperienceBar : MonoBehaviour {
 
 	private CharacterLevelModel levelModel;	
 
-
 	void Awake () {
 		levelModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterLevelModel>();
 		if(levelModel == null) {

@@ -10,13 +10,19 @@ public class DialogueManager : MonoBehaviour {
 	private bool isStarted;
 	private bool isSentenceDone;
 	private bool isDone;
-	private GameObject goldCount;
+	private CharacterInteractionModel interactionModel;
 
 	public float letterInterval = 0.05f;
 
 	void Awake() {
 		sentences = new Queue<string>();
-		goldCount = GameObject.FindGameObjectWithTag("GoldCount");
+		interactionModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInteractionModel>();
+	}
+
+	public void OnInteract() {
+		if(interactionModel != null) {
+			interactionModel.OnInteract();
+		}
 	}
 
 	public void StartDialogue(Dialogue dialogue) {
@@ -26,9 +32,6 @@ public class DialogueManager : MonoBehaviour {
 			sentences.Enqueue(sentence);
 		}
 		DialogueBox.Show();
-		if(goldCount != null) {
-			goldCount.SetActive(false);
-		}
 		Sprite sprite = dialogue.speaker.GetComponentInChildren<Image>().sprite;
 		if(sprite != null) {
 			DialogueBox.SetAvatar(sprite);
@@ -61,9 +64,6 @@ public class DialogueManager : MonoBehaviour {
 		isStarted = false;
 		isSentenceDone = false;
 		isDone = true;
-		if(goldCount != null) {
-			goldCount.SetActive(true);
-		}
 	}
 
 	IEnumerator TypeSentence(string sentence) {

@@ -37,7 +37,7 @@ public class CharacterLevelModel : MonoBehaviour {
 	}
 
 	public float GetExpPercentage() {
-		return currentExp / requiredExp[currentLevel];
+		return (float)currentExp / (float)requiredExp[currentLevel];
 	}
 
 	public void AddExp(int newExp) {
@@ -53,6 +53,7 @@ public class CharacterLevelModel : MonoBehaviour {
 	}
 
 	void Update () {
+		Debug.Log(string.Format("currentExp: {0}, requiredExp: {1}, {2}%",  currentExp, requiredExp[currentLevel], currentExp/requiredExp[currentLevel]));
 		if(currentExp >= requiredExp[currentLevel]) {
 			temp = currentExp - requiredExp[currentLevel];
 			currentLevel++;
