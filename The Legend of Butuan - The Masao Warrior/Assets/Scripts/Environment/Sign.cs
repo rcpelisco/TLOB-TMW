@@ -7,7 +7,8 @@ public class Sign : MonoBehaviour {
 	public enum SignDirection {
 		UpRight, UpLeft,
 		DownRight, DownLeft,
-		Left,Right
+		Left,Right, 
+		DoubleDown, DoubleUp
 	}
 
 	public SignDirection direction;
@@ -18,6 +19,8 @@ public class Sign : MonoBehaviour {
 	public Sprite downLeft;
 	public Sprite left;
 	public Sprite right;
+	public Sprite doubleDown;
+	public Sprite doubleUp;
 
 	private Animator signAnim;
 	private Image signSprite;
@@ -50,6 +53,12 @@ public class Sign : MonoBehaviour {
 		} else if(direction == SignDirection.Right) {
 			signAnim.SetFloat("x", 1f);
 			signSprite.sprite = right;
+		} else if(direction == SignDirection.DoubleDown) {
+			signAnim.SetFloat("y", -1f);
+			signSprite.sprite = doubleDown;
+		}else if(direction == SignDirection.DoubleUp) {
+			signAnim.SetFloat("y", 1f);
+			signSprite.sprite = doubleUp;
 		}
 	}
 }
