@@ -35,12 +35,14 @@ public class ClassroomAnimation : MonoBehaviour {
 	}
 
 	public void InitiateDialogue() {
+		dialogue[index].speaker.GetComponentInChildren<Animator>().SetBool("isWalking", true);
 		if(index == dialogue.Length) {
 			return;
 		}
 		if(FindObjectOfType<DialogueManager>().IsSentenceDone()) {
 			FindObjectOfType<DialogueManager>().DisplayNextSentence();
 			if(FindObjectOfType<DialogueManager>().IsDone()) {
+				dialogue[index].speaker.GetComponentInChildren<Animator>().SetBool("isWalking", false);
 				index++;
 				if(index == dialogue.Length) {
 					DialogueBox.Hide();
@@ -55,6 +57,7 @@ public class ClassroomAnimation : MonoBehaviour {
 			FindObjectOfType<DialogueManager>().StartDialogue(dialogue[index]);
 		} else {
 			FindObjectOfType<DialogueManager>().EndSentence();
+			
 		}
 	}
 

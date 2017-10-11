@@ -34,11 +34,16 @@ public class PlayerData {
 	public int XP;
 	public int Level;
 	public string currentScene;
+	public float x;
+	public float y;
 
 	public PlayerData(Player player) {
 		HP = player.HP;
 		MaxHP = player.MaxHP;
 		XP = player.XP;
 		Level = player.Level;
+		x = player.x;
+		y = player.y;
+		currentScene = player.currentScene;
 	}
 }

@@ -380,7 +380,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 0
   currentExp: 0
-  temp: 0
 --- !u!114 &114428939613951594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -392,6 +391,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185756052cf34d9418039b7d9b9bcd90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 0
+  MaxHP: 0
+  Level: 0
+  XP: 0
+  currentScene: 
 --- !u!114 &114490221705853152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -496,6 +500,7 @@ MonoBehaviour:
   inventoryModel: {fileID: 114129210168013938}
   healthModel: {fileID: 114850590076069822}
   questModel: {fileID: 114490221705853152}
+  levelModel: {fileID: 114414890593472498}
 --- !u!212 &212822204850413358
 SpriteRenderer:
   m_ObjectHideFlags: 1

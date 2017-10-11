@@ -672,6 +672,7 @@ MonoBehaviour:
   inventoryModel: {fileID: 0}
   healthModel: {fileID: 0}
   questModel: {fileID: 0}
+  levelModel: {fileID: 0}
 --- !u!61 &200857522
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1184,7 +1185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb6c853ca0e2284b8f65a35a27a5578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initFacingDirX: 0
+  initFacingDirX: -1
   initFacingDirY: 0
 --- !u!1 &463796665
 GameObject:
@@ -2175,7 +2176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb6c853ca0e2284b8f65a35a27a5578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initFacingDirX: 0
+  initFacingDirX: -1
   initFacingDirY: 0
 --- !u!1 &830789686
 GameObject:
@@ -2347,16 +2348,16 @@ MonoBehaviour:
     - 'Woah! There are lots of artefacts here! Amazing! '
   - speaker: {fileID: 514111592}
     sentences:
-    - "Look *player\u2019s name*, was it the balangay boat our instructor told us?"
+    - Look Shim, was it the balangay boat our instructor told us?
   - speaker: {fileID: 200857514}
     sentences:
     - "I don\u2019t know. There\u2019s only one thing to find that."
   - speaker: {fileID: 514111592}
     sentences:
-    - "It really is the balangay boat, *player\u2019s name*"
+    - It really is the balangay boat, Shim
   - speaker: {fileID: 514111592}
     sentences:
-    - "*player\u2019s name* don\u2019t touch that. "
+    - "Shim, don\u2019t touch that. "
   - speaker: {fileID: 200857514}
     sentences:
     - "Don\u2019t worry, Beth. I won\u2019t break it."
@@ -2488,7 +2489,6 @@ GameObject:
   - component: {fileID: 884017556}
   - component: {fileID: 884017555}
   - component: {fileID: 884017554}
-  - component: {fileID: 884017557}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -2521,7 +2521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initFacingDirX: 0
-  initFacingDirY: 0
+  initFacingDirY: 1
 --- !u!95 &884017555
 Animator:
   serializedVersion: 3
@@ -2581,26 +2581,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!320 &884017557
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 884017552}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 935bdfc4794214c479cdb1a8420095bb, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 0}
-    value: {fileID: 884017552}
-  - key: {fileID: 0}
-    value: {fileID: 200857514}
-  m_ExposedReferences:
-    m_References: []
 --- !u!1 &972488944
 GameObject:
   m_ObjectHideFlags: 0
@@ -2644,7 +2624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initFacingDirX: 0
-  initFacingDirY: 0
+  initFacingDirY: 1
 --- !u!95 &972488947
 Animator:
   serializedVersion: 3
@@ -3530,7 +3510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb6c853ca0e2284b8f65a35a27a5578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initFacingDirX: 0
+  initFacingDirX: -1
   initFacingDirY: 0
 --- !u!1 &1277469830
 GameObject:

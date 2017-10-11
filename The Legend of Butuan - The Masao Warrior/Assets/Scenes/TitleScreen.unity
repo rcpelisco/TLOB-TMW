@@ -401,6 +401,52 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!1 &481778479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 481778481}
+  - component: {fileID: 481778480}
+  m_Layer: 0
+  m_Name: GameStateManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &481778480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 481778479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9945d960e8da9459729d35b3c5cffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCameraPrefab: {fileID: 1653861724791270, guid: 3b23d5786195341418ec94304428ac13,
+    type: 2}
+  canvasPrefab: {fileID: 1502541591423622, guid: 0ccbb25bf271be041bf22605e7c45214,
+    type: 2}
+  playerPrefab: {fileID: 1293089212110314, guid: f399e24f846b7b54cb1d73c8c76f9e5d,
+    type: 2}
+--- !u!4 &481778481
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 481778479}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.281368, y: -11.920304, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &564935690
 GameObject:
   m_ObjectHideFlags: 0

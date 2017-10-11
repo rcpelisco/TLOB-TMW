@@ -20,7 +20,6 @@ public class WarpPoint : MonoBehaviour {
 			lastScene = "JoelHouseGame";
 		}
 		lastIndex = PlayerPrefs.GetInt("lastIndex");
-		Debug.Log(lastScene);
 	}
 
 	void Start() {
