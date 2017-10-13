@@ -24,14 +24,15 @@ public class PauseManager : MonoBehaviour {
 	private CharacterInventoryModel inventoryModel;
 	
 	void Awake() {
-		inventoryModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInventoryModel>();
+		if(GameObject.FindGameObjectWithTag("Player") != null) {
+			inventoryModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInventoryModel>();
+		}
 		triviaScreen = GameObject.FindGameObjectWithTag("TriviaScreen");
 		questScreen = GameObject.FindGameObjectWithTag("QuestScreen");
 		inventoryScreen = GameObject.FindGameObjectWithTag("InventoryScreen");
 		pauseScreen = GameObject.FindGameObjectWithTag("PauseMenu");
 		bookScreen = GameObject.FindGameObjectWithTag("BookScreen");
 		bookButton = GameObject.FindGameObjectWithTag("BookButton");
-
 		pauseAnim = pauseScreen.GetComponentInChildren<Animator>();
 
 		HideTriviaScreen();

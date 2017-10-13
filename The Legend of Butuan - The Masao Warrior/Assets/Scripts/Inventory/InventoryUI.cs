@@ -21,6 +21,10 @@ public class InventoryUI : MonoBehaviour {
 		}
 	}
 
+	void Awake() {
+		
+	}
+
 	public void RemoveItem(ItemType itemType) {
 		for(int i = 0; i < items.Length; i++){
 			// ItemData itemToAdd = Database.item.FindItem(itemType);

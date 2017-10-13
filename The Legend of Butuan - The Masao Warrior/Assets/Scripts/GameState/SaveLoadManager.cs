@@ -19,6 +19,7 @@ public class SaveLoadManager {
 		Debug.Log(playerData.currentScene);
 		Debug.Log(playerData.x);
 		Debug.Log(playerData.y);
+		Debug.Log(playerData.items.Count);
 		bf.Serialize(fs, playerData);
 		fs.Close();
 	}

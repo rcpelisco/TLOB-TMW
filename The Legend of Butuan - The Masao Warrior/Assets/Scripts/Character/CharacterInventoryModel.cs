@@ -67,6 +67,8 @@ public class CharacterInventoryModel : MonoBehaviour {
 	}
 
 	public void SetInventory(Dictionary<ItemType, int> items) {
-		this.items = items;
+		foreach(KeyValuePair<ItemType, int> _item in items) {
+			AddItem(_item.Key, _item.Value);
+		}
 	}
 }
