@@ -9,7 +9,6 @@ public class BallControl : CharacterBaseControl {
 	public AttackableEnemy attackableEnemy;
 	public float AttackDamage;
 
-	private GameObject characterInRange;
 	private Transform characterLastPosition;
 
 	void Update() {
@@ -31,14 +30,12 @@ public class BallControl : CharacterBaseControl {
 
 	public void SetCharacterInRange(GameObject characterInRange) {
 		this.characterLastPosition = characterInRange.transform;
-		// this.characterInRange = characterInRange;
 		Debug.Log(characterLastPosition.position);
 	}
 
 	public void OnHitCharacter(Character character) {
 		Vector2 direction = character.transform.position - transform.position;	
 		direction.Normalize();
-		characterInRange = null;
 		character.movementModel.PushCharacter(direction * pushStrength, pushTime);
 		character.healthModel.DealDamage(AttackDamage);
 		attackableEnemy.Kill();

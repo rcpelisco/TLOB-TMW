@@ -9,12 +9,8 @@ public class UITrivia : MonoBehaviour {
 	public Trivia[] trivias;
 	public Text triviaText; 
 
-	private PauseManager pauseManager;
-
-	void Awake() {
-		pauseManager = GameObject.Find("Canvas").GetComponent<PauseManager>();
-	}
-
+	public PauseManager pauseManager;
+	
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
 		foreach(Trivia trivia in trivias) {
 			if(GetCurrentScenName() == trivia.area) {

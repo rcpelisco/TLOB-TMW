@@ -23,7 +23,6 @@ public class AnimalControl : CharacterBaseControl {
 	private Vector2 minWalkPoint;
 	private float walkCounter;
 	private float waitCounter;
-	private float eatCounter;
 	
 	private int walkDirection;
 	private bool hasWalkZone;
@@ -33,7 +32,6 @@ public class AnimalControl : CharacterBaseControl {
 		direction = Vector2.zero;
 		waitCounter = waitTime;
 		walkCounter = walkTime;
-		eatCounter = eatTime;
 		
 		if(walkZone != null) {
 			hasWalkZone = true;

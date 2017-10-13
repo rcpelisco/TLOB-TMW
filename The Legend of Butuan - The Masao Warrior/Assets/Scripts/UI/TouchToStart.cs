@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class TouchToStart : MonoBehaviour {
 
 	public void TouchScreen() {
-		StartCoroutine(NextScene());
+		if(gameObject.activeSelf) {
+			StartCoroutine(NextScene());
+
+		}
 	}
 
 	IEnumerator NextScene() {

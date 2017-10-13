@@ -61,4 +61,12 @@ public class CharacterInventoryModel : MonoBehaviour {
 		}
 		return false;
 	}
+
+	public Dictionary<ItemType, int> GetInventory() {
+		return items;
+	}
+
+	public void SetInventory(Dictionary<ItemType, int> items) {
+		this.items = items;
+	}
 }

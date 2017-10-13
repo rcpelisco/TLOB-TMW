@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class PauseManager : MonoBehaviour {
@@ -11,12 +12,15 @@ public class PauseManager : MonoBehaviour {
 	private bool isTriviaActive = false;
 	private bool isPauseActive = false;
 	private bool isBookActive = false;
+	
 	private GameObject inventoryScreen;
 	private GameObject questScreen;
 	private GameObject triviaScreen;
 	private GameObject pauseScreen;
 	private GameObject bookScreen;
 	private GameObject bookButton;
+
+	private Animator pauseAnim;
 	private CharacterInventoryModel inventoryModel;
 	
 	void Awake() {
@@ -27,6 +31,9 @@ public class PauseManager : MonoBehaviour {
 		pauseScreen = GameObject.FindGameObjectWithTag("PauseMenu");
 		bookScreen = GameObject.FindGameObjectWithTag("BookScreen");
 		bookButton = GameObject.FindGameObjectWithTag("BookButton");
+
+		pauseAnim = pauseScreen.GetComponentInChildren<Animator>();
+
 		HideTriviaScreen();
 		HideInventoryScreen();
 		HideQuestScreen();
@@ -96,9 +103,11 @@ public class PauseManager : MonoBehaviour {
 	public void PauseButton() {
 		if(isPauseActive) {
 			HidePauseScreen();
+			pauseAnim.Play("HIde");
 			isPauseActive = false;
 		} else {
 			ShowPauseScreen();
+			pauseAnim.Play("View");
 			isPauseActive = true;
 		}
 	}
@@ -183,7 +192,7 @@ public class PauseManager : MonoBehaviour {
 
 	public void MainMenuScreen() {
 		DoUnpause();
-		Application.LoadLevel("MainMenu");
+		SceneManager.LoadScene("MainMenu");
 	}
 
 	public void QuitGame() {

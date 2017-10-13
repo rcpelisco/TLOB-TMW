@@ -7,11 +7,9 @@ public class Player : MonoBehaviour {
 
 	private static bool isPlayerExists;
 	private Character playerStats;
-	private float uniqueID;
 
 	void Awake() {
 		playerStats = GetComponent<Character>();
-		uniqueID = transform.position.x + transform.position.y;
 		if(!isPlayerExists) {
 			isPlayerExists = true;
 			DontDestroyOnLoad(gameObject);
@@ -28,23 +26,25 @@ public class Player : MonoBehaviour {
 	public float x;
 	public float y;
 
-	public void Save() {
+	public Dictionary<ItemType, int> items;
+
+	void SavePlayerStats() {
 		HP = playerStats.healthModel.GetHealth();
 		MaxHP = playerStats.healthModel.GetMaxHealth();
 		Level = playerStats.levelModel.GetCurrentLevel();
 		XP = playerStats.levelModel.GetCurrentExp();
-		currentScene = SceneManager.GetActiveScene().name;
 		x = transform.position.x;
 		y = transform.position.y;
-		SaveLoadManager.SavePlayer(this);
 	}
 
-	public void Load() {
-		PlayerData playerData = SaveLoadManager.LoadPlayer();
-		playerStats.healthModel.SetMaxHealth(playerData.MaxHP);
-		playerStats.healthModel.SetHealth(playerData.HP);
-		playerStats.levelModel.SetCurrentExp(playerData.XP);
-		playerStats.levelModel.SetCurrentLevel(playerData.Level);
-		SceneManager.LoadScene(playerData.currentScene);
+	void SavePlayerInventory() {
+		items = playerStats.inventoryModel.GetInventory();
+	}
+
+	public void Save() {
+		SavePlayerStats();
+		SavePlayerInventory();
+		currentScene = SceneManager.GetActiveScene().name;
+		SaveLoadManager.SavePlayer(this);
 	}
 }

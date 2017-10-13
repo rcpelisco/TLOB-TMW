@@ -8,11 +8,9 @@ public class RangeWizardControl : CharacterBaseControl {
 	public float coolDown = 5f;
 	public GameObject ballPrefab;
 
-	private GameObject characterInRange;
 	private AttackableEnemy attackable;
 
 	public void SetCharacterInRange(GameObject characterInRange) {
-		this.characterInRange = characterInRange;
 		GameObject ball = Instantiate(ballPrefab, transform.position, Quaternion.identity);
 		StartCoroutine(FollowBall(ball, characterInRange));
 	}

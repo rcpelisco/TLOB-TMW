@@ -53,7 +53,6 @@ public class CharacterLevelModel : MonoBehaviour {
 	}
 
 	void Update () {
-		Debug.Log(string.Format("currentExp: {0}, requiredExp: {1}, {2}%",  currentExp, requiredExp[currentLevel], currentExp/requiredExp[currentLevel]));
 		if(currentExp >= requiredExp[currentLevel]) {
 			temp = currentExp - requiredExp[currentLevel];
 			currentLevel++;

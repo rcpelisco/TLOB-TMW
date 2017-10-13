@@ -14,4 +14,11 @@ public class Bounds : MonoBehaviour {
 			cam.SetBoundBox(bounds);
 		}
 	}
+
+	void Update() {
+		if(cam == null) {
+			cam = FindObjectOfType<CameraController>();
+			cam.SetBoundBox(bounds);
+		}
+	}
 }

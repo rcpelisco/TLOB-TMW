@@ -23,7 +23,7 @@ public class InventoryUI : MonoBehaviour {
 
 	public void RemoveItem(ItemType itemType) {
 		for(int i = 0; i < items.Length; i++){
-			ItemData itemToAdd = Database.item.FindItem(itemType);
+			// ItemData itemToAdd = Database.item.FindItem(itemType);
 			if(items[i] == itemType) {
 				items[i] = ItemType.None;
 				itemImages[i].sprite = null;

@@ -10,13 +10,9 @@ public class CharacterHealthModel : MonoBehaviour {
 	private float maximumHealth;
 	private float health;
 	private CharacterMovementView movementView;
-	private GameStateManager stateManager;
-	private CharacterLevelModel levelModel;
 
 	void Start () {
-		levelModel = GetComponent<CharacterLevelModel>();
 		movementView = GetComponent<CharacterMovementView>();
-		stateManager = GetComponent<GameStateManager>();
 		maximumHealth = startingHealth;
 		health = maximumHealth;
 	}
