@@ -6,6 +6,7 @@ public class AreaTitle : MonoBehaviour {
 
 	private Animator anim;
 	private GameObject title;
+	private 
 
 	void Awake() {
 		anim = GetComponentInChildren<Animator>();
