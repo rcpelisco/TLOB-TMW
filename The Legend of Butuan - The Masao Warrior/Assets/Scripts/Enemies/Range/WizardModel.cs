@@ -51,7 +51,7 @@ public class WizardModel : RangeBaseControl {
 	}
 
 	public void DoAttack() {
-
+		
 	}
 
 	public void DoShoot() {

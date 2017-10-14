@@ -20,6 +20,8 @@ public class NPCControl : CharacterBaseControl {
 	private bool hasWalkZone;
 	private bool isSpotted;
 	
+	private float waitAttack = 2.5f;
+
 	void Start() {
 		direction = Vector2.zero;
 		waitCounter = waitTime;
@@ -33,22 +35,15 @@ public class NPCControl : CharacterBaseControl {
 
 	void Update () {
 		UpdateDirection();
-		if(canAttack) {
-			UpdateAttack();
-		}
+		UpdateAttack();
 	}
 
 	void UpdateAttack() {
-		CastLine();
-	}
-
-	void CastLine() {
-		Debug.DrawLine(transform.position , (transform.position +  movementModel.GetFacingDirection() * 10), Color.red);
-		isSpotted = Physics2D.Linecast(transform.position, (transform.position +  movementModel.GetFacingDirection() * 10), 1 << LayerMask.NameToLayer("Player"));
-		if(isSpotted) {
-			if(movementModel.CanAttack()) {
-				OnAttackPressed();
-			}
+		if(waitAttack > 0f) {
+			waitAttack -= Time.deltaTime;
+		} else {
+			DoShootPressed();
+			waitAttack = 2.5f;
 		}
 	}
 

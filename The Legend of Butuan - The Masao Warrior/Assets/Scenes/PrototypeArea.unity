@@ -788,6 +788,28 @@ Transform:
   m_Father: {fileID: 386892843}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &244313218 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1421685021918776, guid: a9373f894a96c024bbd57d97c250c203,
+    type: 2}
+  m_PrefabInternal: {fileID: 740526113}
+--- !u!114 &244313219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 244313218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9b57f66fe0af84cbd05cbbb23cdc33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1615147053473468, guid: b23fa153d95fa9b4c96dc65482031f20,
+    type: 2}
+  speed: 0
+  weaponParent: {fileID: 0}
+  shieldParent: {fileID: 0}
+  previewItemParent: {fileID: 0}
 --- !u!1 &280275517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,11 +2180,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4391576316940628, guid: a9373f894a96c024bbd57d97c250c203, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.4832268
+      value: -0.65
       objectReference: {fileID: 0}
     - target: {fileID: 4391576316940628, guid: a9373f894a96c024bbd57d97c250c203, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 7.4512334
+      value: -1.34
       objectReference: {fileID: 0}
     - target: {fileID: 4391576316940628, guid: a9373f894a96c024bbd57d97c250c203, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2200,9 +2222,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1421685021918776, guid: a9373f894a96c024bbd57d97c250c203, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114736894532768790, guid: a9373f894a96c024bbd57d97c250c203,
+        type: 2}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114736894532768790, guid: a9373f894a96c024bbd57d97c250c203, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a9373f894a96c024bbd57d97c250c203, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &740526114 stripped
@@ -4397,7 +4425,7 @@ Prefab:
     - target: {fileID: 224670058780278334, guid: 0ccbb25bf271be041bf22605e7c45214,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 371.25
       objectReference: {fileID: 0}
     - target: {fileID: 224044923903963946, guid: 0ccbb25bf271be041bf22605e7c45214,
         type: 2}

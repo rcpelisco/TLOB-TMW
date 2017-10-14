@@ -165,9 +165,11 @@ public class CharacterMovementModel : CharacterBaseControl {
 	}
 
 	public void DoShoot() {
-		GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-		bullet.GetComponent<Rigidbody2D>().velocity = GetFacingDirection() * 10;
-		Destroy(bullet, 3f);
+		if(bulletPrefab != null) {
+			GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+			bullet.GetComponent<Rigidbody2D>().velocity = GetFacingDirection() * 10;
+			Destroy(bullet, 3f);
+		}
 	}
 
 	public void DoAttack() {

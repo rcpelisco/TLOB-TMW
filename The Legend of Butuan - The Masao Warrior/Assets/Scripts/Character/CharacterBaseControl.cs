@@ -44,5 +44,6 @@ public class CharacterBaseControl : MonoBehaviour {
 			return;
 		}
 		movementModel.DoShoot();
+		movementView.DoAttack();
 	}
 }
