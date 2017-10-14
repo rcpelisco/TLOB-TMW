@@ -8,8 +8,9 @@ public class NPCControl : CharacterBaseControl {
 	public float walkTime;
 	public float waitTime;
 	public bool isMoving;
-	public bool canAttack;
+	public float attackWaitTime;
 	public Collider2D walkZone;
+
 
 	private Vector2 direction;
 	private Vector2 maxWalkPoint;
@@ -20,10 +21,11 @@ public class NPCControl : CharacterBaseControl {
 	private bool hasWalkZone;
 	private bool isSpotted;
 	
-	private float waitAttack = 2.5f;
+	private float waitAttack;
 
 	void Start() {
 		direction = Vector2.zero;
+		waitAttack = attackWaitTime;
 		waitCounter = waitTime;
 		walkCounter = walkTime;
 		if(walkZone != null) {
@@ -43,7 +45,7 @@ public class NPCControl : CharacterBaseControl {
 			waitAttack -= Time.deltaTime;
 		} else {
 			DoShootPressed();
-			waitAttack = 2.5f;
+			waitAttack = attackWaitTime;
 		}
 	}
 
