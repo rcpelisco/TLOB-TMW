@@ -77,7 +77,7 @@ public class CharacterMovementView : MonoBehaviour {
 	}
 
 	public void DoAttack() {
-		if(movementModel.bulletPrefab != null) {
+		if(movementModel.canAttack) {
 			animator.SetTrigger("doAttack");
 		}
 	}

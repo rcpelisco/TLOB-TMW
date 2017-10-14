@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterMovementModel : CharacterBaseControl {
 	
 	public GameObject bulletPrefab;
+	public bool canAttack;
 	public float speed;
 	public Transform weaponParent;
 	public Transform shieldParent;

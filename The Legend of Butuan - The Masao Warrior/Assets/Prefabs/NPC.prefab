@@ -27,7 +27,6 @@ GameObject:
   - component: {fileID: 114436966958474594}
   - component: {fileID: 114050498237119732}
   - component: {fileID: 114538553635446934}
-  - component: {fileID: 114582736503748100}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -203,7 +202,7 @@ MonoBehaviour:
   walkTime: 5
   waitTime: 3
   isMoving: 0
-  canAttack: 0
+  attackWaitTime: 0
   walkZone: {fileID: 0}
 --- !u!114 &114211494144016786
 MonoBehaviour:
@@ -240,6 +239,7 @@ MonoBehaviour:
   inventoryModel: {fileID: 0}
   healthModel: {fileID: 0}
   questModel: {fileID: 0}
+  levelModel: {fileID: 0}
 --- !u!114 &114436966958474594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,19 +267,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initFacingDirX: 0
   initFacingDirY: -1
---- !u!114 &114582736503748100
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1030374945753182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8612a19274c31f448192a8bcd99ee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: 100
-  amount: 1
 --- !u!114 &114870543978303256
 MonoBehaviour:
   m_ObjectHideFlags: 1

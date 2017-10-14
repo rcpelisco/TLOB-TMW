@@ -631,7 +631,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 54ae47db474ae944598b6c4cbbb1acce, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -4036,6 +4036,11 @@ Prefab:
       propertyPath: m_Name
       value: OldMuseum0
       objectReference: {fileID: 0}
+    - target: {fileID: 114321457931337410, guid: 9e023a98a132a5d4db9678d8a6e66568,
+        type: 2}
+      propertyPath: playable
+      value: 
+      objectReference: {fileID: 76522127}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e023a98a132a5d4db9678d8a6e66568, type: 2}
   m_IsPrefabParent: 0
@@ -7128,35 +7133,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4616107700277726, guid: 58bf68f4d8531ab4a993882498ddaac1,
     type: 2}
   m_PrefabInternal: {fileID: 1706159083}
---- !u!1 &1708328676 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1030374945753182, guid: 6b12543453159bc419066c92ff7313ba,
-    type: 2}
-  m_PrefabInternal: {fileID: 314141942}
---- !u!114 &1708328677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1708328676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d868c30f588dfd46a3f73c1e3caae61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quest:
-    ID: 0
-    title: 
-    description: 
-    nextQuest: 0
-    giver: {fileID: 0}
-    requirement: 
-    objective: 
-    type: 0
-    status: 0
-    expReward: 0
-    itemReward: 0
-    amountReward: 0
 --- !u!1001 &1725978885
 Prefab:
   m_ObjectHideFlags: 0

@@ -33,7 +33,6 @@ public class PauseManager : MonoBehaviour {
 		pauseScreen = GameObject.FindGameObjectWithTag("PauseMenu");
 		bookScreen = GameObject.FindGameObjectWithTag("BookScreen");
 		bookButton = GameObject.FindGameObjectWithTag("BookButton");
-		pauseAnim = pauseScreen.GetComponentInChildren<Animator>();
 
 		HideTriviaScreen();
 		HideInventoryScreen();
@@ -102,6 +101,7 @@ public class PauseManager : MonoBehaviour {
 	}
 
 	public void PauseButton() {
+		
 		if(isPauseActive) {
 			HidePauseScreen();
 			pauseAnim.Play("HIde");
@@ -173,6 +173,7 @@ public class PauseManager : MonoBehaviour {
 		DoPause();
 		if(pauseScreen != null) {
 			pauseScreen.SetActive(true);
+			pauseAnim = pauseScreen.GetComponentInChildren<Animator>();
 		}
 	}
 
