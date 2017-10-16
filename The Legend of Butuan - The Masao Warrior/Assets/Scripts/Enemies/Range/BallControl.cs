@@ -18,7 +18,6 @@ public class BallControl : CharacterBaseControl {
 	void UpdateDirection() {
 		Vector2 direction = Vector2.zero;
 		if(characterLastPosition != null) {
-			Debug.Log(characterLastPosition.position);
 			direction = characterLastPosition.position - transform.position;
 			direction.Normalize();
 		}
