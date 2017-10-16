@@ -13,6 +13,7 @@ public class GameStateManager : MonoBehaviour {
 	private Player playerScript;
 	private GameObject player;
 	private static bool isExists;
+	private bool fromRespawn;
 
 	private PlayerData playerData;
 
@@ -29,7 +30,8 @@ public class GameStateManager : MonoBehaviour {
 		SceneManager.LoadScene("IntroNarration");
 	}
 
-	public void LoadGame() {
+	public void LoadGame(bool fromRespawn) {
+		this.fromRespawn = fromRespawn;
 		playerData = SaveLoadManager.LoadPlayer();
 		SceneManager.LoadScene(playerData.currentScene);
 		player = Instantiate(playerPrefab);
@@ -54,9 +56,15 @@ public class GameStateManager : MonoBehaviour {
 	}
 
 	void SetPlayerStat(PlayerData playerData) {
+		float maxHP;
 		player.transform.position = new Vector2(playerData.x, playerData.y);
 		player.GetComponent<Character>().healthModel.SetHealth(playerData.HP);
-		player.GetComponent<Character>().healthModel.SetMaxHealth(playerData.MaxHP);
+		if(fromRespawn) {
+			maxHP = 100f;
+		} else {
+			maxHP = playerData.MaxHP;
+		}
+		player.GetComponent<Character>().healthModel.SetMaxHealth(maxHP);
 		player.GetComponent<Character>().levelModel.SetCurrentExp(playerData.XP);
 		player.GetComponent<Character>().levelModel.SetCurrentLevel(playerData.Level);
 		player.GetComponent<Character>().inventoryModel.SetInventory(playerData.items);
@@ -68,7 +76,7 @@ public class GameStateManager : MonoBehaviour {
 	}
 
 	public void GameOver() {
-		
+
 	}
 
 }

@@ -18,6 +18,8 @@ public class PauseManager : MonoBehaviour {
 	private GameObject triviaScreen;
 	private GameObject pauseScreen;
 	private GameObject bookScreen;
+	private GameObject gameOverScreen;
+
 	private GameObject bookButton;
 
 	private Animator pauseAnim;
@@ -33,12 +35,14 @@ public class PauseManager : MonoBehaviour {
 		pauseScreen = GameObject.FindGameObjectWithTag("PauseMenu");
 		bookScreen = GameObject.FindGameObjectWithTag("BookScreen");
 		bookButton = GameObject.FindGameObjectWithTag("BookButton");
+		gameOverScreen = GameObject.FindGameObjectWithTag("GameOverScreen");
 
 		HideTriviaScreen();
 		HideInventoryScreen();
 		HideQuestScreen();
 		HidePauseScreen();
 		HideBookScreen();
+		HideGameOverScreen();
 	}
 
 	void Start() {
@@ -53,11 +57,16 @@ public class PauseManager : MonoBehaviour {
 		}
 	}
 
-
-	public void Mute() 
-	{
+	public void Mute() {
 		AudioListener.pause = !AudioListener.pause;
+	}
 
+	public void ShowGameOverScreen() {
+		gameOverScreen.SetActive(true);
+	}
+
+	public void HideGameOverScreen() {
+		gameOverScreen.SetActive(false);
 	}
 
 	public void BookButton() {

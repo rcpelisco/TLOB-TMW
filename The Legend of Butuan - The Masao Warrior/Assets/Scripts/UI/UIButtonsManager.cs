@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIButtonsManager : MonoBehaviour {
 
@@ -18,7 +19,7 @@ public class UIButtonsManager : MonoBehaviour {
 
 	public void LoadGame() {
 		if(stateManager != null) {
-			stateManager.LoadGame();
+			stateManager.LoadGame(false);
 		}
 	}
 
@@ -26,5 +27,15 @@ public class UIButtonsManager : MonoBehaviour {
 		if(stateManager != null) {
 			stateManager.SaveGame();
 		}
+	}
+
+	public void Respawn() {
+		if(stateManager != null) {
+			stateManager.LoadGame(true);
+		}
+	}
+
+	public void MainMenu() {
+		SceneManager.LoadScene("MainMenu");
 	}
 }

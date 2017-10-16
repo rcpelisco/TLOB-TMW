@@ -8,6 +8,15 @@ public class Player : MonoBehaviour {
 	private static bool isPlayerExists;
 	private Character playerStats;
 
+	public float HP;
+	public float MaxHP;
+	public int Level;
+	public int XP;
+	public string currentScene;
+	public float x;
+	public float y;
+	public Dictionary<ItemType, int> items;
+
 	void Awake() {
 		playerStats = GetComponent<Character>();
 		if(!isPlayerExists) {
@@ -18,15 +27,20 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	public float HP;
-	public float MaxHP;
-	public int Level;
-	public int XP;
-	public string currentScene;
-	public float x;
-	public float y;
+	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
+		string sceneName = SceneManager.GetActiveScene().name;
+		if(sceneName == "MainMenu" || sceneName == "TitleScreen") {
+			Destroy(gameObject);
+		}
+	}
 
-	public Dictionary<ItemType, int> items;
+	void OnEnable() {
+		SceneManager.sceneLoaded += OnLevelFinishedLoading;
+	}
+
+	void Ondisable() {
+		SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+	}
 
 	void SavePlayerStats() {
 		HP = playerStats.healthModel.GetHealth();
