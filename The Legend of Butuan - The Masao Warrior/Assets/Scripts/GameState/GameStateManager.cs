@@ -67,4 +67,8 @@ public class GameStateManager : MonoBehaviour {
 		playerScript.Save();
 	}
 
+	public void GameOver() {
+		
+	}
+
 }
