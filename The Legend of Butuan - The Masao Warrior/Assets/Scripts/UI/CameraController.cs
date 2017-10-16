@@ -17,41 +17,6 @@ public class CameraController : MonoBehaviour {
 	private float halfWidth;
 	private static bool isCameraExist;
 
-	void OnEnable() {
-		SceneManager.sceneLoaded += OnLevelFinishLoading;
-	}
-
-	void OnDisable() {
-		SceneManager.sceneLoaded -= OnLevelFinishLoading;
-	}
-
-	void OnLevelFinishLoading(Scene scene, LoadSceneMode mode) {
-		if(target != null) {
-			StartCoroutine(MoveCamera());
-		}
-	}
-
-	IEnumerator MoveCamera() {
-		yield return null;
-		transform.position = target.transform.position;
-	}
-
-	public void SetBoundBox(BoxCollider2D boundBox) {
-		this.boundBox = boundBox;
-		ResetPosition();
-	}
-
-	void ResetPosition() {
-		theCamera = GetComponent<Camera>();
-		if(boundBox == null) {
-			return;
-		}
-		minBounds = boundBox.bounds.min;
-		maxBounds = boundBox.bounds.max;
-		halfHeight = theCamera.orthographicSize;
-		halfWidth = halfHeight * Screen.width / Screen.height;
-	}
-
 	void Awake() {
 		target = GameObject.FindGameObjectWithTag("Player");
 		if(isDestroyOnLoad) {
@@ -77,6 +42,45 @@ public class CameraController : MonoBehaviour {
 		float clampedX = Mathf.Clamp(transform.position.x, minBounds.x + halfWidth,maxBounds.x - halfWidth);
 		float clampedY = Mathf.Clamp(transform.position.y, minBounds.y + halfHeight,maxBounds.y - halfHeight);
 		transform.position = new Vector3(clampedX, clampedY, transform.position.z);
-		
 	}
+
+	void OnEnable() {
+		SceneManager.sceneLoaded += OnLevelFinishLoading;
+	}
+
+	void OnDisable() {
+		SceneManager.sceneLoaded -= OnLevelFinishLoading;
+	}
+
+	void OnLevelFinishLoading(Scene scene, LoadSceneMode mode) {
+		if(target != null) {
+			StartCoroutine(MoveCamera());
+		}
+		string sceneName = SceneManager.GetActiveScene().name;
+		if(sceneName == "MainMenu" || sceneName == "TitleScreen") {
+			Destroy(gameObject);
+		}
+	}
+
+	IEnumerator MoveCamera() {
+		yield return null;
+		transform.position = target.transform.position;
+	}
+
+	public void SetBoundBox(BoxCollider2D boundBox) {
+		this.boundBox = boundBox;
+		ResetPosition();
+	}
+
+	void ResetPosition() {
+		theCamera = GetComponent<Camera>();
+		if(boundBox == null) {
+			return;
+		}
+		minBounds = boundBox.bounds.min;
+		maxBounds = boundBox.bounds.max;
+		halfHeight = theCamera.orthographicSize;
+		halfWidth = halfHeight * Screen.width / Screen.height;
+	}
+
 }

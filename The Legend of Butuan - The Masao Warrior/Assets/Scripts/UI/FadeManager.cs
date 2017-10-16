@@ -44,6 +44,10 @@ public class FadeManager : MonoBehaviour {
 		if(fadeOnStart) {
 			Fade(false, fadeTime);
 		}
+		string sceneName = SceneManager.GetActiveScene().name;
+		if(sceneName == "MainScene" || sceneName == "TitleScreen") {
+			Destroy(gameObject);
+		}
 	}
 
 	void Start() {
