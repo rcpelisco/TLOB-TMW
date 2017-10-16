@@ -10,6 +10,7 @@ public class CharacterHealthModel : MonoBehaviour {
 	private float maximumHealth;
 	private float health;
 	private CharacterMovementView movementView;
+	private GameStateManager stateManager;
 
 	void Start () {
 		movementView = GetComponent<CharacterMovementView>();
@@ -55,7 +56,7 @@ public class CharacterHealthModel : MonoBehaviour {
 	}
 	
 	IEnumerator WaitNextScene() {
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(2f);
 		FadeManager.instance.Fade(true, 1.5f);
 		// stateManager.GameOver();
 	}
