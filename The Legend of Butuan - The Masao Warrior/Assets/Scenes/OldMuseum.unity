@@ -1005,6 +1005,7 @@ MonoBehaviour:
   previousScene: OldMusem
   previousIndex: 0
   nextIndex: 0
+  playable: {fileID: 0}
 --- !u!61 &460139535
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1086,11 +1087,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4862718543742036, guid: 7d67286f1a4eada428c0423b25136fc5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.9468765
+      value: -1.98
       objectReference: {fileID: 0}
     - target: {fileID: 4862718543742036, guid: 7d67286f1a4eada428c0423b25136fc5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -14.337559
+      value: -14.84
       objectReference: {fileID: 0}
     - target: {fileID: 4862718543742036, guid: 7d67286f1a4eada428c0423b25136fc5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1124,6 +1125,91 @@ Transform:
   m_PrefabParentObject: {fileID: 4862718543742036, guid: 7d67286f1a4eada428c0423b25136fc5,
     type: 2}
   m_PrefabInternal: {fileID: 559047057}
+--- !u!1 &559047059 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1030847465802530, guid: 7d67286f1a4eada428c0423b25136fc5,
+    type: 2}
+  m_PrefabInternal: {fileID: 559047057}
+--- !u!82 &559047060
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 559047059}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1dff19c34c285794e9b5749d7ba63fc9, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.26
+  m_Pitch: 0.26
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 221
+  DopplerLevel: 1
+  MinDistance: 0.78668976
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &589303254
 Prefab:
   m_ObjectHideFlags: 0
@@ -1463,6 +1549,7 @@ MonoBehaviour:
   previousScene: OldMusem
   previousIndex: 2
   nextIndex: 2
+  playable: {fileID: 0}
 --- !u!1001 &743289492
 Prefab:
   m_ObjectHideFlags: 0
@@ -3638,6 +3725,7 @@ MonoBehaviour:
   previousScene: OldMusem
   previousIndex: 0
   nextIndex: 0
+  playable: {fileID: 0}
 --- !u!4 &2000776347
 Transform:
   m_ObjectHideFlags: 0
@@ -3772,6 +3860,7 @@ MonoBehaviour:
   previousScene: OldMuseum
   previousIndex: 1
   nextIndex: 1
+  playable: {fileID: 0}
 --- !u!1001 &2048529989
 Prefab:
   m_ObjectHideFlags: 0
@@ -3982,6 +4071,7 @@ MonoBehaviour:
   previousScene: OldMusem
   previousIndex: 1
   nextIndex: 1
+  playable: {fileID: 0}
 --- !u!4 &2134607947
 Transform:
   m_ObjectHideFlags: 0
@@ -4065,3 +4155,4 @@ MonoBehaviour:
   previousScene: OldMusem
   previousIndex: 0
   nextIndex: 0
+  playable: {fileID: 0}
