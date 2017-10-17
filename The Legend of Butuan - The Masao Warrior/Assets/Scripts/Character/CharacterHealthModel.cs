@@ -11,19 +11,17 @@ public class CharacterHealthModel : MonoBehaviour {
 	private float health;
 	private CharacterMovementView movementView;
 	private PauseManager pauseManager;
+	private GameStateManager stateManager;
 
 	void Awake() {
-		pauseManager = FindObjectOfType<PauseManager>().GetComponent<PauseManager>();
-	}
-
-	void Start () {
 		movementView = GetComponent<CharacterMovementView>();
+		stateManager = GameObject.FindObjectOfType<GameStateManager>() as GameStateManager;
 		maximumHealth = startingHealth;
 		health = maximumHealth;
 	}
 
-	void Update () {
-		
+	void Start() {
+		pauseManager = FindObjectOfType<PauseManager>().GetComponent<PauseManager>();
 	}
 
 	public float GetHealth() {
@@ -47,10 +45,7 @@ public class CharacterHealthModel : MonoBehaviour {
 	}
 
 	public void DealDamage(float damage) {
-		if(health <= 0) {
-			return;
-		}
-		UIDamageNumbers.Instance.ShowDamageNumber( damage, transform.position);
+		UIDamageNumbers.Instance.ShowDamageNumber(damage, transform.position);
 		health -= damage;
 		if(health <= 0) {
 			health = 0;

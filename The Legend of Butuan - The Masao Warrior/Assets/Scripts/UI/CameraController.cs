@@ -57,7 +57,7 @@ public class CameraController : MonoBehaviour {
 			StartCoroutine(MoveCamera());
 		}
 		string sceneName = SceneManager.GetActiveScene().name;
-		if(sceneName == "MainMenu" || sceneName == "TitleScreen") {
+		if(sceneName == "MainMenu" || sceneName == "TitleScreen" || sceneName == "GameOver") {
 			Destroy(gameObject);
 		}
 	}

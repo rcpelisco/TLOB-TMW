@@ -10,10 +10,13 @@ public class GameStateManager : MonoBehaviour {
 	public GameObject playerPrefab;
 	public GameObject audioManagerPrefab;
 
-	private Player playerScript;
 	private GameObject player;
+	private GameObject cam;
+	private GameObject canvas;
+	private GameObject audioManager;
 	private static bool isExists;
 	private bool fromRespawn;
+	private bool load;
 
 	private PlayerData playerData;
 
@@ -30,14 +33,14 @@ public class GameStateManager : MonoBehaviour {
 		SceneManager.LoadScene("IntroNarration");
 	}
 
-	public void LoadGame(bool fromRespawn) {
-		this.fromRespawn = fromRespawn;
+	public void LoadGame() {
+		load = true;
 		playerData = SaveLoadManager.LoadPlayer();
 		SceneManager.LoadScene(playerData.currentScene);
-		player = Instantiate(playerPrefab);
 	}
 
 	void OnEnable() {
+		Debug.Log("OnEnableLoad");
 		SceneManager.sceneLoaded += OnLevelFinishedLoaded;
 	}
 
@@ -46,37 +49,44 @@ public class GameStateManager : MonoBehaviour {
 	}
 
 	void OnLevelFinishedLoaded(Scene scene, LoadSceneMode mode) {
-		if(player == null) {
-			return;
+		if(load) {
+			player = Instantiate(playerPrefab);
+			canvas = Instantiate(canvasPrefab);
+			SetPlayerStat(playerData);
+			audioManager = Instantiate(audioManagerPrefab);
+			cam = Instantiate(mainCameraPrefab);
+			load = false;
+			Debug.Log(string.Format("player: {0}, canvas: {1}, audioManager: {2}, cam: {3}", 
+				player.name, canvas.name, 
+				audioManager.name, cam.name));
+
 		}
-		SetPlayerStat(playerData);
-		Instantiate(canvasPrefab);
-		Instantiate(audioManagerPrefab);
-		Instantiate(mainCameraPrefab);
 	}
 
 	void SetPlayerStat(PlayerData playerData) {
-		float maxHP;
-		player.transform.position = new Vector2(playerData.x, playerData.y);
 		player.GetComponent<Character>().healthModel.SetHealth(playerData.HP);
-		if(fromRespawn) {
-			maxHP = 100f;
-		} else {
-			maxHP = playerData.MaxHP;
-		}
-		player.GetComponent<Character>().healthModel.SetMaxHealth(maxHP);
+		player.GetComponent<Character>().healthModel.SetMaxHealth(playerData.MaxHP);
 		player.GetComponent<Character>().levelModel.SetCurrentExp(playerData.XP);
 		player.GetComponent<Character>().levelModel.SetCurrentLevel(playerData.Level);
 		player.GetComponent<Character>().inventoryModel.SetInventory(playerData.items);
+		fromRespawn = false;
 	}
 
-	public void SaveGame() {
-		playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+	public void SaveGame() {	
+		Player playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 		playerScript.Save();
+		playerScript.CommitSave();
 	}
 
-	public void GameOver() {
-
+	public void RespawnSave() {
+		Player playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+		playerScript.Save();
+		playerScript.ResetHealth();
+		playerScript.CommitSave();
+		SceneManager.LoadScene("GameOver");
 	}
 
+	public string GetCurrentScene() {
+		return playerData.currentScene;
+	}
 }
