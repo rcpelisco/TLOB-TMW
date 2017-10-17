@@ -19775,7 +19775,7 @@ Prefab:
     - target: {fileID: 114211494144016786, guid: 6b12543453159bc419066c92ff7313ba,
         type: 2}
       propertyPath: dialogue.sentences.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4129037679269824, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
       propertyPath: m_LocalPosition.x
@@ -19828,11 +19828,17 @@ Prefab:
     - target: {fileID: 114211494144016786, guid: 6b12543453159bc419066c92ff7313ba,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: I need to look for these sheep.
+      value: Please help me! There are 4 yellow slime in my backyard. Please kill
+        them!
       objectReference: {fileID: 0}
     - target: {fileID: 1030374945753182, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
       propertyPath: m_Name
       value: NPC (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114211494144016786, guid: 6b12543453159bc419066c92ff7313ba,
+        type: 2}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: My house is the first house you'll see once you enter Margies.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
@@ -19866,11 +19872,44 @@ MonoBehaviour:
     giver: {fileID: 0}
     requirement: 
     objective: 
+    enemyType: 0
+    noOfEnemies: 0
     type: 1
     status: 0
     expReward: 0
     itemReward: 0
     amountReward: 0
+--- !u!1 &812999925 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1030374945753182, guid: 6b12543453159bc419066c92ff7313ba,
+    type: 2}
+  m_PrefabInternal: {fileID: 812999921}
+--- !u!114 &812999926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 812999925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d868c30f588dfd46a3f73c1e3caae61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest:
+    ID: 100
+    title: Kill yellow slime.
+    description: There are 4 yellow slime in my backyard. Please kill them!
+    nextQuest: 0
+    giver: {fileID: 0}
+    requirement: 
+    objective: 
+    enemyType: 2
+    noOfEnemies: 1
+    type: 1
+    status: 1
+    expReward: 0
+    itemReward: 300
+    amountReward: 40
 --- !u!1001 &818624125
 Prefab:
   m_ObjectHideFlags: 0
