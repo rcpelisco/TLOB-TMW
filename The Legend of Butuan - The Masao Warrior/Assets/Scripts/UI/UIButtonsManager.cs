@@ -19,7 +19,7 @@ public class UIButtonsManager : MonoBehaviour {
 
 	public void LoadGame() {
 		if(stateManager != null) {
-			stateManager.LoadGame(false);
+			stateManager.LoadGame();
 		}
 	}
 
@@ -31,7 +31,7 @@ public class UIButtonsManager : MonoBehaviour {
 
 	public void Respawn() {
 		if(stateManager != null) {
-			stateManager.LoadGame(true);
+			stateManager.RespawnSave();
 		}
 	}
 

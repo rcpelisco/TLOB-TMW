@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour {
 
 	public float letterInterval = 0.05f;
 
-	void Awake() {
+	void Start() {
 		sentences = new Queue<string>();
 		interactionModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInteractionModel>();
 	}

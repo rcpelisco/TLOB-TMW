@@ -52,8 +52,26 @@ public class PauseManager : MonoBehaviour {
 	}
 
 	void Update() {
+		if(inventoryModel == null) {
+			inventoryModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInventoryModel>();
+		}
 		if(inventoryModel.HasItem(ItemType.Book)) {
 			bookButton.SetActive(true);
+		}
+	}
+
+	void OnEnable() {
+		SceneManager.sceneLoaded += OnLevelFinishLoading;
+	}
+
+	void OnDisable() {
+		SceneManager.sceneLoaded -= OnLevelFinishLoading;
+	}
+
+	void OnLevelFinishLoading(Scene scene, LoadSceneMode mode) {
+		string sceneName = SceneManager.GetActiveScene().name;
+		if(sceneName == "MainMenu" || sceneName == "GameOver") {
+			Destroy(gameObject);
 		}
 	}
 
@@ -62,11 +80,15 @@ public class PauseManager : MonoBehaviour {
 	}
 
 	public void ShowGameOverScreen() {
-		gameOverScreen.SetActive(true);
+		if(gameOverScreen != null) {
+			gameOverScreen.SetActive(true);
+		}
 	}
 
 	public void HideGameOverScreen() {
-		gameOverScreen.SetActive(false);
+		if(gameOverScreen != null) {
+			gameOverScreen.SetActive(false);
+		}
 	}
 
 	public void BookButton() {
@@ -203,7 +225,7 @@ public class PauseManager : MonoBehaviour {
 
 	public void MainMenuScreen() {
 		DoUnpause();
-		SceneManager.LoadScene("MainMenu");
+		SceneManager.LoadScene("MainMenu" );
 	}
 
 	public void QuitGame() {

@@ -16,8 +16,11 @@ public class Player : MonoBehaviour {
 	public float x;
 	public float y;
 	public Dictionary<ItemType, int> items;
+	public QuestData mainQuest;
+	public List<QuestData> sideQuests;
 
 	void Awake() {
+		sideQuests = new List<QuestData>();
 		playerStats = GetComponent<Character>();
 		if(!isPlayerExists) {
 			isPlayerExists = true;
@@ -29,7 +32,7 @@ public class Player : MonoBehaviour {
 
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
 		string sceneName = SceneManager.GetActiveScene().name;
-		if(sceneName == "MainMenu" || sceneName == "TitleScreen") {
+		if(sceneName == "MainMenu" || sceneName == "TitleScreen" || sceneName == "GameOver") {
 			Destroy(gameObject);
 		}
 	}
@@ -55,10 +58,23 @@ public class Player : MonoBehaviour {
 		items = playerStats.inventoryModel.GetInventory();
 	}
 
+	void SavePlayerQuest() {
+		mainQuest = playerStats.questModel.GetMainQuest();
+		sideQuests = playerStats.questModel.GetSideQuest();
+	}
+
 	public void Save() {
 		SavePlayerStats();
 		SavePlayerInventory();
+		// SavePlayerQuest();
 		currentScene = SceneManager.GetActiveScene().name;
+	}
+
+	public void CommitSave() {
 		SaveLoadManager.SavePlayer(this);
+	}
+
+	public void ResetHealth() {
+		HP = playerStats.healthModel.GetMaxHealth();
 	}
 }

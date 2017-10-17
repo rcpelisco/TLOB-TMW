@@ -13,7 +13,6 @@ public class CharacterMovementView : MonoBehaviour {
 
 	void Awake() {
 		if(animator == null) {
-			Debug.Log("Animator is not added!");
 			enabled = false;
 		}
 		movementModel = GetComponent<CharacterMovementModel>();

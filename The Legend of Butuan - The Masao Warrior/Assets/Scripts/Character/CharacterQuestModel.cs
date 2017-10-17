@@ -5,17 +5,17 @@ using UnityEngine;
 public class CharacterQuestModel : MonoBehaviour {
 	
 	private QuestData mainQuest;
-	private List<QuestData> sideQuest;
+	private List<QuestData> sideQuests;
 
 	void Awake() {
-		sideQuest = new List<QuestData>();
+		sideQuests = new List<QuestData>();
 	}
 
 	void AddQuest(QuestData quest) {
 		if(quest.type == QuestData.QuestType.MainQuest) {
 			mainQuest = quest;
 		} else if(quest.type == QuestData.QuestType.SideQuest) {
-			sideQuest.Add(quest);
+			sideQuests.Add(quest);
 		}
 	}
 
@@ -23,7 +23,7 @@ public class CharacterQuestModel : MonoBehaviour {
 		if(quest.type == QuestData.QuestType.MainQuest) {
 			quest = null;
 		} else if(quest.type == QuestData.QuestType.SideQuest) {
-			sideQuest.Remove(quest);
+			sideQuests.Remove(quest);
 		}
 	}
 
@@ -43,5 +43,9 @@ public class CharacterQuestModel : MonoBehaviour {
 
 	public QuestData GetMainQuest() {
 		return mainQuest;
+	}
+
+	public List<QuestData> GetSideQuest() {
+		return sideQuests;
 	}
 }

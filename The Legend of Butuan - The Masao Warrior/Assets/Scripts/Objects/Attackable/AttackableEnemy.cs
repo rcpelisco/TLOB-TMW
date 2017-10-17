@@ -18,8 +18,8 @@ public class AttackableEnemy : AttackableBase {
 	private float startingHealth;
 	private CharacterLevelModel playerLevelModel;
 
-	void Awake() {
-		playerLevelModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterLevelModel>();
+	void Start() {
+  		playerLevelModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterLevelModel>();
 		health = maxHealth;
 	}	
 

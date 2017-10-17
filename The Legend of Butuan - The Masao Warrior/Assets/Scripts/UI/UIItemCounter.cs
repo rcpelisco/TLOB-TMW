@@ -11,7 +11,7 @@ public class UIItemCounter : MonoBehaviour {
 	private CharacterInventoryModel inventoryModel;
 	private Text text;
 
-	void Awake() {
+	void Start() {
 		inventoryModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInventoryModel>();
 		text = GetComponentInChildren<Text>();
 	}

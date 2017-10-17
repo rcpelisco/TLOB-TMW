@@ -10,6 +10,7 @@ public class InventoryUI : MonoBehaviour {
 	public ItemType[] items = new ItemType[numItemSlots];
 
 	public void AddItem(ItemType itemType) {
+		Debug.Log("InventoryUI.AddItem");
 		Sprite itemToAdd = Database.item.FindItem(itemType).prefab.GetComponentInChildren<SpriteRenderer>().sprite;
 		for(int i = 0; i < items.Length; i++){
 			if(items[i] == ItemType.None) {
@@ -19,10 +20,6 @@ public class InventoryUI : MonoBehaviour {
 				return;
 			}
 		}
-	}
-
-	void Awake() {
-		
 	}
 
 	public void RemoveItem(ItemType itemType) {

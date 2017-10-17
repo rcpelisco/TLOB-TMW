@@ -9,7 +9,7 @@ public class UIHealthBar : MonoBehaviour {
 
 	private CharacterHealthModel healthModel;
 
-	void Awake() {
+	void Start() {
 		healthModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterHealthModel>();
 	}
 
@@ -23,6 +23,6 @@ public class UIHealthBar : MonoBehaviour {
 	}
 
 	void UpdateHealthBar() {
-		healthBar.localScale = new Vector3( healthModel.GetHealthPercentage(), 1f, 1f);
+		healthBar.localScale = new Vector3(healthModel.GetHealthPercentage(), 1f, 1f);
 	}
 }

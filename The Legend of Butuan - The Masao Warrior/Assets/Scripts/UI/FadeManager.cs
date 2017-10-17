@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class FadeManager : MonoBehaviour {
@@ -18,6 +19,7 @@ public class FadeManager : MonoBehaviour {
 	private bool isShowing;
 	private float duration;
 	private static bool isCanvasExists;
+	private EventSystem eventSystem;
 
 	void Awake () {
 		instance = this;
@@ -43,10 +45,6 @@ public class FadeManager : MonoBehaviour {
 	void OnLevelFinishLoading(Scene scene, LoadSceneMode mode) {
 		if(fadeOnStart) {
 			Fade(false, fadeTime);
-		}
-		string sceneName = SceneManager.GetActiveScene().name;
-		if(sceneName == "MainScene" || sceneName == "TitleScreen") {
-			Destroy(gameObject);
 		}
 	}
 
@@ -79,6 +77,9 @@ public class FadeManager : MonoBehaviour {
 		fadeImage.color = Color.Lerp(new Color(0, 0 ,0 ,0), Color.black, transition);
 		if(transition > 1 || transition < 0) {
 			isFading = false;
+			eventSystem = FindObjectOfType<EventSystem>();
+			eventSystem.gameObject.SetActive(false);
+			eventSystem.gameObject.SetActive(true);
 		}
 	}
 
