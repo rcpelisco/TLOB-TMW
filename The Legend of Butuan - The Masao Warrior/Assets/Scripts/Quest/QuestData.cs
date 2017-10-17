@@ -27,6 +27,8 @@ public class QuestData {
 
 	public string requirement;
 	public string objective;
+	public EnemyType enemyType;
+	public int noOfEnemies;
 	public QuestType type;
 	public QuestStatus status;
 
