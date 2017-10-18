@@ -13,6 +13,7 @@ public class AttackableEnemy : AttackableBase {
 	public GameObject deathFX;
 	public float deathFXDelay;
 	public int expToGive;
+	public AudioSource enemyDeath;
 
 	private float health;
 	private float startingHealth;
@@ -37,6 +38,7 @@ public class AttackableEnemy : AttackableBase {
 			if(deathFX != null) {
 				StartCoroutine(CreateDeathFXDelay(deathFXDelay));
 			}
+			enemyDeath.Play();
 		}
 	}
 

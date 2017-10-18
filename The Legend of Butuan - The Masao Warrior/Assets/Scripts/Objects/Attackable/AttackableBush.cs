@@ -6,6 +6,7 @@ public class AttackableBush : AttackableBase {
 
 	public Sprite destroyedSprite;
 	public GameObject destroyedEffects;
+	public AudioSource onHit;
 
 	private SpriteRenderer spriteRenderer;
 
@@ -20,5 +21,6 @@ public class AttackableBush : AttackableBase {
 		}
 		Instantiate(destroyedEffects, transform.position, Quaternion.identity);
 		BroadcastMessage("OnLootDrop", SendMessageOptions.DontRequireReceiver);
+		onHit.Play();
 	}
 }

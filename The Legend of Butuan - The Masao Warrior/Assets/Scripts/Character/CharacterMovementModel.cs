@@ -10,6 +10,7 @@ public class CharacterMovementModel : CharacterBaseControl {
 	public Transform weaponParent;
 	public Transform shieldParent;
 	public Transform previewItemParent;
+	public AudioSource onAttack;
 
 	private Vector3 movementDirection;
 	private Vector3 facingDirection;
@@ -174,6 +175,7 @@ public class CharacterMovementModel : CharacterBaseControl {
 	}
 
 	public void DoAttack() {
+		onAttack.Play();
 	}
 
 	public Vector3 GetDirection() {
