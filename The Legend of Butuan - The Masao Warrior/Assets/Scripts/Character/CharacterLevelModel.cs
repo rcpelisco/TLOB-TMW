@@ -67,5 +67,7 @@ public class CharacterLevelModel : MonoBehaviour {
 		}
 	}
 
-	float 
+	float LevelUpHealth() {
+		return 1f;
+	}
 }
