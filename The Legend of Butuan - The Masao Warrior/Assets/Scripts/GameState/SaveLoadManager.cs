@@ -38,19 +38,24 @@ public class PlayerData {
 	public float x;
 	public float y;
 	public Dictionary<ItemType, int> items;
-	// public QuestData mainQuest;
-	// public List<QuestData> sideQuests;
+	public QuestData mainQuest;
+	public List<QuestData> sideQuests;
 
 	public PlayerData(Player player) {
 		HP = player.HP;
 		MaxHP = player.MaxHP;
 		XP = player.XP;
 		Level = player.Level;
-		currentScene = player.currentScene;
+		currentScene = "";
+		if(player.currentScene == "JoelHouse") {
+			currentScene = "JoelHouseGame";
+		} else {
+			currentScene = player.currentScene;
+		}
 		x = player.x;
 		y = player.y;
 		items = player.items;
-		// mainQuest = player.mainQuest;
-		// sideQuests = player.sideQuests;
+		mainQuest = player.mainQuest;
+		sideQuests = player.sideQuests;
 	}
 }
