@@ -66,7 +66,7 @@ public class Player : MonoBehaviour {
 	public void Save() {
 		SavePlayerStats();
 		SavePlayerInventory();
-		// SavePlayerQuest();
+		SavePlayerQuest();
 		currentScene = SceneManager.GetActiveScene().name;
 	}
 
@@ -76,5 +76,9 @@ public class Player : MonoBehaviour {
 
 	public void ResetHealth() {
 		HP = playerStats.healthModel.GetMaxHealth();
+	}
+
+	void OnDestroy() {
+		Debug.Log("Destroyed on: " + SceneManager.GetActiveScene().name);
 	}
 }
