@@ -18,7 +18,7 @@ public class CharacterHealthModel : MonoBehaviour {
 		movementView = GetComponent<CharacterMovementView>();
 		stateManager = GameObject.FindObjectOfType<GameStateManager>() as GameStateManager;
 		maximumHealth = startingHealth;
-		health = maximumHealth;
+		ResetHealth();
 	}
 
 	void Start() {
@@ -55,6 +55,10 @@ public class CharacterHealthModel : MonoBehaviour {
 			movementView.OnDeath();
 			StartCoroutine(WaitNextScene());
 		}
+	}
+
+	public void ResetHealth() {
+		health = maximumHealth;
 	}
 	
 	IEnumerator WaitNextScene() {

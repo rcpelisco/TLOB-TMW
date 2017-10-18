@@ -3,5 +3,7 @@
 	Bat,
 	Slime,
 	Luthang,
-	Wizard
+	Wizard,
+	Plant,
+	Pumpkin
 }

@@ -5,15 +5,20 @@ using UnityEngine;
 public class CharacterLevelModel : MonoBehaviour {
 
 	public int currentLevel;
+
 	[SerializeField]
 	private int currentExp;
+
 	private int[] requiredExp = {
 		0,10,20,50,75,100,200,250,325,450,700,875,1000
 	};
+	private CharacterHealthModel healthModel;
 	int temp = 0;
+	
 
 	void Awake() {
 		currentLevel = 1;
+		healthModel = GetComponent<CharacterHealthModel>();
 	}
 	
 	public int GetCurrentLevel() {
@@ -56,7 +61,11 @@ public class CharacterLevelModel : MonoBehaviour {
 		if(currentExp >= requiredExp[currentLevel]) {
 			temp = currentExp - requiredExp[currentLevel];
 			currentLevel++;
+			healthModel.SetMaxHealth(0);
+			healthModel.ResetHealth();
 			currentExp = temp;
 		}
 	}
+
+	float 
 }
