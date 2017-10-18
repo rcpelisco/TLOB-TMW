@@ -19,39 +19,24 @@ public class UIQuest : MonoBehaviour {
 
 	private CharacterQuestModel questModel;
 	private QuestData mainQuest;
-	private List<Button> sideQuestButtons;
+	private List<GameObject> sideQuestButtons;
 	private List<QuestData> sideQuest;
 
 	void Awake() {
 		sideQuest = new List<QuestData>();
-		// questModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterQuestModel>();
+		sideQuestButtons = new List<GameObject>();
+		questModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterQuestModel>();
 	}
 
 	void Start() {
-		QuestData data = new QuestData();
-		data.ID = 100;
-		data.title = "A Link to the Past";
-		data.description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum purus nisl, dictum tempor massa facilisis vitae. Morbi ac ex eu ipsum imperdiet rhoncus vel at turpis. Pellentesque justo lectus, elementum ultrices luctus mollis, lacinia at libero. Aliquam nibh eros, blandit maximus urna dapibus, placerat feugiat ligula. Curabitur ut scelerisque orci. Phasellus maximus metus id dignissim egestas. Curabitur ornare urna eget nulla pretium ultrices. Vivamus justo nunc, convallis quis interdum ut, maximus sit amet enim. Morbi quis pretium orci. In nunc eros, bibendum nec augue ac, bibendum interdum libero. Nulla sit amet erat turpis. Donec accumsan fringilla lacus sed laoreet. Aenean odio metus, porttitor a dapibus ut, euismod in purus. Nullam consequat risus sit amet porta faucibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi ac pharetra urna.";
-		data.nextQuest = 0;
-		data.requirement = "";
-		data.objective = "";
-		data.enemyType = EnemyType.None;
-		data.type = QuestData.QuestType.SideQuest;
-		data.status = QuestData.QuestStatus.Available;
-		data.expReward = 100;
-		data.itemReward = ItemType.None;
-		data.amountReward = 0;
-		sideQuest.Add(data);
+		sideQuest = questModel.GetSideQuest();
+		mainQuest = questModel.GetMainQuest();
 		RefreshDisplay();
 	}
 
 	void RefreshDisplay() {
 		RemoveQuestButtons();
 		AddSideQuestButtons();
-	}
-
-	void OnEnable() {
-		SetQuest();
 	}
 
 	private void RemoveQuestButtons() {
@@ -63,11 +48,16 @@ public class UIQuest : MonoBehaviour {
 
 	private void AddSideQuestButtons() {
 		foreach(QuestData data in sideQuest) {
+			Debug.Log(data.title);
 			GameObject questButton = (GameObject) GameObject.Instantiate(buttonPrefab);
-			questButton.transform.SetParent(sideQuestParent);
-			questButton.transform.localScale = Vector3.one;
+			sideQuestButtons.Add(questButton);
+			questButton.transform.SetParent(null);
 			UIQuestButton uiQB = questButton.GetComponent<UIQuestButton>();
 			uiQB.Setup(data, this);
+		}
+		foreach(GameObject questButton in sideQuestButtons) {
+			questButton.transform.SetParent(sideQuestParent);
+			questButton.transform.localScale = Vector3.one;
 		}
 	}
 
@@ -77,14 +67,5 @@ public class UIQuest : MonoBehaviour {
 		xP.text = data.expReward.ToString();
 		item.text = data.itemReward.ToString();
 		amount.text = data.amountReward.ToString();
-	}
-
-	public void SetQuest() {
-		// questData = questModel.GetMainQuest();
-		// if(questData != null) {
-		// 	text.text = questData.description;
-		// } else {
-		// 	text.text = "No active quest";
-		// }
 	}
 }
