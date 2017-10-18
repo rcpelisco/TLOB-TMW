@@ -23,7 +23,6 @@ public class QuestData {
 	[TextArea(0,3)]
 	public string description;
 	public int nextQuest;
-	public Sprite giver;
 
 	public string requirement;
 	public string objective;

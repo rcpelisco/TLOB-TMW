@@ -74,6 +74,7 @@ public class FadeManager : MonoBehaviour {
 		} else {
 			transition -= Time.deltaTime * (1/duration);
 		}
+	
 		fadeImage.color = Color.Lerp(new Color(0, 0 ,0 ,0), Color.black, transition);
 		if(transition > 1 || transition < 0) {
 			isFading = false;

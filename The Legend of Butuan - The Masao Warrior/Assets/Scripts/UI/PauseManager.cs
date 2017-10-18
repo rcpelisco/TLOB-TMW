@@ -37,9 +37,9 @@ public class PauseManager : MonoBehaviour {
 		bookButton = GameObject.FindGameObjectWithTag("BookButton");
 		gameOverScreen = GameObject.FindGameObjectWithTag("GameOverScreen");
 
-		HideTriviaScreen();
+		// HideTriviaScreen();
 		HideInventoryScreen();
-		HideQuestScreen();
+		// HideQuestScreen();
 		HidePauseScreen();
 		HideBookScreen();
 		HideGameOverScreen();
