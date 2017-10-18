@@ -12,6 +12,7 @@ public class PauseManager : MonoBehaviour {
 	private bool isTriviaActive = false;
 	private bool isPauseActive = false;
 	private bool isBookActive = false;
+	private bool isMapActive = false;
 	
 	private GameObject inventoryScreen;
 	private GameObject questScreen;
@@ -19,6 +20,7 @@ public class PauseManager : MonoBehaviour {
 	private GameObject pauseScreen;
 	private GameObject bookScreen;
 	private GameObject gameOverScreen;
+	private GameObject mapScreen;
 
 	private GameObject bookButton;
 
@@ -36,6 +38,7 @@ public class PauseManager : MonoBehaviour {
 		bookScreen = GameObject.FindGameObjectWithTag("BookScreen");
 		bookButton = GameObject.FindGameObjectWithTag("BookButton");
 		gameOverScreen = GameObject.FindGameObjectWithTag("GameOverScreen");
+		mapScreen = GameObject.FindGameObjectWithTag("MapScreen");
 
 		HideTriviaScreen();
 		HideInventoryScreen();
@@ -43,6 +46,7 @@ public class PauseManager : MonoBehaviour {
 		HidePauseScreen();
 		HideBookScreen();
 		HideGameOverScreen();
+		HideMapScreen();
 	}
 
 	void Start() {
@@ -77,6 +81,28 @@ public class PauseManager : MonoBehaviour {
 
 	public void Mute() {
 		AudioListener.pause = !AudioListener.pause;
+	}
+
+	public void MapButton() {
+		if(isMapActive) {
+			HideMapScreen();
+			isMapActive = false;
+		} else {
+			ShowMapScreen();
+			isMapActive = true;
+		}
+	}
+
+	void HideMapScreen() {
+		if(mapScreen != null) {
+			mapScreen.SetActive(false);
+		}
+	}
+
+	void ShowMapScreen() {
+		if(mapScreen != null) {
+			mapScreen.SetActive(true);
+		}
 	}
 
 	public void ShowGameOverScreen() {

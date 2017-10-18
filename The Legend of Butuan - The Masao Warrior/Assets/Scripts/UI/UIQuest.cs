@@ -19,6 +19,7 @@ public class UIQuest : MonoBehaviour {
 
 	private CharacterQuestModel questModel;
 	private QuestData mainQuest;
+	private GameObject mainQuestButton;
 	private List<GameObject> sideQuestButtons;
 	private List<QuestData> sideQuest;
 
@@ -29,36 +30,49 @@ public class UIQuest : MonoBehaviour {
 	}
 
 	void Start() {
-		sideQuest = questModel.GetSideQuest();
-		mainQuest = questModel.GetMainQuest();
 		RefreshDisplay();
 	}
 
-	void RefreshDisplay() {
+	void OnEnable(){
+		if(questModel != null) {
+			sideQuest = questModel.GetSideQuest();
+			mainQuest = questModel.GetMainQuest();
+		}
+		RefreshDisplay();
+	}
+
+	public void RefreshDisplay() {
 		RemoveQuestButtons();
 		AddSideQuestButtons();
+		SetMainQuestButton();
 	}
 
 	private void RemoveQuestButtons() {
-		while(sideQuestParent.childCount > 0) {
-			GameObject toRemove = sideQuestParent.GetChild(0).gameObject;
-			Destroy(toRemove);
+		foreach(Transform child in sideQuestParent.transform) {
+			Destroy(child.gameObject);
 		}
 	}
 
 	private void AddSideQuestButtons() {
 		foreach(QuestData data in sideQuest) {
-			Debug.Log(data.title);
 			GameObject questButton = (GameObject) GameObject.Instantiate(buttonPrefab);
-			sideQuestButtons.Add(questButton);
-			questButton.transform.SetParent(null);
 			UIQuestButton uiQB = questButton.GetComponent<UIQuestButton>();
-			uiQB.Setup(data, this);
-		}
-		foreach(GameObject questButton in sideQuestButtons) {
 			questButton.transform.SetParent(sideQuestParent);
 			questButton.transform.localScale = Vector3.one;
+			uiQB.Setup(data, this);
+			sideQuestButtons.Add(questButton);
 		}
+	}
+
+	private void SetMainQuestButton() {
+		if(mainQuestButton == null) {
+			mainQuestButton = (GameObject) GameObject.Instantiate(buttonPrefab);
+		}
+		UIQuestButton uiQB = mainQuestButton.GetComponent<UIQuestButton>();
+		mainQuestButton.transform.SetParent(mainQuestParent);
+		mainQuestButton.transform.localScale = Vector3.one;
+		uiQB.Setup(mainQuest, this);
+		SetRightPanel(mainQuest);
 	}
 
 	public void SetRightPanel(QuestData data) {

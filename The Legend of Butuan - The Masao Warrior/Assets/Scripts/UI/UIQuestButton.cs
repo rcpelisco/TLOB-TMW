@@ -18,7 +18,11 @@ public class UIQuestButton : MonoBehaviour {
 	public void Setup(QuestData data, UIQuest uiQuest) {
 		this.data = data;
 		this.uiQuest = uiQuest;
-		questTitle.text = data.title;
+		if(data != null) {
+			questTitle.text = data.title;
+		} else {
+			questTitle.text = "No Active Quest";
+		}
 	}
 
 	public void HandleClick() {

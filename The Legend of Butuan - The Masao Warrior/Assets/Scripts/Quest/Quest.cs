@@ -14,6 +14,10 @@ public class Quest : MonoBehaviour {
 	void Awake() {
 		questModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterQuestModel>();
 		avatar = GetComponentInChildren<Image>();
+		if(questModel.GetSideQuest().Contains(quest)) {
+			Debug.Log("Naa na ni");
+			this.enabled = false;
+		}
 	}
 
 	void Update() {
