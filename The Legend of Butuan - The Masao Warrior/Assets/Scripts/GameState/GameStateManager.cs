@@ -56,10 +56,10 @@ public class GameStateManager : MonoBehaviour {
 			audioManager = Instantiate(audioManagerPrefab);
 			cam = Instantiate(mainCameraPrefab);
 			load = false;
-			Debug.Log(string.Format("player: {0}, canvas: {1}, audioManager: {2}, cam: {3}", 
+			Debug.Log(string.Format("player: {0}, canvas: {1}, audioManager: {2}, cam: {3}, scene: {4}", 
 				player.name, canvas.name, 
-				audioManager.name, cam.name));
-
+				audioManager.name, cam.name, 
+				SceneManager.GetActiveScene().name));
 		}
 	}
 

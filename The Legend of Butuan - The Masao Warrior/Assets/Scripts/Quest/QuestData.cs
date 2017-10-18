@@ -18,10 +18,10 @@ public class QuestData {
 	}
 
 	public int ID;
-	public string title;
+	public string title = "";
 	
 	[TextArea(0,3)]
-	public string description;
+	public string description = "";
 	public int nextQuest;
 
 	public string requirement;
@@ -31,7 +31,7 @@ public class QuestData {
 	public QuestType type;
 	public QuestStatus status;
 
-	public int expReward;
-	public ItemType itemReward;
-	public int amountReward;
+	public int expReward = 0;
+	public ItemType itemReward = ItemType.None;
+	public int amountReward = 0;
 }

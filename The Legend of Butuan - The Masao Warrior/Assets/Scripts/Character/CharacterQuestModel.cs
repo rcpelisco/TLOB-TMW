@@ -6,6 +6,7 @@ public class CharacterQuestModel : MonoBehaviour {
 	
 	private QuestData mainQuest;
 	private List<QuestData> sideQuests;
+	private List<Quest> quests;
 
 	void Awake() {
 		sideQuests = new List<QuestData>();

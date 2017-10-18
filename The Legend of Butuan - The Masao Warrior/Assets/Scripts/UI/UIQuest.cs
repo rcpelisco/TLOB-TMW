@@ -24,6 +24,7 @@ public class UIQuest : MonoBehaviour {
 	private List<QuestData> sideQuest;
 
 	void Awake() {
+		mainQuest = new QuestData();
 		sideQuest = new List<QuestData>();
 		sideQuestButtons = new List<GameObject>();
 		questModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterQuestModel>();
