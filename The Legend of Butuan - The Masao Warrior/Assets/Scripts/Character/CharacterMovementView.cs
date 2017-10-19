@@ -76,9 +76,9 @@ public class CharacterMovementView : MonoBehaviour {
 	}
 
 	public void DoAttack() {
-		if(movementModel.canAttack) {
+		// if(movementModel.canAttack) {
 			animator.SetTrigger("doAttack");
-		}
+		// }
 	}
 
 	public void OnAttackStarted() {

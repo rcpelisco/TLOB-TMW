@@ -7,7 +7,7 @@ public class CharacterTouchControl : CharacterBaseControl {
 	Vector2 direction;
 
 	void Start() {
-		direction = Vector2.zero;
+		SetDirection(new Vector2(0, -1));
 	}
 
 	void Update() {

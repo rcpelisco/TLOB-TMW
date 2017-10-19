@@ -61,8 +61,8 @@ public class InteractableNPC : InteractableBase {
 		if(FindObjectOfType<DialogueManager>().IsSentenceDone()) {
 			FindObjectOfType<DialogueManager>().DisplayNextSentence();
 			if(FindObjectOfType<DialogueManager>().IsDone()) {
-				character.movementModel.SetFrozen(false);
-				movementModel.SetFrozen(false);
+				character.movementModel.SetFrozen(false, false);
+				movementModel.SetFrozen(false, false);
 				DialogueBox.Hide();
 				if(animAfterDialogue != null) {
 					animAfterDialogue.Play();
@@ -78,8 +78,8 @@ public class InteractableNPC : InteractableBase {
 		}
 		if(!FindObjectOfType<DialogueManager>().IsStarted()) {
 			FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-			movementModel.SetFrozen(true);
-			character.movementModel.SetFrozen(true);
+			movementModel.SetFrozen(true, true);
+			character.movementModel.SetFrozen(true, true);
 		} else {
 			FindObjectOfType<DialogueManager>().EndSentence();
 		}

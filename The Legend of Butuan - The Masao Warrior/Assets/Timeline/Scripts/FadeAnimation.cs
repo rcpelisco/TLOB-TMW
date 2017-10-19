@@ -5,10 +5,14 @@ using UnityEngine;
 public class FadeAnimation : MonoBehaviour {
 
 	void OnEnable() {
-		AnimationFadeManager.instance.Fade(false, 1.5f);
+		if(!AnimationFadeManager.instance) {
+			AnimationFadeManager.instance.Fade(false, 1.5f);
+		}
 	}
 	void OnDisable() {
-		AnimationFadeManager.instance.Fade(true, 1.5f);
+		if(!AnimationFadeManager.instance) {
+			AnimationFadeManager.instance.Fade(true, 1.5f);
+		}
 	}
 
 }

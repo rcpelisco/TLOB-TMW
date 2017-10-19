@@ -59,6 +59,7 @@ public class GameStateManager : MonoBehaviour {
 				player.name, canvas.name, 
 				audioManager.name, cam.name, 
 				SceneManager.GetActiveScene().name));
+			Destroy(player.transform.GetChild(0).GetChild(2).GetChild(0).gameObject);
 			DontDestroyOnLoad(player);
 			DontDestroyOnLoad(canvas);
 			DontDestroyOnLoad(audioManager);
@@ -67,6 +68,7 @@ public class GameStateManager : MonoBehaviour {
 	}
 
 	void SetPlayerStat(PlayerData playerData) {
+		PlayerPrefs.SetString("lastScene", "");
 		player.GetComponent<Character>().healthModel.SetHealth(playerData.HP);
 		player.GetComponent<Character>().healthModel.SetMaxHealth(playerData.MaxHP);
 		player.GetComponent<Character>().levelModel.SetCurrentExp(playerData.XP);

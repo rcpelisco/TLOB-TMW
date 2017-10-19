@@ -1032,6 +1032,11 @@ Prefab:
 
         y.'
       objectReference: {fileID: 0}
+    - target: {fileID: 114050498237119732, guid: 6b12543453159bc419066c92ff7313ba,
+        type: 2}
+      propertyPath: canWalk
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
   m_IsPrefabParent: 0
@@ -1465,6 +1470,11 @@ Prefab:
       propertyPath: dialogue.sentences.Array.data[1]
       value: '... This will help you out in defeating monsters.'
       objectReference: {fileID: 0}
+    - target: {fileID: 114050498237119732, guid: 6b12543453159bc419066c92ff7313ba,
+        type: 2}
+      propertyPath: canWalk
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
   m_IsPrefabParent: 0
@@ -1489,9 +1499,10 @@ MonoBehaviour:
     title: First Mass
     description: 'Go to Masao to attend the '
     nextQuest: 4
-    giver: {fileID: 0}
     requirement: go to agao
     objective: go to babag
+    enemyType: 0
+    noOfEnemies: 0
     type: 0
     status: 0
     expReward: 0
@@ -2090,7 +2101,7 @@ Transform:
   - {fileID: 962674043}
   - {fileID: 1503667143}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1537616503
 Prefab:
