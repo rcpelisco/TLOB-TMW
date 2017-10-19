@@ -108,78 +108,6 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &2399140
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4225474418819856, guid: c97884c200026384d98ab176d1050e24, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 34.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 4225474418819856, guid: c97884c200026384d98ab176d1050e24, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -31.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 4225474418819856, guid: c97884c200026384d98ab176d1050e24, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4225474418819856, guid: c97884c200026384d98ab176d1050e24, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4225474418819856, guid: c97884c200026384d98ab176d1050e24, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4225474418819856, guid: c97884c200026384d98ab176d1050e24, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4225474418819856, guid: c97884c200026384d98ab176d1050e24, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4225474418819856, guid: c97884c200026384d98ab176d1050e24, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 61508771084979724, guid: c97884c200026384d98ab176d1050e24,
-        type: 2}
-      propertyPath: m_AutoTiling
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 61508771084979724, guid: c97884c200026384d98ab176d1050e24,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 61508771084979724, guid: c97884c200026384d98ab176d1050e24,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61508771084979724, guid: c97884c200026384d98ab176d1050e24,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 114321457931337410, guid: c97884c200026384d98ab176d1050e24,
-        type: 2}
-      propertyPath: nextScene
-      value: UpperMasao
-      objectReference: {fileID: 0}
-    - target: {fileID: 114321457931337410, guid: c97884c200026384d98ab176d1050e24,
-        type: 2}
-      propertyPath: previousScene
-      value: OldMuseum
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c97884c200026384d98ab176d1050e24, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &27494604
 Prefab:
   m_ObjectHideFlags: 0
@@ -2164,7 +2092,7 @@ Transform:
   - {fileID: 1320699636}
   - {fileID: 1709444037}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1272002874
 Prefab:
@@ -2719,7 +2647,7 @@ Transform:
   - {fileID: 2036424784}
   - {fileID: 698593024}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1475823609
 Prefab:
@@ -2865,7 +2793,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4129037679269824, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114211494144016786, guid: 6b12543453159bc419066c92ff7313ba,
         type: 2}
@@ -2939,7 +2867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quest:
     ID: 100
-    title: Adventure Starts
+    title: Taking It Slow
     description: Go to Town Hall
     nextQuest: 101
     requirement: 
@@ -2947,7 +2875,7 @@ MonoBehaviour:
     enemyType: 0
     noOfEnemies: 0
     type: 1
-    status: 0
+    status: 1
     expReward: 0
     itemReward: 300
     amountReward: 5
@@ -3390,7 +3318,7 @@ Transform:
   - {fileID: 636092298}
   - {fileID: 1038222398}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1877163719
 Prefab:
@@ -3495,7 +3423,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1946674990
 Prefab:
@@ -3571,7 +3499,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1986445399
 MonoBehaviour:

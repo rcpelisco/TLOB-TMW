@@ -8,15 +8,25 @@ public class Player : MonoBehaviour {
 	private static bool isPlayerExists;
 	private Character playerStats;
 
+	[HideInInspector]
 	public float HP;
+	[HideInInspector]
 	public float MaxHP;
+	[HideInInspector]
 	public int Level;
+	[HideInInspector]
 	public int XP;
+	[HideInInspector]
 	public string currentScene;
+	[HideInInspector]
 	public float x;
+	[HideInInspector]
 	public float y;
+	[HideInInspector]
 	public Dictionary<ItemType, int> items;
+	[HideInInspector]
 	public QuestData mainQuest;
+	[HideInInspector]
 	public List<QuestData> sideQuests;
 
 	void Awake() {
@@ -26,7 +36,7 @@ public class Player : MonoBehaviour {
 			isPlayerExists = true;
 			DontDestroyOnLoad(gameObject);
 		} else {
-			Destroy(gameObject);
+			// Destroy(gameObject);
 		}
 	}
 

@@ -42,6 +42,14 @@ public class CharacterQuestModel : MonoBehaviour {
 		}
 	}
 
+	public void SetMainQuest(QuestData data) {
+		mainQuest = data;
+	}
+
+	public void SetSideQuest(List<QuestData> data) {
+		sideQuests = data;
+	}
+
 	public QuestData GetMainQuest() {
 		return mainQuest;
 	}

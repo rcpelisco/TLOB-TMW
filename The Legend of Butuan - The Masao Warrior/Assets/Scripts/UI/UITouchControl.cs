@@ -101,22 +101,18 @@ public class UITouchControl : MonoBehaviour {
 	}
 
 	public void WalkUp(PointerEventData data) {
-		Debug.Log("Up");
 		touchControl.WalkUp();
 	}
 
 	public void WalkDown(PointerEventData data) {
-		Debug.Log("Down");
 		touchControl.WalkDown();
 	}
 
 	public void WalkLeft(PointerEventData data) {
-		Debug.Log("Left");
 		touchControl.WalkLeft();
 	}
 
 	public void WalkRight(PointerEventData data) {
-		Debug.Log("Left");
 		touchControl.WalkRight();
 	}
 

@@ -55,6 +55,9 @@ public class UIQuest : MonoBehaviour {
 	}
 
 	private void AddSideQuestButtons() {
+		if(sideQuest == null) {
+			return;
+		}
 		foreach(QuestData data in sideQuest) {
 			GameObject questButton = (GameObject) GameObject.Instantiate(buttonPrefab);
 			UIQuestButton uiQB = questButton.GetComponent<UIQuestButton>();
@@ -77,6 +80,9 @@ public class UIQuest : MonoBehaviour {
 	}
 
 	public void SetRightPanel(QuestData data) {
+		if(data == null) {
+			return;
+		}
 		title.text = data.title;
 		desc.text = data.description;
 		xP.text = data.expReward.ToString();

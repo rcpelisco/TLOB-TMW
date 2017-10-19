@@ -30,7 +30,7 @@ public class FadeManager : MonoBehaviour {
 			isCanvasExists = true;
 			DontDestroyOnLoad(gameObject);
 		} else {
-			Destroy(gameObject);
+			// Destroy(gameObject);
 		}
 	}
 

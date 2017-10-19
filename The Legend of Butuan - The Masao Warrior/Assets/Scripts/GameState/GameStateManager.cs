@@ -10,10 +10,10 @@ public class GameStateManager : MonoBehaviour {
 	public GameObject playerPrefab;
 	public GameObject audioManagerPrefab;
 
-	private GameObject player;
-	private GameObject cam;
-	private GameObject canvas;
-	private GameObject audioManager;
+	private static GameObject player;
+	private static GameObject cam;
+	private static GameObject canvas;
+	private static GameObject audioManager;
 	private static bool isExists;
 	private bool fromRespawn;
 	private bool load;
@@ -40,7 +40,6 @@ public class GameStateManager : MonoBehaviour {
 	}
 
 	void OnEnable() {
-		Debug.Log("OnEnableLoad");
 		SceneManager.sceneLoaded += OnLevelFinishedLoaded;
 	}
 
@@ -60,6 +59,10 @@ public class GameStateManager : MonoBehaviour {
 				player.name, canvas.name, 
 				audioManager.name, cam.name, 
 				SceneManager.GetActiveScene().name));
+			DontDestroyOnLoad(player);
+			DontDestroyOnLoad(canvas);
+			DontDestroyOnLoad(audioManager);
+			DontDestroyOnLoad(cam);
 		}
 	}
 
@@ -69,6 +72,9 @@ public class GameStateManager : MonoBehaviour {
 		player.GetComponent<Character>().levelModel.SetCurrentExp(playerData.XP);
 		player.GetComponent<Character>().levelModel.SetCurrentLevel(playerData.Level);
 		player.GetComponent<Character>().inventoryModel.SetInventory(playerData.items);
+		player.GetComponent<Character>().questModel.SetMainQuest(playerData.mainQuest);
+		player.GetComponent<Character>().questModel.SetSideQuest(playerData.sideQuests);
+		player.transform.position = new Vector2(playerData.x, playerData.y);
 		fromRespawn = false;
 	}
 

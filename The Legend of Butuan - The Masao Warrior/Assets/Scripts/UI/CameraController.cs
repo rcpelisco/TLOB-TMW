@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour {
 			isCameraExist = true;
 			DontDestroyOnLoad(gameObject);
 		} else {
-			Destroy(gameObject);
+			// Destroy(gameObject);
 		}
 		ResetPosition();
 	}

@@ -12,8 +12,11 @@ public class Quest : MonoBehaviour {
 	private CharacterQuestModel questModel;
 
 	void Awake() {
-		questModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterQuestModel>();
 		avatar = GetComponentInChildren<Image>();
+	}
+
+	void Start() {
+		questModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterQuestModel>();
 	}
 
 	void Update() {

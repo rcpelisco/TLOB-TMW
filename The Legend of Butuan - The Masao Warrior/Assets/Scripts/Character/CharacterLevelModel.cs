@@ -61,13 +61,15 @@ public class CharacterLevelModel : MonoBehaviour {
 		if(currentExp >= requiredExp[currentLevel]) {
 			temp = currentExp - requiredExp[currentLevel];
 			currentLevel++;
-			healthModel.SetMaxHealth(0);
+			healthModel.SetMaxHealth(LevelUpHealth());
 			healthModel.ResetHealth();
 			currentExp = temp;
 		}
 	}
 
 	float LevelUpHealth() {
-		return 1f;
+		float currentMaxHP = healthModel.GetMaxHealth();
+		float newMaxHP = currentMaxHP + currentMaxHP * (currentLevel / 16f);
+		return newMaxHP;
 	}
 }
