@@ -30,6 +30,7 @@ public class QuestData {
 	public int noOfEnemies;
 	public QuestType type;
 	public QuestStatus status;
+	public string completeOnScene;
 
 	public int expReward = 0;
 	public ItemType itemReward = ItemType.None;

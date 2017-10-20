@@ -32,6 +32,7 @@ public class CharacterQuestModel : MonoBehaviour {
 
 	void SceneFinishLoading(Scene scene, LoadSceneMode mode) {
 		quests = FindQuestGivers();
+		CheckSceneQuest();
 		SetAllStatus();
 	}
 
@@ -51,6 +52,15 @@ public class CharacterQuestModel : MonoBehaviour {
 			}
 		}
 	}	
+
+	void CheckSceneQuest() {
+		string sceneName = SceneManager.GetActiveScene().name;
+		foreach(QuestData data in sideQuests.ToArray()) {
+			if(data.completeOnScene == sceneName) {
+				EndQuest(data);
+			}
+		}
+	}
 
 	void SetAllStatus() {
 		for(int i = 0; i < quests.Length; i++) {
