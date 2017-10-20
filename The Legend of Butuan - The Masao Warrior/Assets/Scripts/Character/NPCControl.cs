@@ -52,17 +52,17 @@ public class NPCControl : CharacterBaseControl {
 		if(canWalk) {
 			if(isMoving) {
 				walkCounter -= Time.deltaTime;
-				if(transform.position.y > maxWalkPoint.y) {
-					direction.y = -1;
-				}
-				if(transform.position.y < minWalkPoint.y) {
-					direction.y = 1;
-				}
-				if(transform.position.x > maxWalkPoint.x) {
-					direction.x = -1;
-				}
-				if(transform.position.x < minWalkPoint.x) {
-					direction.x = 1;
+				if(walkZone != null) {
+					if(transform.position.y > maxWalkPoint.y) {
+						direction.y = -1;
+					} else if(transform.position.y < minWalkPoint.y) {
+						direction.y = 1;
+					}
+					if(transform.position.x > maxWalkPoint.x) {
+						direction.x = -1;
+					} else if(transform.position.x < minWalkPoint.x) {
+						direction.x = 1;
+					}
 				}
 				if( walkCounter < 0) {
 					StopWalking();

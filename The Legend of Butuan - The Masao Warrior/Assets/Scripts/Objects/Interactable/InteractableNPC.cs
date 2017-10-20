@@ -15,6 +15,7 @@ public class InteractableNPC : InteractableBase {
 	private GameObject notification;
 	private Item item;
 	private Quest quest;
+	private bool isDoneTalking;
 
 	void Awake() {
 		if(dialogue.speaker == null) {
@@ -48,6 +49,10 @@ public class InteractableNPC : InteractableBase {
 			if(item.IsDone()) {
 				return;
 			}
+		}
+		if(quest.quest.status == QuestData.QuestStatus.Active || 
+			quest.quest.status == QuestData.QuestStatus.Done) {
+			return;
 		}
 		FindCharacterFacing(character);
 		InitiateDialogue(character);
@@ -89,5 +94,11 @@ public class InteractableNPC : InteractableBase {
 		movementModel.SetDirection(character.movementModel.GetFacingDirection() * -1);
 	}
 
+	public bool IsDoneTalking() {
+		return isDoneTalking;
+	}
 
+	public void SetDoneTalking(bool isDoneTalking) {
+		this.isDoneTalking = isDoneTalking;
+	}
 }

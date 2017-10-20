@@ -13,14 +13,17 @@ public class AttackableEnemy : AttackableBase {
 	public GameObject deathFX;
 	public float deathFXDelay;
 	public int expToGive;
+	public EnemyType enemyType;
 	public AudioSource enemyDeath;
 
 	private float health;
 	private float startingHealth;
 	private CharacterLevelModel playerLevelModel;
+	private CharacterQuestModel questModel;
 
 	void Start() {
   		playerLevelModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterLevelModel>();
+		questModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterQuestModel>();
 		health = maxHealth;
 	}	
 
@@ -33,6 +36,9 @@ public class AttackableEnemy : AttackableBase {
 		if(health <= 0) {
 			if(playerLevelModel != null) {
 				playerLevelModel.AddExp(expToGive);
+			}
+			if(questModel != null) {
+				questModel.AddKilledEnemy(enemyType);
 			}
 			Destroy(destroyObjectOnDeath, destroyDelay);
 			if(deathFX != null) {

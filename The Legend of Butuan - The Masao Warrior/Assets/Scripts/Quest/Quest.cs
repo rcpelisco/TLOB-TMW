@@ -8,12 +8,7 @@ public class Quest : MonoBehaviour {
 	public QuestData quest;
 	
 	private bool isDone;
-	private Image avatar;
 	private CharacterQuestModel questModel;
-
-	void Awake() {
-		avatar = GetComponentInChildren<Image>();
-	}
 
 	void Start() {
 		questModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterQuestModel>();
@@ -33,6 +28,10 @@ public class Quest : MonoBehaviour {
 			quest.status = QuestData.QuestStatus.Active;
 			character.questModel.CheckProgress(quest);
 		}
+	}
+
+	public void SetStatus(QuestData.QuestStatus status) {
+		quest.status = status;
 	}
 
 	public bool IsDone() {
