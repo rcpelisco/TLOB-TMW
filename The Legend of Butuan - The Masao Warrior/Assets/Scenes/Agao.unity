@@ -825,7 +825,7 @@ Prefab:
     - target: {fileID: 114211494144016786, guid: 6b12543453159bc419066c92ff7313ba,
         type: 2}
       propertyPath: dialogue.sentences.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4129037679269824, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
       propertyPath: m_LocalPosition.x
@@ -866,7 +866,8 @@ Prefab:
     - target: {fileID: 114211494144016786, guid: 6b12543453159bc419066c92ff7313ba,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Take this!
+      value: I heard someone killed mantutotho at Diego Silang. Are you the one who
+        did it?
       objectReference: {fileID: 0}
     - target: {fileID: 114050498237119732, guid: 6b12543453159bc419066c92ff7313ba,
         type: 2}
@@ -884,6 +885,12 @@ Prefab:
       value: 
       objectReference: {fileID: 21300520, guid: 31203f024d4d65d48ab381134d7c4ae3,
         type: 3}
+    - target: {fileID: 114211494144016786, guid: 6b12543453159bc419066c92ff7313ba,
+        type: 2}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: You're great! Please continue your bravery. Please kill more enemies
+        threatening people once you step out this place.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
   m_IsPrefabParent: 0
@@ -892,6 +899,36 @@ Transform:
   m_PrefabParentObject: {fileID: 4129037679269824, guid: 6b12543453159bc419066c92ff7313ba,
     type: 2}
   m_PrefabInternal: {fileID: 184098248}
+--- !u!1 &184098250 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1030374945753182, guid: 6b12543453159bc419066c92ff7313ba,
+    type: 2}
+  m_PrefabInternal: {fileID: 184098248}
+--- !u!114 &184098251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 184098250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d868c30f588dfd46a3f73c1e3caae61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest:
+    ID: 0
+    title: 
+    description: 
+    nextQuest: 0
+    requirement: 
+    objective: 
+    enemyType: 0
+    noOfEnemies: 0
+    type: 0
+    status: 0
+    expReward: 0
+    itemReward: 0
+    amountReward: 0
 --- !u!1001 &198219570
 Prefab:
   m_ObjectHideFlags: 0
