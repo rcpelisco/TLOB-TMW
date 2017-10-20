@@ -36,7 +36,6 @@ public class Narrator : MonoBehaviour {
 		}
 		string sentence = sentences.Dequeue();
 		text.text = sentence;
-		Debug.Log("Show");
 		StartCoroutine(ToggleSentence(showTime));
 		StartCoroutine(DelayedDisplay(hideTime + 1 + showTime));
 	}

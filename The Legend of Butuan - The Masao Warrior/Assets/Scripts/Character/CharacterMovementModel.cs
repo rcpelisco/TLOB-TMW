@@ -16,18 +16,20 @@ public class CharacterMovementModel : CharacterBaseControl {
 	private Vector3 facingDirection;
 	private Rigidbody2D rigidBody;
 	private bool isFrozen;
+	private bool isDirectionFrozen;
 	private bool isAttacking;
 	private ItemType pickedUpItem = ItemType.None;
 	private ItemType equippedWeapon = ItemType.None;
 	private ItemType equippedShield = ItemType.None;
 	private GameObject pickupItem;
 	private Vector2 pushDirection;
+	private Vector2 recievedDirection;
 	private float pushTime;
-	private CharacterHealthModel healthModel;
+	private float lastFreezeTime;
+	private int lastSetDirectionFrameCount;
 
 	void Awake() {
 		rigidBody = GetComponent<Rigidbody2D>();
-		healthModel = GetComponent<CharacterHealthModel>();
 	}
 
 	void Start() {
@@ -36,6 +38,8 @@ public class CharacterMovementModel : CharacterBaseControl {
 
 	void Update() {
 		UpdatePushTime();
+		UpdateDirection();
+		ResetRecievedDirection();
 	}
 
 	void FixedUpdate() {
@@ -44,6 +48,69 @@ public class CharacterMovementModel : CharacterBaseControl {
 
 	void UpdatePushTime() {
 		pushTime = Mathf.MoveTowards(pushTime, 0, Time.deltaTime);
+	}
+
+	void ResetRecievedDirection() {
+		recievedDirection = Vector2.zero;
+	}
+
+	void UpdateDirection() {
+		if(isFrozen) {
+			if(recievedDirection != Vector2.zero &&
+				GetItemPickedUp() != ItemType.None &&
+				GetTimeSinceFrozen() > 0.5f) {
+				pickedUpItem = ItemType.None;
+				SetFrozen(false, false);
+				for(int i = 0; i < previewItemParent.childCount; i++) {
+					Destroy(previewItemParent.GetChild(i).gameObject);
+				}
+			}
+		}
+
+		if(isDirectionFrozen && recievedDirection != Vector2.zero) {
+			return;
+		}
+
+		if(isAttacking) {
+			return;
+		}
+
+		if(IsBeingPushed()) {
+			movementDirection = pushDirection;
+			return;
+		}
+
+		if(Time.frameCount == lastSetDirectionFrameCount) {
+			return;
+		}
+		movementDirection = new Vector3(recievedDirection.x, recievedDirection.y, 0);
+		if(recievedDirection != Vector2.zero) {
+			Vector3 facingDirection = movementDirection;
+			if(facingDirection.x != 0 && facingDirection.y != 0) {
+				 if( facingDirection.x == this.facingDirection.x )
+                {
+                    facingDirection.y = 0;
+                }
+                else if( facingDirection.y == this.facingDirection.y )
+                {
+                    facingDirection.x = 0;
+                }
+                else
+                {
+                    facingDirection.x = 0;
+                }
+			}
+			
+			this.facingDirection = facingDirection;
+			lastSetDirectionFrameCount = Time.frameCount;
+		}
+	}
+
+	float GetTimeSinceFrozen() {
+		if(!IsFrozen()) {
+			return 0f;
+		}
+		return Time.realtimeSinceStartup - lastFreezeTime;
 	}
 
 	void UpdateMovement() {
@@ -68,26 +135,33 @@ public class CharacterMovementModel : CharacterBaseControl {
 	}
 
 	new public void SetDirection(Vector2 direction) {
-		if(healthModel != null && healthModel.GetHealth() <= 0) { 
+		if(direction == Vector2.zero) {
 			return;
 		}
-		if(direction != Vector2.zero &&
-			GetItemPickedUp() != ItemType.None) {
-			pickedUpItem = ItemType.None;
-			SetFrozen(false);
-			Destroy(pickupItem);
-		}
-		if(isFrozen) {
-			return;
-		}
-		if(IsBeingPushed()) {
-			movementDirection = -pushDirection;
-			return;
-		}
-		movementDirection = new Vector3(direction.x, direction.y, 0);
-		if(direction != Vector2.zero) {
-			facingDirection = movementDirection;
-		}
+		recievedDirection = direction;
+		// if(isAttacking) {
+		// 	return;
+		// }
+		// if(healthModel != null && healthModel.GetHealth() <= 0) { 
+		// 	return;
+		// }
+		// if(direction != Vector2.zero &&
+		// 	GetItemPickedUp() != ItemType.None) {
+		// 	pickedUpItem = ItemType.None;
+		// 	SetFrozen(false);
+		// 	Destroy(pickupItem);
+		// }
+		// if(isFrozen) {
+		// 	return;
+		// }
+		// if(IsBeingPushed()) {
+		// 	movementDirection = -pushDirection;
+		// 	return;
+		// }
+		// movementDirection = new Vector3(direction.x, direction.y, 0);
+		// if(direction != Vector2.zero) {
+		// 	facingDirection = movementDirection;
+		// }
 	}
 
 	GameObject EquipItem(ItemType itemType, ItemData.EquipPosition equipPosition, 
@@ -157,6 +231,9 @@ public class CharacterMovementModel : CharacterBaseControl {
 		if(isAttacking) {
 			return false;
 		}
+		if(isFrozen) {
+			return false;
+		}
 		if(IsBeingPushed()) {
 			return false;
 		}
@@ -198,8 +275,12 @@ public class CharacterMovementModel : CharacterBaseControl {
 		return pushTime > 0;
 	}
 
-	public void SetFrozen(bool isFrozen) {
+	public void SetFrozen(bool isFrozen, bool isDirectionFrozen) {
 		this.isFrozen = isFrozen;
+		this.isDirectionFrozen = isDirectionFrozen;
+		if(isFrozen) {
+			lastFreezeTime = Time.realtimeSinceStartup;
+		}
 	}
 
 	public void OnAttackStarted() {

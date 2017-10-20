@@ -11,11 +11,13 @@ public class CharacterHealthModel : MonoBehaviour {
 	private float maximumHealth;
 	private float health;
 	private CharacterMovementView movementView;
+	private CharacterMovementModel movementModel;
 	private PauseManager pauseManager;
 	private GameStateManager stateManager;
 
 	void Awake() {
 		movementView = GetComponent<CharacterMovementView>();
+		movementModel = GetComponent<CharacterMovementModel>();
 		stateManager = GameObject.FindObjectOfType<GameStateManager>() as GameStateManager;
 		maximumHealth = startingHealth;
 		ResetHealth();
@@ -51,8 +53,8 @@ public class CharacterHealthModel : MonoBehaviour {
 		health -= damage;
 		if(health <= 0) {
 			health = 0;
-			playerDeath.Play();
 			movementView.OnDeath();
+			StartCoroutine(DeathAnimWait());
 			StartCoroutine(WaitNextScene());
 		}
 	}
@@ -60,9 +62,15 @@ public class CharacterHealthModel : MonoBehaviour {
 	public void ResetHealth() {
 		health = maximumHealth;
 	}
+
+	IEnumerator DeathAnimWait() {
+		yield return new WaitForSeconds(1f);
+		movementModel.SetFrozen(true, true);
+		stateManager.DeathSave();
+	}
 	
 	IEnumerator WaitNextScene() {
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(1.5f);
 		FadeManager.instance.Fade(true, 1.5f);
 		pauseManager.ShowGameOverScreen();
 	}

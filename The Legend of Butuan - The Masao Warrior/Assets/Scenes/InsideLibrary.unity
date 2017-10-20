@@ -108,48 +108,6 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &108519766
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4268570893190038, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4268570893190038, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4268570893190038, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4268570893190038, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4268570893190038, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4268570893190038, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4268570893190038, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4268570893190038, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &158377892
 Prefab:
   m_ObjectHideFlags: 0
@@ -211,6 +169,48 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ded2084e6124754b8bceb546467e932, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &246967710
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4773550155748036, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773550155748036, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773550155748036, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773550155748036, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773550155748036, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773550155748036, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773550155748036, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773550155748036, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 40008e6cc8901ba449de708c4eb9942d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &382891132
 Prefab:
@@ -407,9 +407,10 @@ MonoBehaviour:
     title: Man's Bestfriend
     description: Go to the merchant in Agao that sells only sword.
     nextQuest: 2
-    giver: {fileID: 0}
     requirement: Get the book
     objective: go to masao
+    enemyType: 0
+    noOfEnemies: 0
     type: 0
     status: 0
     expReward: 0

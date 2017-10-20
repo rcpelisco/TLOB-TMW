@@ -18,7 +18,6 @@ public class FadeManager : MonoBehaviour {
 	private float transition;
 	private bool isShowing;
 	private float duration;
-	private static bool isCanvasExists;
 	private EventSystem eventSystem;
 
 	void Awake () {
@@ -26,12 +25,7 @@ public class FadeManager : MonoBehaviour {
 		if(isDestroyOnLoad) {
 			return;
 		}
-		if(!isCanvasExists) {
-			isCanvasExists = true;
-			DontDestroyOnLoad(gameObject);
-		} else {
-			// Destroy(gameObject);
-		}
+		DontDestroyOnLoad(gameObject);
 	}
 
 	void OnEnable() {
@@ -79,8 +73,10 @@ public class FadeManager : MonoBehaviour {
 		if(transition > 1 || transition < 0) {
 			isFading = false;
 			eventSystem = FindObjectOfType<EventSystem>();
-			eventSystem.gameObject.SetActive(false);
-			eventSystem.gameObject.SetActive(true);
+			// if(eventSystem != null) {
+				eventSystem.gameObject.SetActive(false);
+				eventSystem.gameObject.SetActive(true);
+			// }
 		}
 	}
 

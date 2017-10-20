@@ -10,23 +10,16 @@ public class GameStateManager : MonoBehaviour {
 	public GameObject playerPrefab;
 	public GameObject audioManagerPrefab;
 
-	private static GameObject player;
-	private static GameObject cam;
-	private static GameObject canvas;
-	private static GameObject audioManager;
-	private static bool isExists;
-	private bool fromRespawn;
+	private GameObject player;
+	private GameObject cam;
+	private GameObject canvas;
+	private GameObject audioManager;
 	private bool load;
 
 	private PlayerData playerData;
 
 	void Awake() {
-		if(!isExists) {
-			isExists = true;
-			DontDestroyOnLoad(gameObject);
-		}else {
-			Destroy(gameObject);
-		}
+		DontDestroyOnLoad(gameObject);
 	}
 
 	public void NewGame() {
@@ -36,7 +29,7 @@ public class GameStateManager : MonoBehaviour {
 	public void LoadGame() {
 		load = true;
 		playerData = SaveLoadManager.LoadPlayer();
-		SceneManager.LoadScene(playerData.currentScene);
+		SceneManager.LoadScene("PersistentScene");
 	}
 
 	void OnEnable() {
@@ -47,52 +40,64 @@ public class GameStateManager : MonoBehaviour {
 		SceneManager.sceneLoaded -= OnLevelFinishedLoaded;
 	}
 
+	void Update() {
+		if(player == null) {
+			player = GameObject.FindGameObjectWithTag("Player");
+		}
+	}
+
 	void OnLevelFinishedLoaded(Scene scene, LoadSceneMode mode) {
-		if(load) {
-			player = Instantiate(playerPrefab);
-			canvas = Instantiate(canvasPrefab);
+		player = null;
+		player = GameObject.FindGameObjectWithTag("Player");
+		if(SceneManager.GetActiveScene().name == "PersistentScene") {
 			SetPlayerStat(playerData);
-			audioManager = Instantiate(audioManagerPrefab);
-			cam = Instantiate(mainCameraPrefab);
-			load = false;
-			Debug.Log(string.Format("player: {0}, canvas: {1}, audioManager: {2}, cam: {3}, scene: {4}", 
-				player.name, canvas.name, 
-				audioManager.name, cam.name, 
-				SceneManager.GetActiveScene().name));
-			DontDestroyOnLoad(player);
-			DontDestroyOnLoad(canvas);
-			DontDestroyOnLoad(audioManager);
-			DontDestroyOnLoad(cam);
+			if(load) {
+				SceneManager.LoadScene(playerData.currentScene);
+			} else {
+				SceneManager.LoadScene("JoelHouseGame");
+			}
 		}
 	}
 
 	void SetPlayerStat(PlayerData playerData) {
+		PlayerPrefs.SetString("lastScene", "");
+		if(playerData == null) {
+			return;
+		}
+		player.GetComponent<Character>().inventoryModel.SetInventory(playerData.items);
 		player.GetComponent<Character>().healthModel.SetHealth(playerData.HP);
 		player.GetComponent<Character>().healthModel.SetMaxHealth(playerData.MaxHP);
 		player.GetComponent<Character>().levelModel.SetCurrentExp(playerData.XP);
 		player.GetComponent<Character>().levelModel.SetCurrentLevel(playerData.Level);
-		player.GetComponent<Character>().inventoryModel.SetInventory(playerData.items);
 		player.GetComponent<Character>().questModel.SetMainQuest(playerData.mainQuest);
 		player.GetComponent<Character>().questModel.SetSideQuest(playerData.sideQuests);
 		player.transform.position = new Vector2(playerData.x, playerData.y);
-		fromRespawn = false;
+	
 	}
 
 	public void SaveGame() {	
-		Player playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+		Player playerScript = player.GetComponent<Player>();
 		playerScript.Save();
 		playerScript.CommitSave();
 	}
 
-	public void RespawnSave() {
-		Player playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+	public void DeathSave() {
+		Player playerScript = player.GetComponent<Player>();
 		playerScript.Save();
 		playerScript.ResetHealth();
 		playerScript.CommitSave();
-		SceneManager.LoadScene("GameOver");
 	}
 
 	public string GetCurrentScene() {
 		return playerData.currentScene;
+	}
+
+	void DestroyThem(Transform toDestroy) {
+		int itemCount = toDestroy.childCount;
+		while(itemCount > 0) {
+			Destroy(toDestroy.GetChild(0).gameObject);
+			itemCount = toDestroy.childCount;
+			Debug.Log(itemCount);
+		}
 	}
 }

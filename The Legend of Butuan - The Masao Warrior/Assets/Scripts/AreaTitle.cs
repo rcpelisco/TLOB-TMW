@@ -21,13 +21,13 @@ public class AreaTitle : MonoBehaviour {
 	}
 
 	IEnumerator Show() {
-		yield return new WaitForSeconds(.5f);
+		yield return new WaitForSeconds(.25f);
 		title.SetActive(true);
 		StartCoroutine(Hide());
 	}
 
 	IEnumerator Hide() {
-		yield return new WaitForSeconds(2.75f);
+		yield return new WaitForSeconds(.75f);
 		anim.SetBool("Hide", true);
 	}
 }

@@ -11,7 +11,6 @@ public class NPCControl : CharacterBaseControl {
 	public float attackWaitTime;
 	public Collider2D walkZone;
 
-
 	private Vector2 direction;
 	private Vector2 maxWalkPoint;
 	private Vector2 minWalkPoint;
@@ -53,6 +52,18 @@ public class NPCControl : CharacterBaseControl {
 		if(canWalk) {
 			if(isMoving) {
 				walkCounter -= Time.deltaTime;
+				if(transform.position.y > maxWalkPoint.y) {
+					direction.y = -1;
+				}
+				if(transform.position.y < minWalkPoint.y) {
+					direction.y = 1;
+				}
+				if(transform.position.x > maxWalkPoint.x) {
+					direction.x = -1;
+				}
+				if(transform.position.x < minWalkPoint.x) {
+					direction.x = 1;
+				}
 				if( walkCounter < 0) {
 					StopWalking();
 				}
@@ -64,6 +75,7 @@ public class NPCControl : CharacterBaseControl {
 				}
 			}
 		}
+
 		SetDirection(direction);
 	}
 
@@ -75,32 +87,32 @@ public class NPCControl : CharacterBaseControl {
 			case 0:
 				direction = new Vector2(0, 1);
 				if(hasWalkZone && transform.position.y > maxWalkPoint.y) {
-					StopWalking();
+					direction = new Vector2(0, -1);
 				}
 				break;
 			case 1:
 				direction = new Vector2(1, 0);
 				if(hasWalkZone && transform.position.x > maxWalkPoint.x) {
-					StopWalking();
+					direction = new Vector2(-1, 0);
 				}
 				break;
 			case 2:
 				direction = new Vector2(0, -1);
 				if(hasWalkZone && transform.position.y < minWalkPoint.y) {
-					StopWalking();
+					direction = new Vector2(0, 1);
 				}
 				break;
 			case 3:
 				direction = new Vector2(-1, 0);
 				if(hasWalkZone && transform.position.x < minWalkPoint.x) {
-					StopWalking();
+					direction = new Vector2(1, 0);
 				}
 				break;
 		}
 	}
 
 	void StopWalking() {
-			isMoving = false;
-			waitCounter = waitTime;
+		isMoving = false;
+		waitCounter = waitTime;
 	}
 }

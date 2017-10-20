@@ -13,12 +13,12 @@ public class LoadSceneAnimation : MonoBehaviour {
 	private PlayableDirector director;
 
 	void Awake() {
-		questModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterQuestModel>();
-		quest = questModel.GetMainQuest();
 		director = GetComponent<PlayableDirector>();
 	}
 
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
+		questModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterQuestModel>();
+		quest = questModel.GetMainQuest();
 		if(director == null) {
 			return;
 		}

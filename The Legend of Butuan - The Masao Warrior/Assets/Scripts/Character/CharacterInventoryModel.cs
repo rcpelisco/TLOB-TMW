@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterInventoryModel : MonoBehaviour {
 
 	public ItemType[] item;
+	public AudioSource collectGold, getSword, smallItem;
 
 	private CharacterMovementModel movementModel;
 	private InventoryUI inventoryUI;
@@ -13,7 +14,9 @@ public class CharacterInventoryModel : MonoBehaviour {
 	
 	void Awake() {
 		movementModel = GetComponent<CharacterMovementModel>();
-		inventoryUI = FindObjectOfType<InventoryUI>();
+	}
+
+	void Start() {
 	}
 
 	public int GetItemCount(ItemType itemType) {
@@ -35,17 +38,22 @@ public class CharacterInventoryModel : MonoBehaviour {
 		}
 		if(amount > 0) {
 			ItemData itemData = Database.item.FindItem(itemType);
-			if(inventoryUI != null && itemType != ItemType.Gold) {
-				inventoryUI.AddItem(itemType);
+			if(itemType != ItemType.Gold) {
+				FindObjectOfType<InventoryUI>().AddItem(itemType);
+			}else {
+				collectGold.Play();
 			}
 			if(itemData != null) {
 				if(itemData.animation != ItemData.PickupAnimation.None) {
 					movementModel.ShowItemPickup(itemType);
 				}
 				if(itemData.isEquipable == ItemData.EquipPosition.SwordHand) {
+					getSword.Play();
 					movementModel.EquipWeapon(itemType);
-				} else if (itemData.isEquipable == ItemData.EquipPosition.ShieldHand){
+				} else if (itemData.isEquipable == ItemData.EquipPosition.ShieldHand) {
 					movementModel.EquipShield(itemType);
+				} else if (itemData.isEquipable == ItemData.EquipPosition.NotEquipable && itemType != ItemType.Gold) {
+					smallItem.Play();
 				}
 			}
 		}

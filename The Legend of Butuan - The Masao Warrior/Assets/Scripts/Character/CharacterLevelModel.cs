@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterLevelModel : MonoBehaviour {
 
 	public int currentLevel;
+	public AudioSource playerLevelUp;
 
 	[SerializeField]
 	private int currentExp;
@@ -63,6 +64,7 @@ public class CharacterLevelModel : MonoBehaviour {
 			currentLevel++;
 			healthModel.SetMaxHealth(LevelUpHealth());
 			healthModel.ResetHealth();
+			playerLevelUp.Play();
 			currentExp = temp;
 		}
 	}

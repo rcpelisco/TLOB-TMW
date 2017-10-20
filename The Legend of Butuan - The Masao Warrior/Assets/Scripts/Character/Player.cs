@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-	private static bool isPlayerExists;
 	private Character playerStats;
 
 	[HideInInspector]
@@ -32,18 +31,13 @@ public class Player : MonoBehaviour {
 	void Awake() {
 		sideQuests = new List<QuestData>();
 		playerStats = GetComponent<Character>();
-		if(!isPlayerExists) {
-			isPlayerExists = true;
-			DontDestroyOnLoad(gameObject);
-		} else {
-			// Destroy(gameObject);
-		}
+		DontDestroyOnLoad(gameObject);
 	}
 
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
 		string sceneName = SceneManager.GetActiveScene().name;
-		if(sceneName == "MainMenu" || sceneName == "TitleScreen" || sceneName == "GameOver") {
-			Destroy(gameObject);
+		if(sceneName == "MainMenu" || sceneName == "GameOver") {
+			// Destroy(gameObject);
 		}
 	}
 
@@ -64,6 +58,23 @@ public class Player : MonoBehaviour {
 		y = transform.position.y;
 	}
 
+	void NewPlayerStats() {
+		HP = 100f;
+		MaxHP = 100f;
+		Level = 1;
+		XP = 0;
+		x = 28.55f;
+		y = -2.5f;
+		
+	}
+	void NewPlayerInventory() {
+		items = new Dictionary<ItemType, int>();
+	}
+	void NewPlayerQuest() {
+		mainQuest = new QuestData();
+		sideQuests = new List<QuestData>();
+	}
+
 	void SavePlayerInventory() {
 		items = playerStats.inventoryModel.GetInventory();
 	}
@@ -71,6 +82,13 @@ public class Player : MonoBehaviour {
 	void SavePlayerQuest() {
 		mainQuest = playerStats.questModel.GetMainQuest();
 		sideQuests = playerStats.questModel.GetSideQuest();
+	}
+
+	public void NewPlayer() {
+		NewPlayerStats();
+		NewPlayerQuest();
+		NewPlayerInventory();
+		currentScene = "JoelHouseGame";
 	}
 
 	public void Save() {
@@ -89,6 +107,6 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnDestroy() {
-		Debug.Log("Destroyed on: " + SceneManager.GetActiveScene().name);
+		Debug.Log("Destroyed: " + SceneManager.GetActiveScene().name);
 	}
 }
