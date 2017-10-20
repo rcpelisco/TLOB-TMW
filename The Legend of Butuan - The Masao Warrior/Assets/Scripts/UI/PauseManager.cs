@@ -9,6 +9,7 @@ public class PauseManager : MonoBehaviour {
 
 	private bool isInventoryActive = false;
 	private bool isQuestActive = false;
+	private bool isQuestionActive = false;
 	private bool isTriviaActive = false;
 	private bool isPauseActive = false;
 	private bool isBookActive = false;
@@ -16,6 +17,7 @@ public class PauseManager : MonoBehaviour {
 	
 	private GameObject inventoryScreen;
 	private GameObject questScreen;
+	private GameObject questionScreen;
 	private GameObject triviaScreen;
 	private GameObject pauseScreen;
 	private GameObject bookScreen;
@@ -33,16 +35,21 @@ public class PauseManager : MonoBehaviour {
 		}
 		triviaScreen = GameObject.FindGameObjectWithTag("TriviaScreen");
 		questScreen = GameObject.FindGameObjectWithTag("QuestScreen");
+		questionScreen = GameObject.FindGameObjectWithTag("QuestionScreen");
 		inventoryScreen = GameObject.FindGameObjectWithTag("InventoryScreen");
 		pauseScreen = GameObject.FindGameObjectWithTag("PauseMenu");
 		bookScreen = GameObject.FindGameObjectWithTag("BookScreen");
 		bookButton = GameObject.FindGameObjectWithTag("BookButton");
 		gameOverScreen = GameObject.FindGameObjectWithTag("GameOverScreen");
 		mapScreen = GameObject.FindGameObjectWithTag("MapScreen");
+		ResetCanvas();
+	}
 
+	void ResetCanvas() {
 		HideTriviaScreen();
 		HideInventoryScreen();
 		HideQuestScreen();
+		HideQuestionScreen();
 		HidePauseScreen();
 		HideBookScreen();
 		HideGameOverScreen();
@@ -158,7 +165,6 @@ public class PauseManager : MonoBehaviour {
 	}
 
 	public void PauseButton() {
-		
 		if(isPauseActive) {
 			HidePauseScreen();
 			pauseAnim.Play("HIde");
@@ -202,6 +208,20 @@ public class PauseManager : MonoBehaviour {
 		DoPause();
 		if(questScreen != null) {
 			questScreen.SetActive(true);
+		}
+	}
+
+	public void ShowQuestionScreen() {
+		DoPause();
+		if(questionScreen != null) {
+			questionScreen.SetActive(true);
+		}
+	}
+
+	void HideQuestionScreen() {
+		DoUnpause();
+		if(questionScreen != null) {
+			questionScreen.SetActive(false);
 		}
 	}
 

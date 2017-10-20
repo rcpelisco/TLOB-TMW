@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Question {
+public class QuestionData {
 
 	[TextArea(0,3)]
 	public string question;
-	public List<string> answer;
-	public int answerIndex;
+	public AnswerData[] choices;
 	
 }

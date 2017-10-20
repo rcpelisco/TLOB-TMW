@@ -11,7 +11,6 @@ public class NPCControl : CharacterBaseControl {
 	public float attackWaitTime;
 	public Collider2D walkZone;
 
-
 	private Vector2 direction;
 	private Vector2 maxWalkPoint;
 	private Vector2 minWalkPoint;
@@ -113,7 +112,7 @@ public class NPCControl : CharacterBaseControl {
 	}
 
 	void StopWalking() {
-			isMoving = false;
-			waitCounter = waitTime;
+		isMoving = false;
+		waitCounter = waitTime;
 	}
 }

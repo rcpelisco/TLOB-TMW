@@ -11,12 +11,16 @@ public class DialogueManager : MonoBehaviour {
 	private bool isSentenceDone;
 	private bool isDone;
 	private CharacterInteractionModel interactionModel;
+	private GameObject player;
 
 	public float letterInterval = 0.05f;
 
 	void Start() {
 		sentences = new Queue<string>();
-		interactionModel = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInteractionModel>();
+		player = GameObject.FindGameObjectWithTag("Player");
+		// if(player != null) {
+			interactionModel = player.GetComponent<CharacterInteractionModel>();
+		// }
 	}
 
 	public void OnInteract() {

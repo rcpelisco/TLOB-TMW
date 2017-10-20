@@ -26,12 +26,10 @@ public class CharacterMovementModel : CharacterBaseControl {
 	private Vector2 recievedDirection;
 	private float pushTime;
 	private float lastFreezeTime;
-	private CharacterHealthModel healthModel;
 	private int lastSetDirectionFrameCount;
 
 	void Awake() {
 		rigidBody = GetComponent<Rigidbody2D>();
-		healthModel = GetComponent<CharacterHealthModel>();
 	}
 
 	void Start() {
@@ -58,7 +56,6 @@ public class CharacterMovementModel : CharacterBaseControl {
 
 	void UpdateDirection() {
 		if(isFrozen) {
-			Debug.Log("isFrozen");
 			if(recievedDirection != Vector2.zero &&
 				GetItemPickedUp() != ItemType.None &&
 				GetTimeSinceFrozen() > 0.5f) {

@@ -30,9 +30,7 @@ public class UIButtonsManager : MonoBehaviour {
 	}
 
 	public void Respawn() {
-		if(stateManager != null) {
-			stateManager.RespawnSave();
-		}
+		SceneManager.LoadScene("GameOver");
 	}
 
 	public void MainMenu() {

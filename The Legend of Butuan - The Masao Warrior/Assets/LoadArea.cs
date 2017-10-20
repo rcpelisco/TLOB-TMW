@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LoadArea : MonoBehaviour {
 	void Start () {
-		Debug.Log("LoadArea");
 		GameObject.FindObjectOfType<GameStateManager>().LoadGame();
 	}
 }
