@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class UIButtonsManager : MonoBehaviour {
 
 	private GameStateManager stateManager;
+	private PauseManager pauseManager;
 
 	void Awake() {
 		stateManager = GameObject.FindObjectOfType<GameStateManager>() as GameStateManager;
@@ -30,7 +31,7 @@ public class UIButtonsManager : MonoBehaviour {
 	}
 
 	public void Respawn() {
-		SceneManager.LoadScene("GameOver");
+		pauseManager.ShowQuestionScreen();
 	}
 
 	public void MainMenu() {

@@ -40,39 +40,30 @@ public class GameStateManager : MonoBehaviour {
 		SceneManager.sceneLoaded -= OnLevelFinishedLoaded;
 	}
 
-	void OnLevelFinishedLoaded(Scene scene, LoadSceneMode mode) {
-		if(SceneManager.GetActiveScene().name == "PersistentScene") {
+	void Update() {
+		if(player == null) {
 			player = GameObject.FindGameObjectWithTag("Player");
-			Transform previewItemParent = player.transform.GetChild(0).Find("PreviewItemParent");
+		}
+	}
+
+	void OnLevelFinishedLoaded(Scene scene, LoadSceneMode mode) {
+		player = null;
+		player = GameObject.FindGameObjectWithTag("Player");
+		if(SceneManager.GetActiveScene().name == "PersistentScene") {
 			SetPlayerStat(playerData);
-			StartCoroutine(WaitDestroy(previewItemParent));
 			if(load) {
 				SceneManager.LoadScene(playerData.currentScene);
 			} else {
 				SceneManager.LoadScene("JoelHouseGame");
 			}
 		}
-		// if(load) {
-			// player = Instantiate(playerPrefab);
-			// canvas = Instantiate(canvasPrefab);
-			// SetPlayerStat(playerData);
-			// audioManager = Instantiate(audioManagerPrefab);
-			// cam = Instantiate(mainCameraPrefab);
-			// load = false;
-			// Debug.Log(string.Format("player: {0}, canvas: {1}, audioManager: {2}, cam: {3}, scene: {4}", 
-			// 	player.name, canvas.name, 
-			// 	audioManager.name, cam.name, 
-			// 	SceneManager.GetActiveScene().name));
-			// Destroy(player.transform.GetChild(0).GetChild(2).GetChild(0).gameObject);
-			// DontDestroyOnLoad(player);
-			// DontDestroyOnLoad(canvas);
-			// DontDestroyOnLoad(audioManager);
-			// DontDestroyOnLoad(cam);
-		// }
 	}
 
 	void SetPlayerStat(PlayerData playerData) {
 		PlayerPrefs.SetString("lastScene", "");
+		if(playerData == null) {
+			return;
+		}
 		player.GetComponent<Character>().inventoryModel.SetInventory(playerData.items);
 		player.GetComponent<Character>().healthModel.SetHealth(playerData.HP);
 		player.GetComponent<Character>().healthModel.SetMaxHealth(playerData.MaxHP);
@@ -104,14 +95,9 @@ public class GameStateManager : MonoBehaviour {
 	void DestroyThem(Transform toDestroy) {
 		int itemCount = toDestroy.childCount;
 		while(itemCount > 0) {
-			Destroy(toDestroy.GetChild(0));
+			Destroy(toDestroy.GetChild(0).gameObject);
 			itemCount = toDestroy.childCount;
 			Debug.Log(itemCount);
 		}
-	}
-
-	IEnumerator WaitDestroy(Transform toDestroy) {
-		yield return new WaitForSeconds(1.5f);
-		DestroyThem(toDestroy);
 	}
 }

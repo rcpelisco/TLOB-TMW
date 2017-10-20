@@ -36,8 +36,8 @@ public class Player : MonoBehaviour {
 
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
 		string sceneName = SceneManager.GetActiveScene().name;
-		if(sceneName == "MainMenu" || sceneName == "TitleScreen" || sceneName == "GameOver") {
-			Destroy(gameObject);
+		if(sceneName == "MainMenu" || sceneName == "GameOver") {
+			// Destroy(gameObject);
 		}
 	}
 
@@ -104,5 +104,9 @@ public class Player : MonoBehaviour {
 
 	public void ResetHealth() {
 		HP = playerStats.healthModel.GetMaxHealth();
+	}
+
+	void OnDestroy() {
+		Debug.Log("Destroyed: " + SceneManager.GetActiveScene().name);
 	}
 }

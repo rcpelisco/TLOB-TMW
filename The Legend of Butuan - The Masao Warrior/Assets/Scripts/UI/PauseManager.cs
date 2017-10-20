@@ -82,8 +82,9 @@ public class PauseManager : MonoBehaviour {
 	void OnLevelFinishLoading(Scene scene, LoadSceneMode mode) {
 		string sceneName = SceneManager.GetActiveScene().name;
 		if(sceneName == "MainMenu" || sceneName == "GameOver") {
-			Destroy(gameObject);
+			// Destroy(gameObject);
 		}
+		ResetCanvas();		
 	}
 
 	public void Mute() {
@@ -155,6 +156,7 @@ public class PauseManager : MonoBehaviour {
 	}
 
 	public void TriviaToggle() {
+		Debug.Log("Trivia");
 		if(isTriviaActive) {
 			HideTriviaScreen();
 			isTriviaActive = false;
@@ -212,14 +214,12 @@ public class PauseManager : MonoBehaviour {
 	}
 
 	public void ShowQuestionScreen() {
-		DoPause();
 		if(questionScreen != null) {
 			questionScreen.SetActive(true);
 		}
 	}
 
 	void HideQuestionScreen() {
-		DoUnpause();
 		if(questionScreen != null) {
 			questionScreen.SetActive(false);
 		}

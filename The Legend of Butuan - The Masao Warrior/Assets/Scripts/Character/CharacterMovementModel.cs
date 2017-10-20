@@ -61,8 +61,9 @@ public class CharacterMovementModel : CharacterBaseControl {
 				GetTimeSinceFrozen() > 0.5f) {
 				pickedUpItem = ItemType.None;
 				SetFrozen(false, false);
-				Destroy(pickupItem);
-				Debug.Log(pickupItem.name, pickupItem);
+				for(int i = 0; i < previewItemParent.childCount; i++) {
+					Destroy(previewItemParent.GetChild(i).gameObject);
+				}
 			}
 		}
 

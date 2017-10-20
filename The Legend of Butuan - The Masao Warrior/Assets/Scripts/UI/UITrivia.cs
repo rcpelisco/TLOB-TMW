@@ -14,6 +14,7 @@ public class UITrivia : MonoBehaviour {
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
 		foreach(Trivia trivia in trivias) {
 			if(GetCurrentScenName() == trivia.area) {
+				Debug.Log(GetCurrentScenName());
 				StartCoroutine(DelayShow(trivia));
 			}
 		}
@@ -33,7 +34,7 @@ public class UITrivia : MonoBehaviour {
 	}
 
 	IEnumerator DelayShow(Trivia trivia) {
-		yield return new WaitForSeconds(1.25f);
+		yield return new WaitForSeconds(3f);
 		pauseManager.TriviaToggle();
 		triviaText.text = trivia.trivia;
 	}

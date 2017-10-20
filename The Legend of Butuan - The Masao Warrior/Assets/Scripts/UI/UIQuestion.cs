@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIQuestion : MonoBehaviour {
 
@@ -15,7 +16,8 @@ public class UIQuestion : MonoBehaviour {
 
 	private List<GameObject> answerButtonGameObjects = new List<GameObject>();
 
-	void OnEnable() {
+	void Start() {
+		RemoveAnswerButtons();
 		SetQuestion();
 	}
 
@@ -46,12 +48,11 @@ public class UIQuestion : MonoBehaviour {
 			AnswerData temp = data[i];
 			data[i] = data[r];
 			data[r] = temp;
-
 		}
 		return data;
 	}
 
-	void RemoveAnswerButton() {
+	void RemoveAnswerButtons() {
 		foreach(GameObject button in answerButtonGameObjects) {
 			Destroy(button);
 		}
@@ -59,7 +60,9 @@ public class UIQuestion : MonoBehaviour {
 
 	public void AnswerButtonClicked(bool isCorrect) {
 		if(isCorrect) {
-			// revive diri nga part
+			SceneManager.LoadScene("GameOver");
 		}
 	}
+
+
 }
