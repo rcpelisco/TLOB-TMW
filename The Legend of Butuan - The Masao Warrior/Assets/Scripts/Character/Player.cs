@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
 		string sceneName = SceneManager.GetActiveScene().name;
 		if(sceneName == "MainMenu" || sceneName == "GameOver") {
-			// Destroy(gameObject);
+			Destroy(gameObject);
 		}
 	}
 

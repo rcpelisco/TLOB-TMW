@@ -10,7 +10,8 @@ public class CharacterLevelModel : MonoBehaviour {
 	[SerializeField]
 	private int currentExp;
 	private int[] requiredExp = {
-		0, 50, 
+		0, 50, 100, 175, 275, 400, 550, 
+		725, 925, 450, 700, 875, 1000
 	};
 	private CharacterHealthModel healthModel;
 	int temp = 0;
