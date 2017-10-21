@@ -59,6 +59,9 @@ public class UIQuest : MonoBehaviour {
 			return;
 		}
 		foreach(QuestData data in sideQuest) {
+			if(data.status == QuestData.QuestStatus.Done) {
+				return;
+			}
 			GameObject questButton = (GameObject) GameObject.Instantiate(buttonPrefab);
 			UIQuestButton uiQB = questButton.GetComponent<UIQuestButton>();
 			questButton.transform.SetParent(sideQuestParent);

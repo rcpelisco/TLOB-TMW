@@ -14,10 +14,12 @@ public class CharacterQuestModel : MonoBehaviour {
 
 	private CharacterLevelModel levelModel;
 	private CharacterInventoryModel inventoryModel;
+	private UIQuestNotification questNotification;
 
 	void Awake() {
 		levelModel = GetComponent<CharacterLevelModel>();
 		inventoryModel = GetComponent<CharacterInventoryModel>();
+		questNotification = FindObjectOfType<UIQuestNotification>();
 		killCount = new Dictionary<EnemyType, int>();
 		sideQuests = new List<QuestData>();
 	}
@@ -33,6 +35,7 @@ public class CharacterQuestModel : MonoBehaviour {
 	void SceneFinishLoading(Scene scene, LoadSceneMode mode) {
 		quests = FindQuestGivers();
 		SetAllStatus();
+		CheckSceneQuest();
 	}
 
 	public void AddKilledEnemy(EnemyType enemy) {
@@ -52,14 +55,28 @@ public class CharacterQuestModel : MonoBehaviour {
 		}
 	}	
 
+	void CheckSceneQuest() {
+		string sceneName = SceneManager.GetActiveScene().name;
+		foreach(QuestData data in sideQuests.ToArray()) {
+			if(data.completeOnScene == sceneName) {
+				EndQuest(data);
+			}
+		}
+	}
+
 	void SetAllStatus() {
 		for(int i = 0; i < quests.Length; i++) {
+			Quest q = quests[i];
 			foreach(QuestData data in sideQuests) {
-				if(IsQuestAlreadyAdded(data, quests[i].quest)) {
-					quests[i].SetStatus(QuestData.QuestStatus.Active);
-				} else if(IsQuestAlreadyDone(data.ID, quests[i].quest.ID)) {
-					quests[i].SetStatus(QuestData.QuestStatus.Done);
-				}
+				if(IsQuestAlreadyAdded(data, q.quest)) {
+					q.SetStatus(QuestData.QuestStatus.Active);
+				} else if(IsQuestAlreadyDone(data.ID, q.quest.ID)) {
+					q.SetStatus(QuestData.QuestStatus.Done);
+				} else if(q.quest.status == QuestData.QuestStatus.Unavailable) {
+					if(q.quest.ID == data.ID + 1) {
+						q.SetStatus(QuestData.QuestStatus.Available);
+					}
+				} 
 			}
 		}
 	}
@@ -69,6 +86,7 @@ public class CharacterQuestModel : MonoBehaviour {
 	}
 
 	void AddQuest(QuestData quest) {
+		questNotification.Show(quest.status, quest.title);
 		if(quest.type == QuestData.QuestType.MainQuest) {
 			mainQuest = quest;
 		} else if(quest.type == QuestData.QuestType.SideQuest) {
@@ -99,13 +117,15 @@ public class CharacterQuestModel : MonoBehaviour {
 	}
 
 	void EndQuest(QuestData quest) {
+		SetAllStatus();
 		if(quest.type == QuestData.QuestType.MainQuest) {
 			quest = null;
 		} else if(quest.type == QuestData.QuestType.SideQuest) {
 			inventoryModel.AddItem(quest.itemReward, quest.amountReward);
 			levelModel.AddExp(quest.expReward);
-			sideQuests.Remove(quest);
+			quest.status = QuestData.QuestStatus.Done;
 		}
+		questNotification.Show(quest.status, quest.title);
 	}
 
 	public void CheckProgress(QuestData quest) {
