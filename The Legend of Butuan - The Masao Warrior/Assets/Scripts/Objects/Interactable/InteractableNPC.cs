@@ -53,7 +53,7 @@ public class InteractableNPC : InteractableBase {
 				return;
 			}
 		}
-		if(quest != null) {
+		if(quest == null) {
 			return;
 		}
 		if(quest.quest.status == QuestData.QuestStatus.Active || 
