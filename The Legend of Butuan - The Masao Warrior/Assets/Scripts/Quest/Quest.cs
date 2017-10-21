@@ -20,6 +20,9 @@ public class Quest : MonoBehaviour {
 				quest.status = QuestData.QuestStatus.Available;
 			}
 		}
+		if(quest.status == QuestData.QuestStatus.Available) {
+			
+		}
 	}
 
 	public void Add(Character character) {

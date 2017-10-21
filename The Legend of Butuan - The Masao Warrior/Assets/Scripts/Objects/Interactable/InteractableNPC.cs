@@ -39,6 +39,9 @@ public class InteractableNPC : InteractableBase {
 		if(quest != null) {
 			if(quest.quest.status == QuestData.QuestStatus.Available) {
 				isQuestActive = true;
+				Debug.Log("isQuestActive: " + isQuestActive);
+			} else {
+				isQuestActive = false;
 			}
 			notificationParent.gameObject.SetActive(isQuestActive);
 		}
@@ -62,7 +65,7 @@ public class InteractableNPC : InteractableBase {
 		if(dialogue.sentences.Length <= 0) {
 			return;
 		}
-		Destroy(notification);
+		notificationParent.gameObject.SetActive(false);
 		if(FindObjectOfType<DialogueManager>().IsSentenceDone()) {
 			FindObjectOfType<DialogueManager>().DisplayNextSentence();
 			if(FindObjectOfType<DialogueManager>().IsDone()) {
