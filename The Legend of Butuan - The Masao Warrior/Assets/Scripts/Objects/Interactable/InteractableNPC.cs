@@ -53,12 +53,11 @@ public class InteractableNPC : InteractableBase {
 				return;
 			}
 		}
-		if(quest == null) {
-			return;
-		}
-		if(quest.quest.status == QuestData.QuestStatus.Active || 
-			quest.quest.status == QuestData.QuestStatus.Done) {
-			return;
+		if(quest != null) {
+			if(quest.quest.status == QuestData.QuestStatus.Active || 
+				quest.quest.status == QuestData.QuestStatus.Done) {
+				return;
+			}
 		}
 		FindCharacterFacing(character);
 		InitiateDialogue(character);
