@@ -332,6 +332,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1089778099256956
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224999152872833158}
+  - component: {fileID: 82647342718740558}
+  m_Layer: 5
+  m_Name: NewGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1098349558376984
 GameObject:
   m_ObjectHideFlags: 1
@@ -1672,6 +1688,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1471333918406846
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224999616482379226}
+  - component: {fileID: 82960026185482278}
+  m_Layer: 5
+  m_Name: LoadGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1472093542589552
 GameObject:
   m_ObjectHideFlags: 1
@@ -1793,6 +1825,21 @@ GameObject:
   - component: {fileID: 114540362460732650}
   m_Layer: 5
   m_Name: Mute
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1521921856805900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224228389055441366}
+  m_Layer: 5
+  m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3601,6 +3648,166 @@ Transform:
   m_Father: {fileID: 224186460237140280}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82647342718740558
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089778099256956}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 73bdc212054a9784180bdbe3021e5e1d, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &82960026185482278
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1471333918406846}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1ab89f07449e6924f964eca2dca5151e, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!95 &95272230944237878
 Animator:
   serializedVersion: 3
@@ -4367,6 +4574,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9fedc1fb5d5c841851057e4a93c7d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newGameAudio: {fileID: 82647342718740558}
+  loadGameAudio: {fileID: 82960026185482278}
 --- !u!114 &114112896806890134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9283,71 +9492,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2496f8f2f1587e46b823e034a379c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triviaText: {fileID: 114174718980421154}
   trivias:
-  - trivia: Butuan City, during the pre-colonial times, was known as the Rajahnate
+  - area: Agao
+    trivia: Butuan City, during the pre-colonial times, was known as the Rajahnate
       of Butuan, an Indianized kingdom known for its metallurgic industry and sophisticated
       naval technology. Butuan City is the center of the gold industry from the 10th
       to 13th century.
-    area: Agao
-  - trivia: "The local Nipa Wine distillery is located at Baranggay Babag Butuan City.
+  - area: Babag
+    trivia: "The local Nipa Wine distillery is located at Baranggay Babag Butuan City.
       They make the local wine which butuanons call \u201CLaksoy\u201D. The process
       is somewhat like that of Lambanog, the difference is the main ingredient is
       Nipa and not coconut.  The local Laksoy is categorized into two; the laksoy
       made by indigenous people are categorized as \u201CClass A Laksoy\u201D while
       the once made for commercial purposes and by machines are called \u201CClass
       B Laksoy\u201D.\r"
-    area: Babag
-  - trivia: JC Aquino Avenue is the main road that connects localities all through
+  - area: JCAquinoAvenue
+    trivia: JC Aquino Avenue is the main road that connects localities all through
       out the Rajanate of Butuan
-    area: JCAquinoAvenue
-  - trivia: Here in this place stand many buildings including the Father Saturnino
+  - area: DiegoSilangUpper
+    trivia: Here in this place stand many buildings including the Father Saturnino
       Urios University.
-    area: DiegoSilangUpper
-  - trivia: This is the place where the blood compact between the Spaniards and the
+  - area: UpperMasao
+    trivia: This is the place where the blood compact between the Spaniards and the
       Locals happened that brought door for Christianity to spread
-    area: UpperMasao
-  - trivia: This path leads to the area of Diego Silang that is connected to Agao.
-    area: MontillaBlvdLower
-  - trivia: This is the center of the Kingdom. Also know as 'Downtown' in the future.
+  - area: MontillaBlvdLower
+    trivia: This path leads to the area of Diego Silang that is connected to Agao.
+  - area: Jolibee
+    trivia: This is the center of the Kingdom. Also know as 'Downtown' in the future.
       A place with lots stores where people could buy for their needs.
-    area: Jolibee
-  - trivia: One of the largest market located in the Rajanate of Butuan where people
+  - area: Langihan
+    trivia: One of the largest market located in the Rajanate of Butuan where people
       buy raw ingredients for their everyday living.
-    area: Langihan
-  - trivia: This is the place where the Augustinia Recollects established their mission
+  - area: BanzaChurchRuins
+    trivia: This is the place where the Augustinia Recollects established their mission
       in Butuan in 1622 and this would last until 1875 with the return of the Jesuits
       to butuan. In the future, this church stands as the oldest one present in Butuan.
-    area: BanzaChurchRuins
-  - trivia: People in the Kingdom spends their time and leisure with their loved ones
+  - area: Urduja
+    trivia: People in the Kingdom spends their time and leisure with their loved ones
       having quality time at the heart of the Kingdom. (Guingona park)
-    area: Urduja
-  - trivia: This is the town's cemetery where the deceased loved ones of the people
+  - area: DetailedCemeteryDT
+    trivia: This is the town's cemetery where the deceased loved ones of the people
       in the kingdom lie.
-    area: DetailedCemeteryDT
-  - trivia: This path connects the heart of the Rajanate to Langihan Market and the
+  - area: MontillaBlvdUpper
+    trivia: This path connects the heart of the Rajanate to Langihan Market and the
       Wine Distellery Center which is located at Babag.
-    area: MontillaBlvdUpper
-  - trivia: In the future, a musuem that holds the precious artefacts that will be
+  - area: OldMuseum
+    trivia: In the future, a musuem that holds the precious artefacts that will be
       valuable not only to the historians but also to the people living in the place
       will arise in this area.
-    area: OldMuseum
-  - trivia: Salvador St. or known as Salvador Calo St. in the future is one of the  roads
+  - area: SalvadorSt
+    trivia: Salvador St. or known as Salvador Calo St. in the future is one of the  roads
       that connects localities in the Rajahnate of Butuan. Specifically, it is the
       road that lead people to access and go through Langihan as well as Montilla
       Blvd which is connected to the kingdom's main road, JC Aquino Road.
-    area: SalvadorSt
-  - trivia: Here will arise a mall in the future named, Gaisano. A place where lots
+  - area: Gaisano
+    trivia: Here will arise a mall in the future named, Gaisano. A place where lots
       of stores is place for the convenience of the people.
-    area: Gaisano
-  - trivia: Here is the road that connects the museum, town hall and library to the
+  - area: DBPKalsada
+    trivia: Here is the road that connects the museum, town hall and library to the
       main road, JC Aquino Avenue
-    area: DBPKalsada
-  - trivia: In today's era, known as Doongan Road. One of the road that either lead
+  - area: LeftMuseum
+    trivia: In today's era, known as Doongan Road. One of the road that either lead
       to the museum or to JC Aquino Avenue.
-    area: LeftMuseum
-  - trivia: This place is the hide-out of slimes! Careful for the boss might be awake!
-    area: SlimeHideout
-  triviaText: {fileID: 114174718980421154}
+  - area: SlimeHideout
+    trivia: This place is the hide-out of slimes! Careful for the boss might be awake!
+  - area: MagsaysayBridge
+    trivia: Ramon Magsaysay Bridge. This is the old Magsaysay Bridge in Butuan, an
+      arched-type steel bridge built during the early sixties spans the mighty Agusan
+      River.
   pauseManager: {fileID: 114433270331181926}
 --- !u!114 &114862670484910802
 MonoBehaviour:
@@ -12379,6 +12592,7 @@ RectTransform:
   - {fileID: 224206092981905328}
   - {fileID: 224628638784195400}
   - {fileID: 224433143604132104}
+  - {fileID: 224228389055441366}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12551,6 +12765,26 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 213.5, y: 38.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224228389055441366
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1521921856805900}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 224999152872833158}
+  - {fileID: 224999616482379226}
+  m_Father: {fileID: 224186460237140280}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224228597820854144
 RectTransform:
@@ -15609,3 +15843,39 @@ RectTransform:
   m_AnchoredPosition: {x: 77.600006, y: 0}
   m_SizeDelta: {x: 583, y: 128}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!224 &224999152872833158
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089778099256956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224228389055441366}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224999616482379226
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1471333918406846}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
+  m_Children: []
+  m_Father: {fileID: 224228389055441366}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterInventoryModel : MonoBehaviour {
 
 	public ItemType[] item;
-	public AudioSource collectGold, getSword, smallItem;
+	public AudioSource coinAudio, swordAudio, smallItemAudio;
 
 	private CharacterMovementModel movementModel;
 	private InventoryUI inventoryUI;
@@ -41,19 +41,19 @@ public class CharacterInventoryModel : MonoBehaviour {
 			if(itemType != ItemType.Gold) {
 				FindObjectOfType<InventoryUI>().AddItem(itemType);
 			}else {
-				collectGold.Play();
+				coinAudio.Play();
 			}
 			if(itemData != null) {
 				if(itemData.animation != ItemData.PickupAnimation.None) {
 					movementModel.ShowItemPickup(itemType);
 				}
 				if(itemData.isEquipable == ItemData.EquipPosition.SwordHand) {
-					getSword.Play();
+					swordAudio.Play();
 					movementModel.EquipWeapon(itemType);
 				} else if (itemData.isEquipable == ItemData.EquipPosition.ShieldHand) {
 					movementModel.EquipShield(itemType);
 				} else if (itemData.isEquipable == ItemData.EquipPosition.NotEquipable && itemType != ItemType.Gold) {
-					smallItem.Play();
+					smallItemAudio.Play();
 				}
 			}
 		}

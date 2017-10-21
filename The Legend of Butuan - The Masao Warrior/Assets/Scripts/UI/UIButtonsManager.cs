@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UIButtonsManager : MonoBehaviour {
 
+	public AudioSource newGameAudio, loadGameAudio;
 	private GameStateManager stateManager;
 	private PauseManager pauseManager;
 
@@ -14,12 +15,14 @@ public class UIButtonsManager : MonoBehaviour {
 	
 	public void NewGame() {
 		if(stateManager != null) {
+			newGameAudio.Play();
 			stateManager.NewGame();
 		}
 	}
 
 	public void LoadGame() {
 		if(stateManager != null) {
+			loadGameAudio.Play();
 			stateManager.LoadGame();
 		}
 	}

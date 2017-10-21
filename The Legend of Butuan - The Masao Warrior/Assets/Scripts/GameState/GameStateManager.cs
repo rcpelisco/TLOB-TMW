@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameStateManager : MonoBehaviour {
 	
 	public GameObject mainCameraPrefab;
+	public static bool fromLoad;
 	public GameObject canvasPrefab;
 	public GameObject playerPrefab;
 	public GameObject audioManagerPrefab;
@@ -28,6 +29,7 @@ public class GameStateManager : MonoBehaviour {
 
 	public void LoadGame() {
 		load = true;
+		GameStateManager.fromLoad = true;
 		playerData = SaveLoadManager.LoadPlayer();
 		SceneManager.LoadScene("PersistentScene");
 	}

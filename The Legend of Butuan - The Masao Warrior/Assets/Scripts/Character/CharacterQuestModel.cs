@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CharacterQuestModel : MonoBehaviour {
 	
 	public int killedEnemy;
+	public AudioSource questAudio;
 
 	private QuestData mainQuest;
 	private List<QuestData> sideQuests;
@@ -86,6 +87,9 @@ public class CharacterQuestModel : MonoBehaviour {
 	}
 
 	void AddQuest(QuestData quest) {
+		if(GameStateManager.fromLoad) {
+			questAudio.Play();
+		}
 		questNotification.Show(quest.status, quest.title);
 		if(quest.type == QuestData.QuestType.MainQuest) {
 			mainQuest = quest;

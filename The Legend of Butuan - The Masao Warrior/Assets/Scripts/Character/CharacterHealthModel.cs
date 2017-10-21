@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class CharacterHealthModel : MonoBehaviour {
 
 	public float startingHealth;
-	public AudioSource isHit, playerDeath;
+	public AudioSource[] isHitAudio;
+	public AudioSource playerDeathAudio;
 
 	private float maximumHealth;
 	private float health;
@@ -14,6 +15,7 @@ public class CharacterHealthModel : MonoBehaviour {
 	private CharacterMovementModel movementModel;
 	private PauseManager pauseManager;
 	private GameStateManager stateManager;
+	private bool isDead;
 
 	void Awake() {
 		movementView = GetComponent<CharacterMovementView>();
@@ -48,11 +50,17 @@ public class CharacterHealthModel : MonoBehaviour {
 	}
 
 	public void DealDamage(float damage) {
+		if(isDead){ 
+			return;
+		}
+		int audioRandom = Random.Range(0, isHitAudio.Length);
 		UIDamageNumbers.Instance.ShowDamageNumber(damage, transform.position);
-		isHit.Play();
+		isHitAudio[audioRandom].Play();
 		health -= damage;
 		if(health <= 0) {
 			health = 0;
+			isDead = true;
+			playerDeathAudio.Play();
 			movementView.OnDeath();
 			StartCoroutine(DeathAnimWait());
 			StartCoroutine(WaitNextScene());

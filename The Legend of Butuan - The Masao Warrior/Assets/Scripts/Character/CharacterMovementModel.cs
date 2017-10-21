@@ -10,7 +10,7 @@ public class CharacterMovementModel : CharacterBaseControl {
 	public Transform weaponParent;
 	public Transform shieldParent;
 	public Transform previewItemParent;
-	public AudioSource onAttack;
+	public AudioSource[] attackAudio;
 
 	private Vector3 movementDirection;
 	private Vector3 facingDirection;
@@ -252,7 +252,10 @@ public class CharacterMovementModel : CharacterBaseControl {
 	}
 
 	public void DoAttack() {
-		onAttack.Play();
+		int audioRandom = Random.Range(0, attackAudio.Length);
+
+		attackAudio[audioRandom].Play();
+		Debug.Log(audioRandom);
 	}
 
 	public Vector3 GetDirection() {
