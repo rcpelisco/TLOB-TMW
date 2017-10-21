@@ -253,9 +253,7 @@ public class CharacterMovementModel : CharacterBaseControl {
 
 	public void DoAttack() {
 		int audioRandom = Random.Range(0, attackAudio.Length);
-
 		attackAudio[audioRandom].Play();
-		Debug.Log(audioRandom);
 	}
 
 	public Vector3 GetDirection() {

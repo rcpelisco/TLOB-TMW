@@ -39,11 +39,11 @@ public class InteractableNPC : InteractableBase {
 		if(quest != null) {
 			if(quest.quest.status == QuestData.QuestStatus.Available) {
 				isQuestActive = true;
-				Debug.Log("isQuestActive: " + isQuestActive);
 			} else {
 				isQuestActive = false;
 			}
 			notificationParent.gameObject.SetActive(isQuestActive);
+			Debug.Log(notificationParent.gameObject.activeInHierarchy, notification.gameObject);
 		}
 	}
 
@@ -55,7 +55,8 @@ public class InteractableNPC : InteractableBase {
 		}
 		if(quest != null) {
 			if(quest.quest.status == QuestData.QuestStatus.Active || 
-				quest.quest.status == QuestData.QuestStatus.Done) {
+				quest.quest.status == QuestData.QuestStatus.Done || 
+				quest.quest.status == QuestData.QuestStatus.Unavailable) {
 				return;
 			}
 		}
@@ -77,11 +78,11 @@ public class InteractableNPC : InteractableBase {
 				if(animAfterDialogue != null) {
 					animAfterDialogue.Play();
 				}
-				if(item != null) {
-					item.Add(character);
-				}
 				if(quest != null) {
 					quest.Add(character);
+				}
+				if(item != null) {
+					item.Add(character);
 				}
 			}
 			return;

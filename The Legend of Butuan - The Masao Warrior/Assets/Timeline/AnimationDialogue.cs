@@ -9,13 +9,18 @@ public class AnimationDialogue : MonoBehaviour {
 	public PlayableDirector playable;
 	public Dialogue[] dialogue;
 	public GameObject[] toDestroyOnStop;
+	public Quest questOnDone;
 	public bool stopOnDone;
 
 	private int index = 0;
 	private GameObject animationCanvas;
+	private Character character;
 
 	void OnEnable() {
 		animationCanvas = GameObject.FindGameObjectWithTag("AnimationCanvas");
+		if(GameObject.FindGameObjectWithTag("Player") != null) {
+			character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+		}
 		NextSentence();
 	}
 
@@ -34,6 +39,9 @@ public class AnimationDialogue : MonoBehaviour {
 					} else {
 						Play();
 					}
+					if(questOnDone != null) {
+						questOnDone.Add(character);
+					} 
 					return;
 				}
 				animationCanvas.GetComponent<AnimationDialogueManager>().StartDialogue(dialogue[index]);

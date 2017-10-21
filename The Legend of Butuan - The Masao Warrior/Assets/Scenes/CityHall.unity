@@ -611,7 +611,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &76522127
 PlayableDirector:
@@ -800,6 +800,60 @@ Transform:
   m_PrefabParentObject: {fileID: 4225474418819856, guid: 9e023a98a132a5d4db9678d8a6e66568,
     type: 2}
   m_PrefabInternal: {fileID: 100111015}
+--- !u!1 &108337157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 108337159}
+  - component: {fileID: 108337158}
+  m_Layer: 0
+  m_Name: Bounds (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &108337158
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 108337157}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6.44, y: 7.25}
+  m_EdgeRadius: 0
+--- !u!4 &108337159
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 108337157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.11, y: -51.38, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &164120638
 Prefab:
   m_ObjectHideFlags: 0
@@ -1212,6 +1266,10 @@ Prefab:
       propertyPath: dialogue.sentences.Array.data[4]
       value: So that, I would have no problem going home
       objectReference: {fileID: 0}
+    - target: {fileID: 1030374945753182, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
   m_IsPrefabParent: 0
@@ -1251,11 +1309,6 @@ MonoBehaviour:
     expReward: 3
     itemReward: 300
     amountReward: 9
---- !u!4 &204894047 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4460095073180890, guid: 6b12543453159bc419066c92ff7313ba,
-    type: 2}
-  m_PrefabInternal: {fileID: 204894043}
 --- !u!1001 &217997953
 Prefab:
   m_ObjectHideFlags: 0
@@ -1858,7 +1911,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &303960777
 Prefab:
@@ -2639,7 +2692,7 @@ Prefab:
     - target: {fileID: 224178756613717938, guid: af59f9bcc5b11914ea924a9f14646476,
         type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 224178756613717938, guid: af59f9bcc5b11914ea924a9f14646476,
         type: 2}
@@ -3015,6 +3068,7 @@ MonoBehaviour:
     - Help! Help! Help! Slimes have infested this land! ...
     - '... They might look cute, don''t be decieved, they are pretty harmful.'
   toDestroyOnStop: []
+  questOnDone: {fileID: 617878744}
   stopOnDone: 0
 --- !u!4 &468856613
 Transform:
@@ -3027,7 +3081,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &485638194
 Prefab:
@@ -3603,7 +3657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &617878744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3625,7 +3679,7 @@ MonoBehaviour:
     enemyType: 2
     noOfEnemies: 3
     type: 1
-    status: 0
+    status: 1
     completeOnScene: 
     expReward: 3
     itemReward: 300
@@ -3641,7 +3695,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &617878746
 MonoBehaviour:
@@ -3952,7 +4006,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &719005154
 Animator:
@@ -4014,7 +4068,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &725978957
 Prefab:
@@ -4676,7 +4730,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &886957772
 Prefab:
@@ -5419,7 +5473,7 @@ Prefab:
         type: 2}
       propertyPath: notificationParent
       value: 
-      objectReference: {fileID: 204894047}
+      objectReference: {fileID: 1000842071}
     - target: {fileID: 114211494144016786, guid: 6b12543453159bc419066c92ff7313ba,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[2]
@@ -5469,6 +5523,11 @@ MonoBehaviour:
     expReward: 3
     itemReward: 300
     amountReward: 9
+--- !u!4 &1000842071 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4460095073180890, guid: 6b12543453159bc419066c92ff7313ba,
+    type: 2}
+  m_PrefabInternal: {fileID: 1000842067}
 --- !u!1001 &1021972152
 Prefab:
   m_ObjectHideFlags: 0
@@ -5556,7 +5615,7 @@ Transform:
   - {fileID: 1175117777}
   - {fileID: 1788503250}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1033885035
 Prefab:
@@ -6465,7 +6524,7 @@ Transform:
   - {fileID: 448290460}
   - {fileID: 167121762}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1229687311
 Prefab:
@@ -9567,7 +9626,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4129037679269824, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -20.03
+      value: -21.66
       objectReference: {fileID: 0}
     - target: {fileID: 4129037679269824, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
       propertyPath: m_LocalPosition.z
@@ -9638,7 +9697,12 @@ Prefab:
         type: 2}
       propertyPath: notificationParent
       value: 
-      objectReference: {fileID: 204894047}
+      objectReference: {fileID: 1865346754}
+    - target: {fileID: 114050498237119732, guid: 6b12543453159bc419066c92ff7313ba,
+        type: 2}
+      propertyPath: walkZone
+      value: 
+      objectReference: {fileID: 108337158}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
   m_IsPrefabParent: 0
@@ -9678,6 +9742,11 @@ MonoBehaviour:
     expReward: 1
     itemReward: 300
     amountReward: 3
+--- !u!4 &1865346754 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4460095073180890, guid: 6b12543453159bc419066c92ff7313ba,
+    type: 2}
+  m_PrefabInternal: {fileID: 1865346750}
 --- !u!1001 &1878100725
 Prefab:
   m_ObjectHideFlags: 0
@@ -10087,7 +10156,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4129037679269824, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1030374945753182, guid: 6b12543453159bc419066c92ff7313ba, type: 2}
       propertyPath: m_Name

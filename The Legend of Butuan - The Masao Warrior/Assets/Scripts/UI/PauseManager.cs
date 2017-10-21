@@ -156,7 +156,6 @@ public class PauseManager : MonoBehaviour {
 	}
 
 	public void TriviaToggle() {
-		Debug.Log("Trivia");
 		if(isTriviaActive) {
 			HideTriviaScreen();
 			isTriviaActive = false;

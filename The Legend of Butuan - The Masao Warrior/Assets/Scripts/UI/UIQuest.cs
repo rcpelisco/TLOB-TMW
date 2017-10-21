@@ -59,15 +59,14 @@ public class UIQuest : MonoBehaviour {
 			return;
 		}
 		foreach(QuestData data in sideQuest) {
-			if(data.status == QuestData.QuestStatus.Done) {
-				return;
+			if(data.status != QuestData.QuestStatus.Done) {
+				GameObject questButton = (GameObject) GameObject.Instantiate(buttonPrefab);
+				UIQuestButton uiQB = questButton.GetComponent<UIQuestButton>();
+				questButton.transform.SetParent(sideQuestParent);
+				questButton.transform.localScale = Vector3.one;
+				uiQB.Setup(data, this);
+				sideQuestButtons.Add(questButton);
 			}
-			GameObject questButton = (GameObject) GameObject.Instantiate(buttonPrefab);
-			UIQuestButton uiQB = questButton.GetComponent<UIQuestButton>();
-			questButton.transform.SetParent(sideQuestParent);
-			questButton.transform.localScale = Vector3.one;
-			uiQB.Setup(data, this);
-			sideQuestButtons.Add(questButton);
 		}
 	}
 

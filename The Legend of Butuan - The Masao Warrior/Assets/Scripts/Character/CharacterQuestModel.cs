@@ -41,8 +41,10 @@ public class CharacterQuestModel : MonoBehaviour {
 
 	public void AddKilledEnemy(EnemyType enemy) {
 		if(killCount.ContainsKey(enemy)) {
+			Debug.Log("new: " + enemy);
 			killCount[enemy] += 1;
 		} else {
+			Debug.Log("add: " + enemy);
 			killCount.Add(enemy, 1);
 		}
 		CheckEnemyKills();
@@ -50,8 +52,12 @@ public class CharacterQuestModel : MonoBehaviour {
 
 	void CheckEnemyKills() {
 		foreach(QuestData data in sideQuests.ToArray()) {
-			if(killCount[data.enemyType] == data.noOfEnemies) {
-				EndQuest(data);
+			if(killCount.ContainsKey(data.enemyType)) {
+				if(killCount[data.enemyType] >= data.noOfEnemies) {
+					Debug.Log(data.enemyType);
+					EndQuest(data);
+					killCount[data.enemyType] = 0;
+				}
 			}
 		}
 	}	
@@ -68,7 +74,7 @@ public class CharacterQuestModel : MonoBehaviour {
 	void SetAllStatus() {
 		for(int i = 0; i < quests.Length; i++) {
 			Quest q = quests[i];
-			foreach(QuestData data in sideQuests) {
+			foreach(QuestData data in sideQuests.ToArray()) {
 				if(IsQuestAlreadyAdded(data, q.quest)) {
 					q.SetStatus(QuestData.QuestStatus.Active);
 				} else if(IsQuestAlreadyDone(data.ID, q.quest.ID)) {
@@ -87,17 +93,16 @@ public class CharacterQuestModel : MonoBehaviour {
 	}
 
 	void AddQuest(QuestData quest) {
-		if(GameStateManager.fromLoad) {
-			questAudio.Play();
-		}
+		Debug.Log("AddQuest");
 		questNotification.Show(quest.status, quest.title);
 		if(quest.type == QuestData.QuestType.MainQuest) {
 			mainQuest = quest;
+
 		} else if(quest.type == QuestData.QuestType.SideQuest) {
 			if(sideQuests.Count == 0) {
 				sideQuests.Add(quest);
 			}
-			foreach(QuestData data in sideQuests) {
+			foreach(QuestData data in sideQuests.ToArray()) {
 				if(IsQuestAlreadyAdded(data, quest)) {
 					return;
 				}
@@ -122,6 +127,9 @@ public class CharacterQuestModel : MonoBehaviour {
 
 	void EndQuest(QuestData quest) {
 		SetAllStatus();
+		if(quest.status == QuestData.QuestStatus.Done) {
+			return;
+		}
 		if(quest.type == QuestData.QuestType.MainQuest) {
 			quest = null;
 		} else if(quest.type == QuestData.QuestType.SideQuest) {
@@ -134,7 +142,7 @@ public class CharacterQuestModel : MonoBehaviour {
 
 	public void CheckProgress(QuestData quest) {
 		if(quest.type == QuestData.QuestType.MainQuest) {
-			if(mainQuest == null) {
+			if(mainQuest.requirement == null) {
 				AddQuest(quest);
 				return;
 			}

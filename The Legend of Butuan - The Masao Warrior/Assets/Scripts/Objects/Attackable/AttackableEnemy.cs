@@ -17,7 +17,6 @@ public class AttackableEnemy : AttackableBase {
 	public AudioSource enemyDeath;
 
 	private float health;
-	private float startingHealth;
 	private CharacterLevelModel playerLevelModel;
 	private CharacterQuestModel questModel;
 

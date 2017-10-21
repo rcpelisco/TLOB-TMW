@@ -81,7 +81,6 @@ public class UITouchControl : MonoBehaviour {
 		rightTrigger.triggers.Add(rightExit);
 	}
 	
-
 	public void SetActionListener() {
 		EventTrigger aTrigger = a.GetComponent<EventTrigger>();
 		EventTrigger.Entry aEntry = new EventTrigger.Entry();
@@ -101,22 +100,27 @@ public class UITouchControl : MonoBehaviour {
 	}
 
 	public void WalkUp(PointerEventData data) {
+		Debug.Log("a");
 		touchControl.WalkUp();
 	}
 
 	public void WalkDown(PointerEventData data) {
 		touchControl.WalkDown();
+		Debug.Log("a");
 	}
 
 	public void WalkLeft(PointerEventData data) {
+		Debug.Log("a");
 		touchControl.WalkLeft();
 	}
 
 	public void WalkRight(PointerEventData data) {
+		Debug.Log("a");
 		touchControl.WalkRight();
 	}
 
 	public void ReleaseWalk(PointerEventData data) {
+		Debug.Log("b");
 		touchControl.ReleaseWalk();
 	}
 
