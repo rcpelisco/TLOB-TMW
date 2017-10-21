@@ -9,14 +9,13 @@ public class CharacterLevelModel : MonoBehaviour {
 
 	[SerializeField]
 	private int currentExp;
-
 	private int[] requiredExp = {
-		0,10,20,50,75,100,200,250,325,450,700,875,1000
+		0, 50, 100, 175, 275, 400, 550, 
+		250, 325, 450, 700, 875, 1000
 	};
 	private CharacterHealthModel healthModel;
 	int temp = 0;
 	
-
 	void Awake() {
 		currentLevel = 1;
 		healthModel = GetComponent<CharacterHealthModel>();
