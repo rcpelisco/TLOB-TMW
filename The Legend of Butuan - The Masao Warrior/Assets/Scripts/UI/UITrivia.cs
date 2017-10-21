@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class UITrivia : MonoBehaviour {
 
-	public Trivia[] trivias;
 	public Text triviaText; 
+	public Trivia[] trivias;
 
 	public PauseManager pauseManager;
 	
@@ -34,7 +34,7 @@ public class UITrivia : MonoBehaviour {
 	}
 
 	IEnumerator DelayShow(Trivia trivia) {
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(.25f);
 		pauseManager.TriviaToggle();
 		triviaText.text = trivia.trivia;
 	}
