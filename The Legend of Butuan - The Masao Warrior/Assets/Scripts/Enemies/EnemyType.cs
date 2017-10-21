@@ -5,5 +5,7 @@
 	Luthang,
 	Wizard,
 	Plant,
-	Pumpkin
+	Pumpkin,
+	GrimReaper,
+	BossSlime
 }

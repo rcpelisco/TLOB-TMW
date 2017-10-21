@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour {
 	void OnLevelFinishLoading(Scene scene, LoadSceneMode mode) {
 		string sceneName = SceneManager.GetActiveScene().name;
 		if(sceneName == "MainMenu" || sceneName == "TitleScreen" || sceneName == "GameOver") {
-			// Destroy(gameObject);
+			Destroy(gameObject);
 		}
 	}
 
