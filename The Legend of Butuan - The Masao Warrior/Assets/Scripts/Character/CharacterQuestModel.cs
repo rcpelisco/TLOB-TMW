@@ -142,7 +142,7 @@ public class CharacterQuestModel : MonoBehaviour {
 
 	public void CheckProgress(QuestData quest) {
 		if(quest.type == QuestData.QuestType.MainQuest) {
-			if(mainQuest.requirement == null) {
+			if(mainQuest == null) {
 				AddQuest(quest);
 				return;
 			}
