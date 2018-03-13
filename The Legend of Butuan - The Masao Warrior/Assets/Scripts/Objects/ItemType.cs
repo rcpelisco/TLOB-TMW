@@ -4,5 +4,6 @@
 	ShortSword = 110,
 	Shield = 200,
 	Gold = 300,
-	Book = 400
+	Book = 400,
+	Boat_1 = 401
 }

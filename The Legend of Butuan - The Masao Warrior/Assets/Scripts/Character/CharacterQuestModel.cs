@@ -133,6 +133,7 @@ public class CharacterQuestModel : MonoBehaviour {
 		if(quest.type == QuestData.QuestType.MainQuest) {
 			quest = null;
 		} else if(quest.type == QuestData.QuestType.SideQuest) {
+			sideQuests.Remove(quest);
 			inventoryModel.AddItem(quest.itemReward, quest.amountReward);
 			levelModel.AddExp(quest.expReward);
 			quest.status = QuestData.QuestStatus.Done;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterControl : CharacterBaseControl {
 
 	void Start() {
-		SetDirection( new Vector2( 0, -1 ) );
+		SetDirection( new Vector2( 0, 1 ) );
 	}
 
 	void Update() {

@@ -19,10 +19,14 @@ public class UIHealthBar : MonoBehaviour {
 	}
 
 	void UpdateText() {
-		healthText.text = Mathf.RoundToInt(healthModel.GetHealth()) + "/" + Mathf.RoundToInt(healthModel.GetMaxHealth());	
+		if(healthText != null && healthModel != null) {
+			healthText.text = Mathf.RoundToInt(healthModel.GetHealth()) + "/" + Mathf.RoundToInt(healthModel.GetMaxHealth());	
+		}
 	}
 
 	void UpdateHealthBar() {
-		healthBar.localScale = new Vector3(healthModel.GetHealthPercentage(), 1f, 1f);
+		if(healthBar != null && healthModel != null) {
+			healthBar.localScale = new Vector3(healthModel.GetHealthPercentage(), 1f, 1f);
+		}
 	}
 }

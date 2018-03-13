@@ -1,11 +1,13 @@
-﻿Shader "Tiled2Unity/Default Color Key (Instanced)"
+﻿// Upgrade NOTE: upgraded instancing buffer 'MyProperties' to new syntax.
+
+Shader "Tiled2Unity/Default Color Key (Instanced)"
 {
     Properties
     {
         _MainTex ("Tiled Texture", 2D) = "white" {}
         _Color ("Tint", Color) = (1,1,1,1)
         _AlphaColorKey ("Alpha Color Key", Color) = (0,0,0,0)
-        [MaterialToggle] PixelSnap ("Pixel snap", Float) = 1
+        [MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
     }
 
     SubShader
@@ -49,9 +51,10 @@
             };
 
 
-            UNITY_INSTANCING_CBUFFER_START(MyProperties)
+            UNITY_INSTANCING_BUFFER_START(MyProperties)
                 UNITY_DEFINE_INSTANCED_PROP(float4, _Color)
-            UNITY_INSTANCING_CBUFFER_END
+#define _Color_arr MyProperties
+            UNITY_INSTANCING_BUFFER_END(MyProperties)
 
             v2f vert(appdata_t IN)
             {
@@ -59,7 +62,7 @@
                 v2f OUT;
                 OUT.vertex = UnityObjectToClipPos(IN.vertex);
                 OUT.texcoord = IN.texcoord;
-                OUT.color = IN.color * UNITY_ACCESS_INSTANCED_PROP(_Color);
+                OUT.color = IN.color * UNITY_ACCESS_INSTANCED_PROP(_Color_arr, _Color);
                 #ifdef PIXELSNAP_ON
                 OUT.vertex = UnityPixelSnap (OUT.vertex);
                 #endif

@@ -19,7 +19,7 @@ public class CharacterMovementModel : CharacterBaseControl {
 	private bool isDirectionFrozen;
 	private bool isAttacking;
 	private ItemType pickedUpItem = ItemType.None;
-	private ItemType equippedWeapon = ItemType.None;
+	public ItemType equippedWeapon = ItemType.None;
 	private ItemType equippedShield = ItemType.None;
 	private GameObject pickupItem;
 	private Vector2 pushDirection;
@@ -58,7 +58,8 @@ public class CharacterMovementModel : CharacterBaseControl {
 		if(isFrozen) {
 			if(recievedDirection != Vector2.zero &&
 				GetItemPickedUp() != ItemType.None &&
-				GetTimeSinceFrozen() > 0.5f) {
+				GetTimeSinceFrozen() > 1f) {
+				
 				pickedUpItem = ItemType.None;
 				SetFrozen(false, false);
 				for(int i = 0; i < previewItemParent.childCount; i++) {
@@ -139,29 +140,26 @@ public class CharacterMovementModel : CharacterBaseControl {
 			return;
 		}
 		recievedDirection = direction;
-		// if(isAttacking) {
-		// 	return;
-		// }
-		// if(healthModel != null && healthModel.GetHealth() <= 0) { 
-		// 	return;
-		// }
+		if(isAttacking) {
+			return;
+		}
 		// if(direction != Vector2.zero &&
 		// 	GetItemPickedUp() != ItemType.None) {
 		// 	pickedUpItem = ItemType.None;
-		// 	SetFrozen(false);
+		// 	SetFrozen(false, false);
 		// 	Destroy(pickupItem);
 		// }
-		// if(isFrozen) {
-		// 	return;
-		// }
-		// if(IsBeingPushed()) {
-		// 	movementDirection = -pushDirection;
-		// 	return;
-		// }
-		// movementDirection = new Vector3(direction.x, direction.y, 0);
-		// if(direction != Vector2.zero) {
-		// 	facingDirection = movementDirection;
-		// }
+		if(isFrozen) {
+			return;
+		}
+		if(IsBeingPushed()) {
+			movementDirection = -pushDirection;
+			return;
+		}
+		movementDirection = new Vector3(direction.x, direction.y, 0);
+		if(direction != Vector2.zero) {
+			facingDirection = movementDirection;
+		}
 	}
 
 	GameObject EquipItem(ItemType itemType, ItemData.EquipPosition equipPosition, 
@@ -211,7 +209,7 @@ public class CharacterMovementModel : CharacterBaseControl {
 		pickupItem.transform.localPosition = Vector2.zero;
 		pickupItem.transform.localRotation = Quaternion.identity;
 		
-		isFrozen = true;
+		SetFrozen(true, true);
 		pickedUpItem = itemType;
 	}
 
